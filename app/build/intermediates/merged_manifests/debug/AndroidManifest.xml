@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.buxuan.baseoneuiapp"
+    android:versionCode="49"
+    android:versionName="1.00.00" >
+
+    <uses-sdk
+        android:minSdkVersion="21"
+        android:targetSdkVersion="30" />
+
+    <application
+        android:allowBackup="true"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:debuggable="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:testOnly="true"
+        android:theme="@style/OneUI4Theme" >
+        <meta-data
+            android:name="SamsungBasicInteraction"
+            android:value="SEP10" />
+        <meta-data
+            android:name="com.samsung.android.icon_container.has_icon_container"
+            android:value="true" />
+        <meta-data
+            android:name="com.samsung.android.icon_container.feature_appicon"
+            android:value="ADAPTIVEICON_SHADOW" />
+
+        <activity android:name="com.buxuan.baseoneuiapp.SwitchBarActivity" />
+        <activity
+            android:name="com.buxuan.baseoneuiapp.AboutActivity"
+            android:theme="@style/OneUI4AboutTheme" />
+        <activity
+            android:name="com.buxuan.baseoneuiapp.MainActivity"
+            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden" />
+        <activity
+            android:name="com.buxuan.baseoneuiapp.SplashActivity"
+            android:theme="@style/OneUI4SplashTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

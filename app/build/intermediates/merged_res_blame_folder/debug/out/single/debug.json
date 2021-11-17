@@ -1,0 +1,110 @@
+[
+    {
+        "merged": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/build/intermediates/res/merged/debug/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/build/intermediates/res/merged/debug/layout_activity_switchbar.xml.flat",
+        "source": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/src/main/res/layout/activity_switchbar.xml"
+    },
+    {
+        "merged": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/build/intermediates/res/merged/debug/layout_icon_tab_listview_bottom_spacing.xml.flat",
+        "source": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/src/main/res/layout/icon_tab_listview_bottom_spacing.xml"
+    },
+    {
+        "merged": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/build/intermediates/res/merged/debug/drawable-xxhdpi_display_help_light.webp.flat",
+        "source": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/src/main/res/drawable-xxhdpi/display_help_light.webp"
+    },
+    {
+        "merged": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/build/intermediates/res/merged/debug/drawable-hdpi_splash_icon_background.png.flat",
+        "source": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/src/main/res/drawable-hdpi/splash_icon_background.png"
+    },
+    {
+        "merged": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/build/intermediates/res/merged/debug/mipmap-hdpi_sample_foreground.webp.flat",
+        "source": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/src/main/res/mipmap-hdpi/sample_foreground.webp"
+    },
+    {
+        "merged": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/build/intermediates/res/merged/debug/layout_activity_splash.xml.flat",
+        "source": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/src/main/res/layout/activity_splash.xml"
+    },
+    {
+        "merged": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/build/intermediates/res/merged/debug/layout_fragment_views_tab.xml.flat",
+        "source": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/src/main/res/layout/fragment_views_tab.xml"
+    },
+    {
+        "merged": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/build/intermediates/res/merged/debug/drawable-xxhdpi_splash_icon_background.png.flat",
+        "source": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/src/main/res/drawable-xxhdpi/splash_icon_background.png"
+    },
+    {
+        "merged": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/build/intermediates/res/merged/debug/layout_content_drawer.xml.flat",
+        "source": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/src/main/res/layout/content_drawer.xml"
+    },
+    {
+        "merged": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/build/intermediates/res/merged/debug/menu_select_mode_menu.xml.flat",
+        "source": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/src/main/res/menu/select_mode_menu.xml"
+    },
+    {
+        "merged": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/build/intermediates/res/merged/debug/layout_fragment_icons_tab.xml.flat",
+        "source": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/src/main/res/layout/fragment_icons_tab.xml"
+    },
+    {
+        "merged": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/build/intermediates/res/merged/debug/layout_icon_tab_listview_item.xml.flat",
+        "source": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/src/main/res/layout/icon_tab_listview_item.xml"
+    },
+    {
+        "merged": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_sample_foreground.webp.flat",
+        "source": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/src/main/res/mipmap-xxhdpi/sample_foreground.webp"
+    },
+    {
+        "merged": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/build/intermediates/res/merged/debug/layout_activity_about.xml.flat",
+        "source": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/src/main/res/layout/activity_about.xml"
+    },
+    {
+        "merged": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/build/intermediates/res/merged/debug/mipmap-hdpi_sample_background.webp.flat",
+        "source": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/src/main/res/mipmap-hdpi/sample_background.webp"
+    },
+    {
+        "merged": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/build/intermediates/res/merged/debug/layout-land_activity_switchbar.xml.flat",
+        "source": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/src/main/res/layout-land/activity_switchbar.xml"
+    },
+    {
+        "merged": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/build/intermediates/res/merged/debug/menu_main.xml.flat",
+        "source": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/src/main/res/menu/main.xml"
+    },
+    {
+        "merged": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/build/intermediates/res/merged/debug/layout_fragment_first.xml.flat",
+        "source": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/src/main/res/layout/fragment_first.xml"
+    },
+    {
+        "merged": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_sample_background.webp.flat",
+        "source": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/src/main/res/mipmap-xxhdpi/sample_background.webp"
+    },
+    {
+        "merged": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/build/intermediates/res/merged/debug/xml_preferences.xml.flat",
+        "source": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/src/main/res/xml/preferences.xml"
+    },
+    {
+        "merged": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/build/intermediates/res/merged/debug/menu_bnv_menu.xml.flat",
+        "source": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/src/main/res/menu/bnv_menu.xml"
+    },
+    {
+        "merged": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/build/intermediates/res/merged/debug/drawable-xxhdpi_display_help_dark.webp.flat",
+        "source": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/src/main/res/drawable-xxhdpi/display_help_dark.webp"
+    },
+    {
+        "merged": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/src/main/res/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/build/intermediates/res/merged/debug/layout_activity_main.xml.flat",
+        "source": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/build/intermediates/res/merged/debug/layout_fragment_nothing_tab.xml.flat",
+        "source": "/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/src/main/res/layout/fragment_nothing_tab.xml"
+    }
+]

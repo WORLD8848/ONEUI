@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BaseOneUIApp.iml" filepath="$PROJECT_DIR$/.idea/modules/BaseOneUIApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BaseOneUIApp.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BaseOneUIApp.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BaseOneUIApp.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BaseOneUIApp.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BaseOneUIApp.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BaseOneUIApp.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BaseOneUIApp.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BaseOneUIApp.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/baseoneui/BaseOneUIApp.baseoneui.iml" filepath="$PROJECT_DIR$/.idea/modules/baseoneui/BaseOneUIApp.baseoneui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/baseoneui/BaseOneUIApp.baseoneui.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/baseoneui/BaseOneUIApp.baseoneui.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/baseoneui/BaseOneUIApp.baseoneui.main.iml" filepath="$PROJECT_DIR$/.idea/modules/baseoneui/BaseOneUIApp.baseoneui.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/baseoneui/BaseOneUIApp.baseoneui.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/baseoneui/BaseOneUIApp.baseoneui.unitTest.iml" />
+    </modules>
+  </component>
+</project>

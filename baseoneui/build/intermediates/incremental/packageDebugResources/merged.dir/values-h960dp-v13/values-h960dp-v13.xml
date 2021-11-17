@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="sesl_appbar_height_proportion" type="dimen">0.25</item>
+</resources>
