@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.buxuan.baseoneui.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TipsCardViewPreference
+        android:key="tip_card"
+        android:summary="Creating OneUI apps has never been so easy!"
+        android:title="TipsCardView" />
+
+    <PreferenceCategory
+        android:key="spacing"
+        android:title="HorizontalRadioPreference" />
+
+    <HorizontalRadioPreference
+        android:key="dark_mode"
+        android:title="Dark mode settings"
+        app:entries="@array/preferences_darkmode_entries"
+        app:entriesImage="@array/preferences_darkmode_entries_image"
+        app:entryValues="@array/preferences_darkmode_values"
+        app:viewType="image" />
+    <SwitchPreference
+        android:key="dark_mode_auto"
+        android:title="System default" />
+
+    <PreferenceCategory android:title="Switch">
+        <SwitchPreference
+            android:summary="Summary"
+            android:title="SwitchPreference" />
+        <SwitchPreferenceScreen
+            android:key="switch_preference_screen"
+            android:summary="Summary"
+            android:title="SwitchPreferenceScreen">
+            <intent
+                android:targetClass="com.buxuan.baseoneuiapp.SwitchBarActivity"
+                android:targetPackage="com.buxuan.baseoneuiapp" />
+        </SwitchPreferenceScreen>
+        <CheckBoxPreference
+            android:summary="Summary"
+            android:title="CheckBoxPreference" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="SeekBar">
+        <SeekBarPreference
+            android:defaultValue="5"
+            android:summary="min 1; max 10"
+            android:title="Standard SeekBar"
+            app:max="10"
+            app:min="1" />
+        <SeekBarPreference
+            android:defaultValue="30"
+            android:summary="min 1; max 100"
+            android:title="Expand SeekBar"
+            app:max="100"
+            app:min="1"
+            app:seekBarMode="expand" />
+        <SeekBarPreference
+            android:defaultValue="50"
+            android:summary="min 1; max 255; overlap 200; showSeekBarValue"
+            android:title="Standard SeekBar+Overlap"
+            app:max="255"
+            app:min="1"
+            app:overlap="200"
+            app:showSeekBarValue="true" />
+        <SeekBarPreference
+            android:defaultValue="2"
+            android:summary="min 1; max 5; seekBarSeamless"
+            android:title="Expand SeekBar"
+            app:max="5"
+            app:min="1"
+            app:seekBarMode="expand"
+            app:seekBarSeamless="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory>
+        <EditTextPreference
+            android:key="key0"
+            android:summary="Summary"
+            android:title="EditTextPreference" />
+        <ListPreference
+            android:entries="@array/preferences_test_entries"
+            android:entryValues="@array/preferences_test_values"
+            android:key="key1"
+            android:summary="Summary"
+            android:title="ListPreference" />
+        <DropDownPreference
+            android:entries="@array/preferences_test_entries"
+            android:entryValues="@array/preferences_test_values"
+            android:key="key2"
+            android:summary="Summary"
+            android:title="DropDownPreference" />
+        <MultiSelectListPreference
+            android:entries="@array/preferences_test_entries"
+            android:entryValues="@array/preferences_test_values"
+            android:key="key3"
+            android:summary="Summary"
+            android:title="MultiSelectListPreference" />
+        <ColorPickerPreference
+            android:defaultValue="#085265"
+            android:key="key4"
+            android:summary="pickerType classic; showAlphaSlider"
+            android:title="ColorPickerPreference"
+            app:pickerType="classic"
+            app:showAlphaSlider="true" />
+        <ColorPickerPreference
+            android:defaultValue="#FF2563"
+            android:key="key5"
+            android:summary="pickerType detailed"
+            android:title="ColorPickerPreference"
+            app:pickerType="detailed" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:key="spacing2" />
+
+    <PreferenceScreen
+        android:key="about_app"
+        android:title="About OneUI Sample">
+        <intent
+            android:targetClass="com.buxuan.baseoneuiapp.AboutActivity"
+            android:targetPackage="com.buxuan.baseoneuiapp" />
+    </PreferenceScreen>
+
+</com.buxuan.baseoneui.preference.PreferenceScreen>

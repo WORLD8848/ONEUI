@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Main-->
+    <color name="sesl_primary_text_color">@color/sesl_white</color>
+    <color name="sesl_secondary_text_color">#ff999999</color>
+    <color name="sesl_highlighted_text_color">#ff66b2cc</color>
+
+    <color name="sesl_background_floating">@color/sesl_black</color>
+    <color name="sesl_ripple_color">#33ffffff</color>
+
+    <color name="sesl_round_and_bgcolor">#010101</color>
+
+    <color name="background_color">#ff010101</color>
+    <color name="item_background_color">#ff171717</color>
+    <color name="item_color">@color/sesl_white</color>
+
+    <color name="sesl_btn_default_text_color">@color/sesl_white</color>
+
+    <color name="sesl_list_ripple_color">@color/sesl_ripple_color</color>
+
+    <color name="sesl_edit_text_color">@color/sesl_white</color>
+    <color name="sesl_edit_text_color_disabled">#ff454545</color>
+    <color name="sesl_edit_text_hint_color">#ff999999</color>
+    <color name="sesl_edit_text_tint_color_disabled">#ff454545</color>
+    <color name="sesl_edit_text_tint_color_unfocused">#ff999999</color>
+
+    <color name="sesl_action_bar_text_color_menu">#fffafafa</color>
+
+    <!--Sesl-->
+    <color name="divider_color">#42fafafa</color>
+
+
+    <!--Seekbar-->
+    <color name="sesl_seekbar_disable_color_activated">#ff545454</color>
+    <color name="sesl_seekbar_overlap_color_default">#ff673724</color>
+
+
+    <!--Switch-->
+    <color name="sesl_switch_thumb_off_disabled_color">#ff858585</color>
+    <color name="sesl_switch_thumb_off_disabled_stroke_color">#ff3d3d3d</color>
+    <color name="sesl_switch_thumb_on_disabled_color">#ff858585</color>
+    <color name="sesl_switch_thumb_on_disabled_stroke_color">#ff3d3d3d</color>
+    <color name="sesl_switch_track_off_disabled_stroke_color">#668f8f8f</color>
+    <color name="sesl_switch_track_off_stroke_color">#ff8f8f8f</color>
+    <color name="sesl_switch_thumb_off_stroke_color">#ff8f8f8f</color>
+
+    <color name="sesl4_switch_thumb_off_disabled_stroke_color">#668f8f8f</color>
+    <color name="sesl4_switch_track_off_color">#ff666660</color>
+    <color name="sesl4_switch_track_off_disabled_color">#66666660</color>
+
+
+    <!--SwitchBar-->
+    <color name="sesl_switchbar_off_background_color">#2bfafafa</color>
+    <color name="sesl_switchbar_off_text_color">#fffafafa</color>
+
+    <color name="sesl4_switchbar_on_background_color">#26ffffff</color>
+    <color name="sesl4_switchbar_off_background_color">#ff171717</color>
+    <color name="sesl4_switchbar_off_text_color">#fffafafa</color>
+
+    <!--Spinner-->
+    <color name="sesl_menu_popup_background_color">#ff252525</color>
+    <color name="sesl_menu_popup_background_stroke_color">#ff252525</color>
+    <color name="sesl_spinner_dropdown_item_text_color_normal">#fffafafa</color>
+    <color name="sesl_spinner_dropdown_item_text_color_disabled">#66fafafa</color>
+    <color name="sesl_spinner_icon_color_default">#ffd9d9d9</color>
+    <color name="sesl_spinner_icon_color_disabled">#66d9d9d9</color>
+    <color name="sesl_spinner_item_text_color_disabled">#66fafafa</color>
+    <color name="sesl_spinner_item_text_color_normal">@color/sesl_white</color>
+
+
+    <!--Others-->
+    <color name="button_background_color">#4d555555</color>
+    <color name="button_ripple_color">#515151</color>
+    <color name="drawer_dim_color">#cc000000</color>
+    <color name="splash_background">#ff010101</color>
+    <color name="sesl_scrollbar_handle_tint">#ff595959</color>
+    <color name="sesl_list_subheader_text_color">#ff999999</color>
+    <color name="about_info_button_tint">#ffd9d9d9</color>
+
+
+    <!--ColorPicker-->
+    <color name="setting_bg_color">#ff252525</color>
+    <color name="setting_pressed_color">#33ffffff</color>
+    <color name="setting_color_picker_adaptive_outline">#4dd9d9d9</color>
+    <color name="setting_color_picker_color_value_text">#fffafafa</color>
+    <color name="setting_ripple_color">#33ffffff</color>
+    <color name="setting_brush_picker_layout_divider_shape_color">#fffcfcfc</color>
+    <color name="setting_color_picker_mode_bg_selected_color">#99ffffff</color>
+    <color name="dialog_action_ripple">#33ffffff</color>
+    <color name="setting_color_picker_mode_text_selected_color">#fffcfcfc</color>
+    <color name="setting_color_picker_mode_text_unselected_color">#ff999999</color>
+
+
+    <!--Tooltip-->
+    <color name="sesl_tooltip_foreground">@color/sesl_white</color>
+    <color name="sesl_tooltip_background">#ff393939</color>
+
+
+    <!--AppBarLayout-->
+    <color name="sesl_action_bar_background_color">#ff010101</color>
+    <color name="sesl_action_bar_text_color_title">#fffafafa</color>
+    <color name="sesl_action_bar_text_color_subtitle">#ff9c9c9c</color>
+    <color name="sesl_extended_appbar_subtitle">#ff9c9c9c</color>
+
+    <color name="bottom_bar_item_image_color">#ffcccccc</color>
+    <color name="bottom_bar_item_text_color">#ff9c9c9c</color>
+
+
+
+    <!--TabLayout-->
+    <color name="sesl_tablayout_show_button_text_color">#252525</color>
+    <color name="sesl_tablayout_subtab_background_stroke_color">#99FFFFFF</color>
+    <color name="sesl_tablayout_subtab_text_color_default">#999999</color>
+    <color name="sesl_tablayout_subtab_text_color_disabled">#33A8A9A9</color>
+    <color name="sesl_tablayout_subtab_text_color_selected">#FFFFFF</color>
+    <color name="sesl_tablayout_text_color_default">#A8A9A9</color>
+    <color name="sesl_tablayout_text_color_disabled">#66A8A9A9</color>
+
+
+    <!--Dialog-->
+    <color name="sesl_dialog_body_text_color">#ffe5e5e5</color>
+    <color name="sesl_dialog_button_text_color">#ff008cff</color>
+    <color name="sesl_dialog_divider_color_material">#33e6e6e6</color>
+    <color name="sesl_dialog_list_text_color">#fffafafa</color>
+    <color name="sesl_dialog_scrollbar_handle_tint_color_mtrl">#ff595959</color>
+    <color name="sesl_dialog_sub_text_color_material">#ff666666</color>
+    <color name="sesl_dialog_title_text_color">#fffafafa</color>
+    <color name="sesl_dialog_window_background_color_material">#ff252525</color>
+
+    <color name="sesl_color_picker_selected_color_item_text_color">#B0B0B0</color>
+    <color name="sesl_color_picker_stroke_color">#000000</color>
+    <color name="sesl_color_picker_used_color_item_empty_slot_color">#3B3B3B</color>
+    <color name="sesl_color_picker_used_color_text_color">#42FAFAFA</color>
+
+
+    <!--RecyclerView-->
+    <color name="sesl_list_go_to_top_arrow_bottom">#FAFAFA</color>
+    <color name="sesl_list_go_to_top_arrow_top">#AAAAAA</color>
+    <color name="sesl_list_go_to_top_inner_round">#3D3D3D</color>
+    <color name="sesl_list_go_to_top_outer_round">#5E5E5E</color>
+
+
+    <!--Preference-->
+    <color name="sesl_switch_divider_color">#33d4d4d4</color>
+    <color name="sesl_list_divider_color">#26d4d4d4</color>
+    <color name="widget_multi_button_selected_color">@color/secondary_color</color>
+    <color name="widget_multi_button_unselected_color">#ffa8a9a9</color>
+    <color name="widget_multi_button_unselected_icon_color">#ff9c9c9c</color>
+    <color name="widget_multi_button_divider_color">#4de6e6e6</color>
+
+
+</resources>

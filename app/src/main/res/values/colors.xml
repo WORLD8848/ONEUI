@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--light red-->
+    <!--<color name="primary_color">#ffFF034A</color>
+    <color name="secondary_color">#ffFF3D67</color>
+    <color name="primary_dark_color">#ffDE0043</color>-->
+
+    <!--yellow--> <!--My Files-->
+    <!--<color name="primary_color">#fff3a425</color>
+    <color name="secondary_color">#ffffb949</color>
+    <color name="primary_dark_color">#ffbd7800</color>-->
+
+    <!--light green--> <!--Calculator-->
+    <!--<color name="primary_color">#ff68b31a</color>
+    <color name="secondary_color">#ff7fa87f</color>
+    <color name="primary_dark_color">#ff569415</color>-->
+
+    <!--green--> <!--Calendar-->
+    <!--<color name="primary_color">#ff008577</color>
+    <color name="secondary_color">#ff009e7c</color>
+    <color name="primary_dark_color">#ff00574b</color>-->
+
+    <!--blue--> <!--Default-->
+    <!--<color name="primary_color">#ff0381fe</color>
+    <color name="secondary_color">#ff3e91ff</color>
+    <color name="primary_dark_color">#ff0072de</color>-->
+
+    <!--black--> <!--makes no sense in dark mode-->
+    <!--<color name="primary_color">#ff222222</color>
+    <color name="secondary_color">#ff444444</color>
+    <color name="primary_dark_color">#ff000000</color>-->
+
+</resources>

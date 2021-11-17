@@ -1,0 +1,30 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+// MEMO: World8848  ////////////////////////////////////////////////////////////////////////////////
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.2.2'
+
+        // MEMO: World8848. GitHub. Module 배포               ///////////////////////////////////////
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+    }
+}
+
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    // MEMO: World8848. GitHub. Module 배포                   ///////////////////////////////////////
+    group = 'com.github.world8848'
+}
+
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

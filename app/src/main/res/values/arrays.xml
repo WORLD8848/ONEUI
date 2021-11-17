@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="mainactivity_tab_tag">
+        <item>design</item>
+        <item>preferences</item>
+    </string-array>
+    <string-array name="mainactivity_tab_title">
+        <item>Drawer</item>
+        <item>Toolbar</item>
+    </string-array>
+    <string-array name="mainactivity_tab_class">
+        <item>com.buxuan.baseoneuiapp.fragments.MainActivityFirstFragment</item>
+        <item>com.buxuan.baseoneuiapp.fragments.MainActivitySecondFragment</item>
+    </string-array>
+
+    <string-array name="preferences_test_entries">
+        <item>Aqua</item>
+        <item>Azure</item>
+        <item>Beige</item>
+    </string-array>
+    <string-array name="preferences_test_values">
+        <item>#00FFFF</item>
+        <item>#F0FFFF</item>
+        <item>#F5F5DC</item>
+    </string-array>
+
+    <array name="preferences_darkmode_entries_image">
+        <item>@drawable/display_help_light</item>
+        <item>@drawable/display_help_dark</item>
+    </array>
+    <string-array name="preferences_darkmode_entries">
+        <item>Light</item>
+        <item>Dark</item>
+    </string-array>
+    <string-array name="preferences_darkmode_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+</resources>
