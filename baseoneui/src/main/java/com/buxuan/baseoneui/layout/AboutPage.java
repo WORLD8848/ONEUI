@@ -29,8 +29,6 @@ import java.lang.annotation.RetentionPolicy;
 
 public class AboutPage extends LinearLayout {
 
-    private boolean mIsOneUI4;                          // MEMO: World8848. add. 2021.11.24. source code changed
-
     public static final int NOT_UPDATEABLE = -1;
     public static final int LOADING = 0;
     public static final int UPDATE_AVAILABLE = 1;
@@ -59,9 +57,6 @@ public class AboutPage extends LinearLayout {
         super(context, attrs);
 
         TypedArray attr = context.getTheme().obtainStyledAttributes(attrs, R.styleable.AboutPage, 0, 0);
-
-        // MEMO: World8848. add. 2021.11.24. source code changed
-        mIsOneUI4 = context.getTheme().obtainStyledAttributes(new int[]{R.attr.isOneUI4}).getBoolean(0, false);
 
         try {
             optional_text = attr.getString(R.styleable.AboutPage_optional_text);
@@ -95,12 +90,6 @@ public class AboutPage extends LinearLayout {
         });
 
         toolbarLayout.inflateToolbarMenu(R.menu.about_page);
-
-        // MEMO: World8848. add. 2021.11.24. source code changed
-        if (mIsOneUI4) {
-            toolbarLayout.getToolbarMenuItemView(toolbarLayout.getToolbarMenu().findItem(R.id.app_info)).setImageDrawable(getResources().getDrawable(R.drawable.ic_samsung_info_2, context.getTheme()));
-        }
-
 
         toolbarLayout.setOnToolbarMenuItemClickListener(item -> {
             if (item.getItemId() == R.id.app_info) {

@@ -8077,111 +8077,6 @@
         <item name="android:windowBackground">@color/splash_background</item>
         <item name="android:statusBarColor">@color/splash_background</item>
         <item name="android:navigationBarColor" ns2:targetApi="27">@color/splash_background</item>
-    </style><style name="OneUIStyleMain">
-        <item name="isOneUI4">false</item>
-        <item name="colorAccent">?colorSecondary</item>
-        <item name="colorBackgroundFloating">@color/sesl_background_floating</item>
-        <item name="colorControlActivated">?colorSecondary</item>
-        <item name="colorControlHighlight">@color/sesl_ripple_color</item>
-        <item name="colorControlNormal">@color/sesl_control_normal_color</item>
-        <item name="colorError">@color/sesl_error_color</item>
-
-        <item name="progressActivatedColor">?colorPrimary</item>
-        <item name="progressNormalColor">@color/sesl_progress_control_color_normal</item>
-
-        <item name="android:progressBarStyle">@style/ProgressBarStyle</item>
-        <item name="android:progressBarStyleHorizontal">@style/ProgressBarStyle.Horizontal</item>
-        <item name="android:progressBarStyleSmall">@style/ProgressBarStyle.Small</item>
-        <item name="android:progressBarStyleLarge">@style/ProgressBarStyle.Large</item>
-        <item name="android:progressBarStyleSmallTitle">@style/ProgressBarStyle.Title</item>
-        <item name="android:progressBarStyleInverse">@style/ProgressBarStyle</item>
-        <item name="android:progressBarStyleSmallInverse">@style/ProgressBarStyle.Small</item>
-        <item name="android:progressBarStyleLargeInverse">@style/ProgressBarStyle.Large</item>
-
-        <item name="checkboxStyle">@style/CheckBoxStyle</item>
-        <item name="materialCardViewStyle">@style/CardViewStyle</item>
-        <item name="materialButtonStyle">@style/ButtonStyle</item>
-        <item name="radioButtonStyle">@style/RadioButtonStyle</item>
-        <item name="seslSwitchBarStyle">@style/SeslSwitchBarStyle</item>
-        <item name="seekBarStyle">@style/SeekBarStyle</item>
-
-        <item name="android:listPreferredItemPaddingStart">
-            @dimen/sesl_list_item_padding_horizontal
-        </item>
-        <item name="android:listPreferredItemPaddingEnd">@dimen/sesl_list_item_padding_horizontal
-        </item>
-
-        <item name="android:textSelectHandle">@drawable/sesl_text_select_handle_middle</item>
-        <item name="android:textSelectHandleLeft">@drawable/sesl_text_select_handle_left</item>
-        <item name="android:textSelectHandleRight">@drawable/sesl_text_select_handle_right</item>
-
-        <item name="android:textAppearanceSmall">@style/TextAppearanceSmallStyle</item>
-        <item name="textAppearanceListItem">@style/SubheadTextStyle</item>
-        <item name="textAppearanceListItemSmall">@style/SubheadTextStyle</item>
-        <item name="listPreferredItemHeight">@dimen/sesl_list_preferred_item_height</item>
-        <item name="listPreferredItemHeightSmall">@dimen/sesl_list_preferred_item_height_small
-        </item>
-        <item name="listPreferredItemPaddingLeft">?android:listPreferredItemPaddingStart</item>
-        <item name="listPreferredItemPaddingRight">?android:listPreferredItemPaddingEnd</item>
-
-        <item name="android:listDivider">@drawable/sesl_list_divider</item>
-
-        <item name="spinnerStyle">@style/SpinnerStyle</item>
-        <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownItemStyle</item>
-        <item name="spinnerDropDownItemStyle">@style/SpinnerDropDownItemStyle</item>
-        <item name="dropdownListPreferredItemHeight">@dimen/sesl_popup_menu_item_min_height</item>
-
-        <item name="listChoiceBackgroundIndicator">@drawable/sesl_list_selector</item>
-
-        <item name="actionBarTheme">@null</item>
-        <item name="actionMenuTextColor">@color/sesl_action_menu_text</item>
-        <item name="actionModeBackground">@drawable/sesl_action_bar_background</item>
-        <item name="actionModeCloseButtonStyle">@style/Widget.AppCompat.Light.ActionButton.CloseMode</item>
-        <item name="actionModeCloseDrawable">@drawable/sesl_ic_cab_done</item>
-        <item name="actionModeCopyDrawable">@drawable/ic_samsung_copy</item>
-        <item name="actionModeCutDrawable">@drawable/sesl_ic_menu_cut</item>
-        <item name="actionModePasteDrawable">@drawable/sesl_ic_menu_paste</item>
-        <item name="actionModeSelectAllDrawable">@drawable/sesl_ic_menu_selectall</item>
-        <item name="actionModeShareDrawable">@drawable/ic_samsung_share</item>
-        <item name="actionModeSplitBackground">?colorPrimaryDark</item>
-        <item name="actionModeStyle">@style/ActionModeStyle</item>
-
-        <item name="tooltipForegroundColor">@color/sesl_tooltip_foreground</item>
-        <item name="tooltipFrameBackground">@color/sesl_tooltip_background</item>
-
-        <item name="switchStyle">@style/SwitchStyle</item>
-
-        <item name="collapsingToolbarLayoutStyle">@style/CollapsingToolbarLayoutStyle</item>
-
-        <item name="bottomNaviViewStyle">@style/BaseTabLayoutStyle</item>
-        <item name="tabLayoutStyle">@style/TabLayoutStyle</item>
-
-        <item name="dialogTheme">@style/DialogTheme</item>
-        <item name="dialogPreferredPadding">@dimen/sesl_dialog_padding</item>
-        <item name="alertDialogCenterButtons">false</item>
-        <item name="buttonBarButtonStyle">@style/ButtonBarButtonStyle</item>
-        <item name="buttonBarNegativeButtonStyle">@style/DialogButtonStyle</item>
-        <item name="buttonBarNeutralButtonStyle">@style/DialogButtonStyle</item>
-        <item name="buttonBarPositiveButtonStyle">@style/DialogButtonStyle</item>
-        <item name="buttonBarStyle">@style/ButtonBarStyle</item>
-
-        <item name="preferenceTheme">@style/PreferenceThemeStyle</item>
-
-        <item name="editTextBackground">@drawable/sesl_edit_text_background</item>
-        <item name="editTextColor">?android:textColorPrimary</item>
-        <item name="editTextStyle">@style/EditTextWidgetStyle</item>
-
-        <item name="toolbarStyle">@style/ToolbarStyle</item>
-        <item name="toolbarNavigationButtonStyle">@style/ToolbarNavButtonStyle</item>
-
-        <item name="goToTopStyle">@drawable/sesl_list_go_to_top</item>
-
-        <item name="android:listChoiceIndicatorSingle">@drawable/sesl_list_choice_btn_radio</item>
-        <item name="android:listChoiceIndicatorMultiple">@drawable/sesl_list_choice_btn_check</item>
-
-        <item name="android:scrollbarThumbHorizontal">@drawable/sesl_scrollbar_handle</item>
-        <item name="android:scrollbarThumbVertical">@drawable/sesl_scrollbar_handle</item>
-
     </style><style name="OneUITheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:windowBackground">@color/background_color</item>
         <item name="android:statusBarColor">@color/background_color</item>
@@ -8856,7 +8751,112 @@
         <attr format="string" name="seslTooltipText"/>
     </declare-styleable><declare-styleable name="View">
         <attr name="android:background"/>
-    </declare-styleable></file><file path="/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/baseoneui/build/intermediates/packaged_res/debug/values-fr-rCA/values-fr-rCA.xml" qualifiers="fr-rCA"><string name="action_search">Rechercher</string><string name="action_settings">Paramètres</string><string name="all_checkbox">Tout</string><string name="app_info">"Informations sur l'application"</string><string name="latest_version_installed">La dernière version est déjà installée.</string><string name="network_connect_is_not_stable">La connexion est impossible. Vérifiez votre connexion réseau et réessayez.</string><string name="new_version_is_available">Une nouvelle version est disponible.</string><string name="pen_palette_color_black">Noir</string><string name="pen_palette_color_blue">Bleu</string><string name="pen_palette_color_custom">Couleur personnalisée</string><string name="pen_palette_color_dark_gray">Gris foncé</string><string name="pen_palette_color_dark_green">Vert foncé</string><string name="pen_palette_color_green">Vert</string><string name="pen_palette_color_light_gray">Gris clair</string><string name="pen_palette_color_light_green">Vert clair</string><string name="pen_palette_color_light_yellow">Jaune clair</string><string name="pen_palette_color_orange">Orange</string><string name="pen_palette_color_red">Rouge</string><string name="pen_palette_color_spring_green">Vert printemps</string><string name="pen_palette_color_violet">Violet</string><string name="pen_palette_color_white">Blanc</string><string name="pen_palette_color_yellow">Jaune</string><string name="pen_string_blue">Bleu</string><string name="pen_string_color">Couleur</string><string name="pen_string_color_current">Actuelle</string><string name="pen_string_color_double_tap_to_apply">Touchez deux fois pour appliquer.</string><string name="pen_string_color_new">Nouvelle</string><string name="pen_string_current_any">%s actuelle</string><string name="pen_string_green">Vert</string><string name="pen_string_hex">Hexa</string><string name="pen_string_new_any">Nouveau périphérique %s</string><string name="pen_string_opacity">Opacité</string><string name="pen_string_recent_color">Couleurs récemment utilisées</string><string name="pen_string_red">Rouge</string><string name="pen_string_saturation">Saturation</string><string name="pen_string_select_color">Sélectionner une couleur.</string><string name="pen_string_selected">Sélectionné</string><string name="pen_string_slider">Curseur</string><string name="pen_string_spectrum">Spectre</string><string name="pen_string_swatches">Échantillons</string><string name="pen_swatch_color_azure">Azur</string><string name="pen_swatch_color_cyan">Cyan</string><string name="pen_swatch_color_dark_azure">Azur foncé</string><string name="pen_swatch_color_dark_blue">Bleu foncé</string><string name="pen_swatch_color_dark_cyan">Cyan foncé</string><string name="pen_swatch_color_dark_magenta">Magenta foncé</string><string name="pen_swatch_color_dark_orange">Orange foncé</string><string name="pen_swatch_color_dark_red">Rouge foncé</string><string name="pen_swatch_color_dark_spring_green">Vert printemps foncé</string><string name="pen_swatch_color_dark_violet">Violet foncé</string><string name="pen_swatch_color_dark_yellow">Jaune foncé</string><string name="pen_swatch_color_gray">Gris</string><string name="pen_swatch_color_light_azure">Azur clair</string><string name="pen_swatch_color_light_blue">Bleu ciel</string><string name="pen_swatch_color_light_cyan">Cyan clair</string><string name="pen_swatch_color_light_magenta">Magenta clair</string><string name="pen_swatch_color_light_orange">Orange clair</string><string name="pen_swatch_color_light_red">Rouge clair</string><string name="pen_swatch_color_light_spring_green">Vert printemps clair</string><string name="pen_swatch_color_light_violet">Violet clair</string><string name="pen_swatch_color_magenta">Magenta</string><string name="retry">Réessayer</string><string name="sec_relative_description">Vous recherchez autre chose ?</string><string name="selected_check_info">Sélection : %d</string><string name="sesl_action_menu_overflow_badge_text_n">N</string><string name="sesl_button">Touche</string><string name="sesl_cancel">Annuler</string><string name="sesl_done">Terminé</string><string name="sesl_more_item_label">Plus</string><string name="sesl_more_options">Options supplémentaires</string><string name="sesl_navigate_up">Naviguer vers le haut</string><string name="sesl_navigation_drawer">Tiroir de navigation</string><string name="sesl_off_text">Désactivé</string><string name="sesl_on_text">Activé</string><string name="sesl_preferencecategory_added_title">En-tête</string><string name="sesl_toolbar_collapse_description">Réduire</string><string name="sesl_update">Mettre à jour</string><string name="sesl_version">Version</string><string name="settings_import_select_items">Sélectionner éléments</string></file><file path="/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/baseoneui/build/intermediates/packaged_res/debug/values-pl/values-pl.xml" qualifiers="pl"><string name="action_search">Szukaj</string><string name="action_settings">Ustawienia</string><string name="all_checkbox">Wszystkie</string><string name="app_info">Informacje o aplikacji</string><string name="latest_version_installed">Najnowsza wersja jest już zainstalowana.</string><string name="network_connect_is_not_stable">Błąd nawiązywania połączenia. Sprawdź połączenie sieciowe i spróbuj ponownie.</string><string name="new_version_is_available">Dostępna jest nowa wersja.</string><string name="pen_palette_color_black">Czarny</string><string name="pen_palette_color_blue">Niebieski</string><string name="pen_palette_color_custom">Niestandardowy kolor</string><string name="pen_palette_color_dark_gray">Ciemnoszary</string><string name="pen_palette_color_dark_green">Ciemnozielony</string><string name="pen_palette_color_green">Zielony</string><string name="pen_palette_color_light_gray">Jasnoszary</string><string name="pen_palette_color_light_green">Jasnozielony</string><string name="pen_palette_color_light_yellow">Jasnożółty</string><string name="pen_palette_color_orange">Pomarańczowy</string><string name="pen_palette_color_red">Czerwony</string><string name="pen_palette_color_spring_green">Wiosenna zieleń</string><string name="pen_palette_color_violet">Fioletowy</string><string name="pen_palette_color_white">Biały</string><string name="pen_palette_color_yellow">Żółty</string><string name="pen_string_blue">Niebieski</string><string name="pen_string_color">Kolor</string><string name="pen_string_color_current">Bieżący</string><string name="pen_string_color_double_tap_to_apply">Dotknij dwukrotnie, aby zastosować.</string><string name="pen_string_color_new">Nowy</string><string name="pen_string_current_any">Aktualna %s</string><string name="pen_string_green">Zielony</string><string name="pen_string_hex">Hex</string><string name="pen_string_new_any">Nowe urządzenie %s</string><string name="pen_string_opacity">Nieprzezroczystość</string><string name="pen_string_recent_color">Ostatnio używane kolory</string><string name="pen_string_red">Czerwony</string><string name="pen_string_saturation">Nasycenie</string><string name="pen_string_select_color">Wybierz kolor.</string><string name="pen_string_selected">Wybrane</string><string name="pen_string_slider">Suwak</string><string name="pen_string_spectrum">Spektrum</string><string name="pen_string_swatches">Próbka</string><string name="pen_swatch_color_azure">Lazurowy</string><string name="pen_swatch_color_cyan">Cyjan</string><string name="pen_swatch_color_dark_azure">Ciemnolazurowy</string><string name="pen_swatch_color_dark_blue">Ciemnoniebieski</string><string name="pen_swatch_color_dark_cyan">Ciemny cyjan</string><string name="pen_swatch_color_dark_magenta">Ciemny amarantowy</string><string name="pen_swatch_color_dark_orange">Ciemnopomarańczowy</string><string name="pen_swatch_color_dark_red">Ciemnoczerwony</string><string name="pen_swatch_color_dark_spring_green">Ciemna wiosenna zieleń</string><string name="pen_swatch_color_dark_violet">Ciemnofioletowy</string><string name="pen_swatch_color_dark_yellow">Ciemnożółty</string><string name="pen_swatch_color_gray">Szary</string><string name="pen_swatch_color_light_azure">Jasnolazurowy</string><string name="pen_swatch_color_light_blue">Jasnoniebieski</string><string name="pen_swatch_color_light_cyan">Jasny cyjan</string><string name="pen_swatch_color_light_magenta">Jasny amarantowy</string><string name="pen_swatch_color_light_orange">Jasnopomarańczowy</string><string name="pen_swatch_color_light_red">Jasnoczerwony</string><string name="pen_swatch_color_light_spring_green">Jasna wiosenna zieleń</string><string name="pen_swatch_color_light_violet">Jasnofioletowy</string><string name="pen_swatch_color_magenta">Amarantowy</string><string name="retry">Ponów</string><string name="sec_relative_description">Szukasz czegoś innego?</string><string name="selected_check_info">Wybranych: %d</string><string name="sesl_action_menu_overflow_badge_text_n">N</string><string name="sesl_button">Przycisk</string><string name="sesl_cancel">Anuluj</string><string name="sesl_done">Gotowe</string><string name="sesl_more_item_label">Więcej</string><string name="sesl_more_options">Więcej opcji</string><string name="sesl_navigate_up">Nawiguj w górę</string><string name="sesl_navigation_drawer">Menu rozwijane nawigacji</string><string name="sesl_off_text">Wyłączony</string><string name="sesl_on_text">Włączony</string><string name="sesl_preferencecategory_added_title">Nagłówek</string><string name="sesl_toolbar_collapse_description">Zwiń</string><string name="sesl_update">Aktualizuj</string><string name="sesl_version">Wersja</string><string name="settings_import_select_items">Wybierz elementy</string></file><file path="/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/baseoneui/build/intermediates/packaged_res/debug/values-v9/values-v9.xml" qualifiers="v9"><style name="Color_000000">
+    </declare-styleable><style name="OneUIStyleMain">
+        <item name="isOneUI4">false</item>
+        <item name="colorAccent">?colorSecondary</item>
+        <item name="colorBackgroundFloating">@color/sesl_background_floating</item>
+        <item name="colorControlActivated">?colorSecondary</item>
+        <item name="colorControlHighlight">@color/sesl_ripple_color</item>
+        <item name="colorControlNormal">@color/sesl_control_normal_color</item>
+        <item name="colorError">@color/sesl_error_color</item>
+
+        <item name="progressActivatedColor">?colorPrimary</item>
+        <item name="progressNormalColor">@color/sesl_progress_control_color_normal</item>
+
+        <item name="android:progressBarStyle">@style/ProgressBarStyle</item>
+        <item name="android:progressBarStyleHorizontal">@style/ProgressBarStyle.Horizontal</item>
+        <item name="android:progressBarStyleSmall">@style/ProgressBarStyle.Small</item>
+        <item name="android:progressBarStyleLarge">@style/ProgressBarStyle.Large</item>
+        <item name="android:progressBarStyleSmallTitle">@style/ProgressBarStyle.Title</item>
+        <item name="android:progressBarStyleInverse">@style/ProgressBarStyle</item>
+        <item name="android:progressBarStyleSmallInverse">@style/ProgressBarStyle.Small</item>
+        <item name="android:progressBarStyleLargeInverse">@style/ProgressBarStyle.Large</item>
+
+        <item name="checkboxStyle">@style/CheckBoxStyle</item>
+        <item name="materialCardViewStyle">@style/CardViewStyle</item>
+        <item name="materialButtonStyle">@style/ButtonStyle</item>
+        <item name="radioButtonStyle">@style/RadioButtonStyle</item>
+        <item name="seslSwitchBarStyle">@style/SeslSwitchBarStyle</item>
+        <item name="seekBarStyle">@style/SeekBarStyle</item>
+
+        <item name="android:listPreferredItemPaddingStart">
+            @dimen/sesl_list_item_padding_horizontal
+        </item>
+        <item name="android:listPreferredItemPaddingEnd">@dimen/sesl_list_item_padding_horizontal
+        </item>
+
+        <item name="android:textSelectHandle">@drawable/sesl_text_select_handle_middle</item>
+        <item name="android:textSelectHandleLeft">@drawable/sesl_text_select_handle_left</item>
+        <item name="android:textSelectHandleRight">@drawable/sesl_text_select_handle_right</item>
+
+        <item name="android:textAppearanceSmall">@style/TextAppearanceSmallStyle</item>
+        <item name="textAppearanceListItem">@style/SubheadTextStyle</item>
+        <item name="textAppearanceListItemSmall">@style/SubheadTextStyle</item>
+        <item name="listPreferredItemHeight">@dimen/sesl_list_preferred_item_height</item>
+        <item name="listPreferredItemHeightSmall">@dimen/sesl_list_preferred_item_height_small
+        </item>
+        <item name="listPreferredItemPaddingLeft">?android:listPreferredItemPaddingStart</item>
+        <item name="listPreferredItemPaddingRight">?android:listPreferredItemPaddingEnd</item>
+
+        <item name="android:listDivider">@drawable/sesl_list_divider</item>
+
+        <item name="spinnerStyle">@style/SpinnerStyle</item>
+        <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownItemStyle</item>
+        <item name="spinnerDropDownItemStyle">@style/SpinnerDropDownItemStyle</item>
+        <item name="dropdownListPreferredItemHeight">@dimen/sesl_popup_menu_item_min_height</item>
+
+        <item name="listChoiceBackgroundIndicator">@drawable/sesl_list_selector</item>
+
+        <item name="actionBarTheme">@null</item>
+        <item name="actionMenuTextColor">@color/sesl_action_menu_text</item>
+        <item name="actionModeBackground">@drawable/sesl_action_bar_background</item>
+        <item name="actionModeCloseButtonStyle">@style/Widget.AppCompat.Light.ActionButton.CloseMode</item>
+        <item name="actionModeCloseDrawable">@drawable/sesl_ic_cab_done</item>
+        <item name="actionModeCopyDrawable">@drawable/ic_samsung_copy</item>
+        <item name="actionModeCutDrawable">@drawable/sesl_ic_menu_cut</item>
+        <item name="actionModePasteDrawable">@drawable/sesl_ic_menu_paste</item>
+        <item name="actionModeSelectAllDrawable">@drawable/sesl_ic_menu_selectall</item>
+        <item name="actionModeShareDrawable">@drawable/ic_samsung_share</item>
+        <item name="actionModeSplitBackground">?colorPrimaryDark</item>
+        <item name="actionModeStyle">@style/ActionModeStyle</item>
+
+        <item name="tooltipForegroundColor">@color/sesl_tooltip_foreground</item>
+        <item name="tooltipFrameBackground">@color/sesl_tooltip_background</item>
+
+        <item name="switchStyle">@style/SwitchStyle</item>
+
+        <item name="collapsingToolbarLayoutStyle">@style/CollapsingToolbarLayoutStyle</item>
+
+        <item name="bottomNaviViewStyle">@style/BaseTabLayoutStyle</item>
+        <item name="tabLayoutStyle">@style/TabLayoutStyle</item>
+
+        <item name="dialogTheme">@style/DialogTheme</item>
+        <item name="dialogPreferredPadding">@dimen/sesl_dialog_padding</item>
+        <item name="alertDialogCenterButtons">false</item>
+        <item name="buttonBarButtonStyle">@style/ButtonBarButtonStyle</item>
+        <item name="buttonBarNegativeButtonStyle">@style/DialogButtonStyle</item>
+        <item name="buttonBarNeutralButtonStyle">@style/DialogButtonStyle</item>
+        <item name="buttonBarPositiveButtonStyle">@style/DialogButtonStyle</item>
+        <item name="buttonBarStyle">@style/ButtonBarStyle</item>
+
+        <item name="preferenceTheme">@style/PreferenceThemeStyle</item>
+
+        <item name="editTextBackground">@drawable/sesl_edit_text_background</item>
+        <item name="editTextColor">?android:textColorPrimary</item>
+        <item name="editTextStyle">@style/EditTextWidgetStyle</item>
+
+        <item name="toolbarStyle">@style/ToolbarStyle</item>
+        <item name="toolbarNavigationButtonStyle">@style/ToolbarNavButtonStyle</item>
+
+        <item name="goToTopStyle">@drawable/sesl_list_go_to_top</item>
+
+        <item name="android:listChoiceIndicatorSingle">@drawable/sesl_list_choice_btn_radio</item>
+        <item name="android:listChoiceIndicatorMultiple">@drawable/sesl_list_choice_btn_check</item>
+
+        <item name="android:scrollbarThumbHorizontal">@drawable/sesl_scrollbar_handle</item>
+        <item name="android:scrollbarThumbVertical">@drawable/sesl_scrollbar_handle</item>
+
+    </style></file><file path="/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/baseoneui/build/intermediates/packaged_res/debug/values-fr-rCA/values-fr-rCA.xml" qualifiers="fr-rCA"><string name="action_search">Rechercher</string><string name="action_settings">Paramètres</string><string name="all_checkbox">Tout</string><string name="app_info">"Informations sur l'application"</string><string name="latest_version_installed">La dernière version est déjà installée.</string><string name="network_connect_is_not_stable">La connexion est impossible. Vérifiez votre connexion réseau et réessayez.</string><string name="new_version_is_available">Une nouvelle version est disponible.</string><string name="pen_palette_color_black">Noir</string><string name="pen_palette_color_blue">Bleu</string><string name="pen_palette_color_custom">Couleur personnalisée</string><string name="pen_palette_color_dark_gray">Gris foncé</string><string name="pen_palette_color_dark_green">Vert foncé</string><string name="pen_palette_color_green">Vert</string><string name="pen_palette_color_light_gray">Gris clair</string><string name="pen_palette_color_light_green">Vert clair</string><string name="pen_palette_color_light_yellow">Jaune clair</string><string name="pen_palette_color_orange">Orange</string><string name="pen_palette_color_red">Rouge</string><string name="pen_palette_color_spring_green">Vert printemps</string><string name="pen_palette_color_violet">Violet</string><string name="pen_palette_color_white">Blanc</string><string name="pen_palette_color_yellow">Jaune</string><string name="pen_string_blue">Bleu</string><string name="pen_string_color">Couleur</string><string name="pen_string_color_current">Actuelle</string><string name="pen_string_color_double_tap_to_apply">Touchez deux fois pour appliquer.</string><string name="pen_string_color_new">Nouvelle</string><string name="pen_string_current_any">%s actuelle</string><string name="pen_string_green">Vert</string><string name="pen_string_hex">Hexa</string><string name="pen_string_new_any">Nouveau périphérique %s</string><string name="pen_string_opacity">Opacité</string><string name="pen_string_recent_color">Couleurs récemment utilisées</string><string name="pen_string_red">Rouge</string><string name="pen_string_saturation">Saturation</string><string name="pen_string_select_color">Sélectionner une couleur.</string><string name="pen_string_selected">Sélectionné</string><string name="pen_string_slider">Curseur</string><string name="pen_string_spectrum">Spectre</string><string name="pen_string_swatches">Échantillons</string><string name="pen_swatch_color_azure">Azur</string><string name="pen_swatch_color_cyan">Cyan</string><string name="pen_swatch_color_dark_azure">Azur foncé</string><string name="pen_swatch_color_dark_blue">Bleu foncé</string><string name="pen_swatch_color_dark_cyan">Cyan foncé</string><string name="pen_swatch_color_dark_magenta">Magenta foncé</string><string name="pen_swatch_color_dark_orange">Orange foncé</string><string name="pen_swatch_color_dark_red">Rouge foncé</string><string name="pen_swatch_color_dark_spring_green">Vert printemps foncé</string><string name="pen_swatch_color_dark_violet">Violet foncé</string><string name="pen_swatch_color_dark_yellow">Jaune foncé</string><string name="pen_swatch_color_gray">Gris</string><string name="pen_swatch_color_light_azure">Azur clair</string><string name="pen_swatch_color_light_blue">Bleu ciel</string><string name="pen_swatch_color_light_cyan">Cyan clair</string><string name="pen_swatch_color_light_magenta">Magenta clair</string><string name="pen_swatch_color_light_orange">Orange clair</string><string name="pen_swatch_color_light_red">Rouge clair</string><string name="pen_swatch_color_light_spring_green">Vert printemps clair</string><string name="pen_swatch_color_light_violet">Violet clair</string><string name="pen_swatch_color_magenta">Magenta</string><string name="retry">Réessayer</string><string name="sec_relative_description">Vous recherchez autre chose ?</string><string name="selected_check_info">Sélection : %d</string><string name="sesl_action_menu_overflow_badge_text_n">N</string><string name="sesl_button">Touche</string><string name="sesl_cancel">Annuler</string><string name="sesl_done">Terminé</string><string name="sesl_more_item_label">Plus</string><string name="sesl_more_options">Options supplémentaires</string><string name="sesl_navigate_up">Naviguer vers le haut</string><string name="sesl_navigation_drawer">Tiroir de navigation</string><string name="sesl_off_text">Désactivé</string><string name="sesl_on_text">Activé</string><string name="sesl_preferencecategory_added_title">En-tête</string><string name="sesl_toolbar_collapse_description">Réduire</string><string name="sesl_update">Mettre à jour</string><string name="sesl_version">Version</string><string name="settings_import_select_items">Sélectionner éléments</string></file><file path="/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/baseoneui/build/intermediates/packaged_res/debug/values-pl/values-pl.xml" qualifiers="pl"><string name="action_search">Szukaj</string><string name="action_settings">Ustawienia</string><string name="all_checkbox">Wszystkie</string><string name="app_info">Informacje o aplikacji</string><string name="latest_version_installed">Najnowsza wersja jest już zainstalowana.</string><string name="network_connect_is_not_stable">Błąd nawiązywania połączenia. Sprawdź połączenie sieciowe i spróbuj ponownie.</string><string name="new_version_is_available">Dostępna jest nowa wersja.</string><string name="pen_palette_color_black">Czarny</string><string name="pen_palette_color_blue">Niebieski</string><string name="pen_palette_color_custom">Niestandardowy kolor</string><string name="pen_palette_color_dark_gray">Ciemnoszary</string><string name="pen_palette_color_dark_green">Ciemnozielony</string><string name="pen_palette_color_green">Zielony</string><string name="pen_palette_color_light_gray">Jasnoszary</string><string name="pen_palette_color_light_green">Jasnozielony</string><string name="pen_palette_color_light_yellow">Jasnożółty</string><string name="pen_palette_color_orange">Pomarańczowy</string><string name="pen_palette_color_red">Czerwony</string><string name="pen_palette_color_spring_green">Wiosenna zieleń</string><string name="pen_palette_color_violet">Fioletowy</string><string name="pen_palette_color_white">Biały</string><string name="pen_palette_color_yellow">Żółty</string><string name="pen_string_blue">Niebieski</string><string name="pen_string_color">Kolor</string><string name="pen_string_color_current">Bieżący</string><string name="pen_string_color_double_tap_to_apply">Dotknij dwukrotnie, aby zastosować.</string><string name="pen_string_color_new">Nowy</string><string name="pen_string_current_any">Aktualna %s</string><string name="pen_string_green">Zielony</string><string name="pen_string_hex">Hex</string><string name="pen_string_new_any">Nowe urządzenie %s</string><string name="pen_string_opacity">Nieprzezroczystość</string><string name="pen_string_recent_color">Ostatnio używane kolory</string><string name="pen_string_red">Czerwony</string><string name="pen_string_saturation">Nasycenie</string><string name="pen_string_select_color">Wybierz kolor.</string><string name="pen_string_selected">Wybrane</string><string name="pen_string_slider">Suwak</string><string name="pen_string_spectrum">Spektrum</string><string name="pen_string_swatches">Próbka</string><string name="pen_swatch_color_azure">Lazurowy</string><string name="pen_swatch_color_cyan">Cyjan</string><string name="pen_swatch_color_dark_azure">Ciemnolazurowy</string><string name="pen_swatch_color_dark_blue">Ciemnoniebieski</string><string name="pen_swatch_color_dark_cyan">Ciemny cyjan</string><string name="pen_swatch_color_dark_magenta">Ciemny amarantowy</string><string name="pen_swatch_color_dark_orange">Ciemnopomarańczowy</string><string name="pen_swatch_color_dark_red">Ciemnoczerwony</string><string name="pen_swatch_color_dark_spring_green">Ciemna wiosenna zieleń</string><string name="pen_swatch_color_dark_violet">Ciemnofioletowy</string><string name="pen_swatch_color_dark_yellow">Ciemnożółty</string><string name="pen_swatch_color_gray">Szary</string><string name="pen_swatch_color_light_azure">Jasnolazurowy</string><string name="pen_swatch_color_light_blue">Jasnoniebieski</string><string name="pen_swatch_color_light_cyan">Jasny cyjan</string><string name="pen_swatch_color_light_magenta">Jasny amarantowy</string><string name="pen_swatch_color_light_orange">Jasnopomarańczowy</string><string name="pen_swatch_color_light_red">Jasnoczerwony</string><string name="pen_swatch_color_light_spring_green">Jasna wiosenna zieleń</string><string name="pen_swatch_color_light_violet">Jasnofioletowy</string><string name="pen_swatch_color_magenta">Amarantowy</string><string name="retry">Ponów</string><string name="sec_relative_description">Szukasz czegoś innego?</string><string name="selected_check_info">Wybranych: %d</string><string name="sesl_action_menu_overflow_badge_text_n">N</string><string name="sesl_button">Przycisk</string><string name="sesl_cancel">Anuluj</string><string name="sesl_done">Gotowe</string><string name="sesl_more_item_label">Więcej</string><string name="sesl_more_options">Więcej opcji</string><string name="sesl_navigate_up">Nawiguj w górę</string><string name="sesl_navigation_drawer">Menu rozwijane nawigacji</string><string name="sesl_off_text">Wyłączony</string><string name="sesl_on_text">Włączony</string><string name="sesl_preferencecategory_added_title">Nagłówek</string><string name="sesl_toolbar_collapse_description">Zwiń</string><string name="sesl_update">Aktualizuj</string><string name="sesl_version">Wersja</string><string name="settings_import_select_items">Wybierz elementy</string></file><file path="/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/baseoneui/build/intermediates/packaged_res/debug/values-v9/values-v9.xml" qualifiers="v9"><style name="Color_000000">
         <item name="colorPrimary">#000000</item>
         <item name="colorPrimaryDark">#000000</item>
         <item name="colorSecondary">#141414</item>

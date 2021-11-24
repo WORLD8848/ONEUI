@@ -10,16 +10,10 @@
 
     <item
         android:id="@+id/info"
-        android:icon="@drawable/ic_samsung_info_2"
+        android:icon="@drawable/ic_samsung_info"
         android:title="@string/app_info"
         app:showAsAction="always" />
-        <!--
-        World8848. change. 2021.11.24
-        From
-        android:icon="@drawable/ic_samsung_info"
-        To
-        android:icon="@drawable/ic_samsung_info_2"
-        -->
+
     <item
         android:id="@+id/item1"
         android:title="Menu Item 1"

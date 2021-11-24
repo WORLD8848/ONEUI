@@ -18,9 +18,6 @@ import com.buxuan.baseoneui.R;
 
 public class TabRoundRectIndicator extends AbsIndicatorView {
 
-
-    private boolean mIsOneUI4;              // MEMO: World8848. add. 2021.11.24. source code changed
-
     private AnimationSet mPressAnimationSet;
 
     public TabRoundRectIndicator(Context context) {
@@ -37,19 +34,8 @@ public class TabRoundRectIndicator extends AbsIndicatorView {
 
     public TabRoundRectIndicator(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        /*
-        *
-        * MEMO: World8848. add. 2021.11.24. source code changed
-        * FROM
-        * ViewCompat.setBackground(this, ContextCompat.getDrawable(context, R.drawable.sesl_tablayout_subtab_indicator_background));
-        *
-        * TO
-        * mIsOneUI4 = context.getTheme().obtainStyledAttributes(new int[]{R.attr.isOneUI4}).getBoolean(0, false);
-        * ViewCompat.setBackground(this, ContextCompat.getDrawable(context, mIsOneUI4 ? R.drawable.sesl4_tablayout_subtab_indicator_background : R.drawable.sesl_tablayout_subtab_indicator_background));
-        *
-        * */
-        mIsOneUI4 = context.getTheme().obtainStyledAttributes(new int[]{R.attr.isOneUI4}).getBoolean(0, false);
-        ViewCompat.setBackground(this, ContextCompat.getDrawable(context, mIsOneUI4 ? R.drawable.sesl4_tablayout_subtab_indicator_background : R.drawable.sesl_tablayout_subtab_indicator_background));
+
+        ViewCompat.setBackground(this, ContextCompat.getDrawable(context, R.drawable.sesl_tablayout_subtab_indicator_background));
     }
 
     @Override
