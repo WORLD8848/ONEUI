@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -50,18 +51,27 @@ public class PopupMenu {
     private HashMap<MenuItem, Boolean> menuItemEnabled = new HashMap<>();
 
 
-    public PopupMenu(View anchor) {
-        this.context = anchor.getContext();
-        this.anchor = anchor;
+    // region AREA: PopupMenu
+    public PopupMenu(View anchorView) {
+        this.context    = anchorView.getContext();
+        this.anchor     = anchorView;
     }
+    // endregion
 
+
+    // region AREA: OnMenuItemClickListener
     public interface OnMenuItemClickListener {
-        void onMenuItemClick(MenuItem item);
+        void onMenuItemClick(MenuItem menuItem);
     }
+    // endregion
 
+
+    // region AREA: setOnMenuItemClickListener
     public void setOnMenuItemClickListener(OnMenuItemClickListener listener) {
         onMenuItemClickListener = listener;
     }
+    // endregion
+
 
     @SuppressLint("RestrictedApi")
     public Menu getMenu() {
@@ -166,12 +176,15 @@ public class PopupMenu {
     }
 
 
+    // region AREA: setMenuItemBadge
     public void setMenuItemBadge(MenuItem item, Integer badge) {
         menuItemBadges.put(item, badge);
         popupMenuAdapter.notifyDataSetChanged();
         popupWindow.setWidth(getPopupMenuWidth());
         if (popupWindow.isShowing()) popupWindow.dismiss();
     }
+    // endregion
+
 
     public void setMenuItemTitle(MenuItem item, CharSequence title) {
         for (int i = 0; i < menuItems.size(); i++) {
@@ -189,9 +202,14 @@ public class PopupMenu {
         popupMenuAdapter.notifyDataSetChanged();
     }
 
+    // region AREA: getMenuItemBadge
     public Integer getMenuItemBadge(MenuItem item) {
+
         return menuItemBadges.get(item);
+
     }
+    // endregion
+
 
     public Integer getTotalBadgeCount() {
         int count = 0;

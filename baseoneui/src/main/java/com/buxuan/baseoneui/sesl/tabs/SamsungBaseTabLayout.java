@@ -22,6 +22,7 @@ import android.os.Build;
 import android.text.Layout;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -223,6 +224,56 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
         this.applyModeAndGravity();
     }
 
+
+    // region AREA: addOnTabSelectedListener
+    // TODO: Additional works "SamsungBaseTabLayout - addOnTabSelectedListener    ------->    Deprecated"
+    public void addOnTabSelectedListener(OnTabSelectedListener var1) {
+        addOnTabSelectedListener((BaseOnTabSelectedListener) var1);
+    }
+
+    @Deprecated
+    public void addOnTabSelectedListener(BaseOnTabSelectedListener var1) {
+        if (!this.selectedListeners.contains(var1)) {
+            this.selectedListeners.add(var1);
+        }
+    }
+    // endregion
+
+
+    // region AREA: addTab
+    public void addTab(Tab tab) {
+        this.addTab(tab, this.tabs.isEmpty());
+    }
+
+    public void addTab(Tab tab, boolean tabsIsEmpty) {
+
+        this.addTab(tab, this.tabs.size(), tabsIsEmpty);
+    }
+
+    public void addTab(Tab tab, int position, boolean tabsIsEmpty) {
+        if (tab.parent == this) {
+            this.configureTab(tab, position);
+            this.addTabView(tab);
+            if (tabsIsEmpty) {
+                tab.select();
+            }
+        } else {
+            throw new IllegalArgumentException("Tab belongs to a different TabLayout.");
+        }
+    }
+    // endregion
+
+
+    // region AREA: addTabView
+    public final void addTabView(Tab tab) {
+        TabView tabView = tab.view;
+        tabView.setSelected(false);
+        tabView.setActivated(false);
+        this.slidingTabIndicator.addView(tabView, tab.getPosition(), this.createLayoutParamsForTabs());
+    }
+    // endregion
+
+
     public static ColorStateList createColorStateList(int var0, int var1) {
         return new ColorStateList(new int[][]{HorizontalScrollView.SELECTED_STATE_SET, HorizontalScrollView.EMPTY_STATE_SET}, new int[]{var1, var0});
     }
@@ -268,46 +319,23 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
         }
     }
 
+    // region AREA: getTabMinWidth
     private int getTabMinWidth() {
         int var1 = this.requestedTabMinWidth;
         return var1 != -1 ? var1 : 0;
     }
+    // endregion
+
 
     private int getTabScrollRange() {
         return Math.max(0, this.slidingTabIndicator.getWidth() - this.getWidth() - this.getPaddingLeft() - this.getPaddingRight());
     }
 
-    public void addOnTabSelectedListener(OnTabSelectedListener var1) {
-        addOnTabSelectedListener((BaseOnTabSelectedListener) var1);
-    }
 
-    @Deprecated
-    public void addOnTabSelectedListener(BaseOnTabSelectedListener var1) {
-        if (!this.selectedListeners.contains(var1)) {
-            this.selectedListeners.add(var1);
-        }
-    }
 
-    public void addTab(Tab var1) {
-        this.addTab(var1, this.tabs.isEmpty());
-    }
 
-    public void addTab(Tab var1, int var2, boolean var3) {
-        if (var1.parent == this) {
-            this.configureTab(var1, var2);
-            this.addTabView(var1);
-            if (var3) {
-                var1.select();
-            }
 
-        } else {
-            throw new IllegalArgumentException("Tab belongs to a different TabLayout.");
-        }
-    }
 
-    public void addTab(Tab var1, boolean var2) {
-        this.addTab(var1, this.tabs.size(), var2);
-    }
 
     public final void addTabFromItemView(TabItem var1) {
         Tab var2 = this.newTab();
@@ -333,12 +361,9 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
         this.addTab(var2);
     }
 
-    public final void addTabView(Tab var1) {
-        TabView var2 = var1.view;
-        var2.setSelected(false);
-        var2.setActivated(false);
-        this.slidingTabIndicator.addView(var2, var1.getPosition(), this.createLayoutParamsForTabs());
-    }
+
+
+
 
     public void addView(View var1) {
         this.addViewInternal(var1);
@@ -355,6 +380,7 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
     public void addView(View var1, ViewGroup.LayoutParams var2) {
         this.addViewInternal(var1);
     }
+
 
     public final void addViewInternal(View var1) {
         if (var1 instanceof TabItem) {
@@ -442,28 +468,40 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
 
     }
 
-    public final void configureTab(Tab var1, int var2) {
-        var1.setPosition(var2);
-        this.tabs.add(var2, var1);
-        int var3 = this.tabs.size();
+
+    // region AREA: configureTab
+    public final void configureTab(Tab tab, int position) {
+
+        tab.setPosition(position);
+
+        this.tabs.add(position, tab);
+
+        int tabsArraySize = this.tabs.size();
 
         while (true) {
-            ++var2;
-            if (var2 >= var3) {
+            ++position;
+            if (position >= tabsArraySize) {
                 return;
             }
 
-            ((Tab) this.tabs.get(var2)).setPosition(var2);
+            ((Tab) this.tabs.get(position)).setPosition(position);
         }
     }
+    // endregion
 
+
+    // region AREA: createLayoutParamsForTabs
     public final LinearLayout.LayoutParams createLayoutParamsForTabs() {
         LinearLayout.LayoutParams var1 = new LinearLayout.LayoutParams(-2, -1);
         this.updateTabViewLayoutParams(var1);
         return var1;
     }
+    // endregion
 
+
+    // region AREA: createTabFromPool
     public Tab createTabFromPool() {
+
         Tab var1 = (Tab) tabPool.acquire();
         Tab var2 = var1;
         if (var1 == null) {
@@ -472,7 +510,10 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
 
         return var2;
     }
+    // endregion
 
+
+    // region AREA: createTabView
     public final TabView createTabView(Tab var1) {
         Pools.Pool var2 = this.tabViewPool;
         TabView var4;
@@ -502,6 +543,82 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
 
         return var3;
     }
+    // endregion
+
+
+    // region AREA: getTabAt
+    public Tab getTabAt(int tabPosition) {
+        Tab var2;
+        if (tabPosition >= 0 && tabPosition < this.getTabCount()) {
+            var2 = (Tab) this.tabs.get(tabPosition);
+        } else {
+            var2 = null;
+        }
+
+        return var2;
+    }
+    // endregion
+
+
+    // region AREA: getTabCount
+    public int getTabCount() {
+        return this.tabs.size();
+    }
+    // endregion
+
+
+    // region AREA: newTab
+    public Tab newTab() {
+        Tab var1 = this.createTabFromPool();
+        var1.parent = this;
+        var1.view = this.createTabView(var1);
+        return var1;
+    }
+    // endregion
+
+
+    // region AREA: selectTab
+    public void selectTab(Tab tab) {
+        this.selectTab(tab, true);
+    }
+
+    public void selectTab(Tab var1, boolean var2) {
+        this.selectTab(var1, var2, true);
+    }
+
+    public final void selectTab(Tab var1, boolean var2, boolean var3) {
+        SeslViewPager viewPager2;
+        if (var1 == null || var1.view.isEnabled() || (viewPager2 = this.viewPager) == null) {
+            Tab tab2 = this.selectedTab;
+            if (tab2 != var1) {
+                int position = var1 != null ? var1.getPosition() : -1;
+                if (var2) {
+                    if ((tab2 == null || tab2.getPosition() == -1) && position != -1) {
+                        setScrollPosition(position, 0.0f, true);
+                    } else {
+                        animateToTab(position);
+                    }
+                    if (position != -1) {
+                        setSelectedTabView(position, var3);
+                    }
+                }
+                this.selectedTab = var1;
+                if (tab2 != null) {
+                    dispatchTabUnselected(tab2);
+                }
+                if (var1 != null) {
+                    dispatchTabSelected(var1);
+                }
+            } else if (tab2 != null) {
+                dispatchTabReselected(var1);
+                animateToTab(var1.getPosition());
+            }
+        } else {
+            viewPager2.setCurrentItem(getSelectedTabPosition());
+        }
+    }
+    // endregion
+
 
     public final void dispatchTabReselected(Tab var1) {
         for (int var2 = this.selectedListeners.size() - 1; var2 >= 0; --var2) {
@@ -554,20 +671,7 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
         return var2;
     }
 
-    public Tab getTabAt(int var1) {
-        Tab var2;
-        if (var1 >= 0 && var1 < this.getTabCount()) {
-            var2 = (Tab) this.tabs.get(var1);
-        } else {
-            var2 = null;
-        }
 
-        return var2;
-    }
-
-    public int getTabCount() {
-        return this.tabs.size();
-    }
 
     public int getTabGravity() {
         return this.tabGravity;
@@ -647,12 +751,6 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
 
     }
 
-    public Tab newTab() {
-        Tab var1 = this.createTabFromPool();
-        var1.parent = this;
-        var1.view = this.createTabView(var1);
-        return var1;
-    }
 
     public void onAttachedToWindow() {
         TabView tabView;
@@ -872,45 +970,10 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
         this.requestLayout();
     }
 
-    public void selectTab(Tab var1) {
-        this.selectTab(var1, true);
-    }
 
-    public void selectTab(Tab var1, boolean var2) {
-        this.selectTab(var1, var2, true);
-    }
 
-    public final void selectTab(Tab var1, boolean var2, boolean var3) {
-        SeslViewPager viewPager2;
-        if (var1 == null || var1.view.isEnabled() || (viewPager2 = this.viewPager) == null) {
-            Tab tab2 = this.selectedTab;
-            if (tab2 != var1) {
-                int position = var1 != null ? var1.getPosition() : -1;
-                if (var2) {
-                    if ((tab2 == null || tab2.getPosition() == -1) && position != -1) {
-                        setScrollPosition(position, 0.0f, true);
-                    } else {
-                        animateToTab(position);
-                    }
-                    if (position != -1) {
-                        setSelectedTabView(position, var3);
-                    }
-                }
-                this.selectedTab = var1;
-                if (tab2 != null) {
-                    dispatchTabUnselected(tab2);
-                }
-                if (var1 != null) {
-                    dispatchTabSelected(var1);
-                }
-            } else if (tab2 != null) {
-                dispatchTabReselected(var1);
-                animateToTab(var1.getPosition());
-            }
-        } else {
-            viewPager2.setCurrentItem(getSelectedTabPosition());
-        }
-    }
+
+
 
     public void setElevation(float var1) {
         super.setElevation(var1);
@@ -1255,6 +1318,8 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
 
     }
 
+
+    // region AREA: updateBadgePosition
     @SuppressLint("WrongConstant")
     public final void updateBadgePosition() {
         ArrayList var1 = this.tabs;
@@ -1322,8 +1387,27 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
         }
 
     }
+    // endregion
 
+    // region AREA: updateTabViews
+    public void updateTabViews(boolean isRequestLayout) {
+
+        for (int var2 = 0; var2 < this.slidingTabIndicator.getChildCount(); ++var2) {
+            View var3 = this.slidingTabIndicator.getChildAt(var2);
+            var3.setMinimumWidth(this.getTabMinWidth());
+            this.updateTabViewLayoutParams((LinearLayout.LayoutParams) var3.getLayoutParams());
+            if (isRequestLayout) {
+                var3.requestLayout();
+            }
+        }
+
+        this.updateBadgePosition();
+    }
+    // endregion
+
+    // region AREA: updateTabViewLayoutParams
     public final void updateTabViewLayoutParams(LinearLayout.LayoutParams var1) {
+
         if (this.mode == 1 && this.tabGravity == 0) {
             var1.width = 0;
             var1.weight = 1.0F;
@@ -1331,21 +1415,11 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
             var1.width = -2;
             var1.weight = 0.0F;
         }
-
     }
+    // endregion
 
-    public void updateTabViews(boolean var1) {
-        for (int var2 = 0; var2 < this.slidingTabIndicator.getChildCount(); ++var2) {
-            View var3 = this.slidingTabIndicator.getChildAt(var2);
-            var3.setMinimumWidth(this.getTabMinWidth());
-            this.updateTabViewLayoutParams((LinearLayout.LayoutParams) var3.getLayoutParams());
-            if (var1) {
-                var3.requestLayout();
-            }
-        }
 
-        this.updateBadgePosition();
-    }
+
 
     @Deprecated
     public interface BaseOnTabSelectedListener<T extends Tab> {
@@ -1359,6 +1433,10 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
     public interface OnTabSelectedListener extends BaseOnTabSelectedListener<Tab> {
     }
 
+
+    //**********************************************************************************************
+    // region AREA: Class. Tab
+    //**********************************************************************************************
     public static class Tab {
         public boolean isCustomButton;
         public CharSequence contentDesc;
@@ -1397,10 +1475,12 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
             return this.icon;
         }
 
-        public Tab setIcon(Drawable var1) {
-            this.icon = var1;
-            SamsungBaseTabLayout var2 = this.parent;
-            if (var2.tabGravity == 1 || var2.mode == 2) {
+        // region AREA: setIcon
+        public Tab setIcon(Drawable drawableIcon) {
+            this.icon = drawableIcon;
+            SamsungBaseTabLayout samsungBaseTabLayout = this.parent;
+            // MEMO: World8848. tabGravity = center, tabMode = auto
+            if (samsungBaseTabLayout.tabGravity == 1 || samsungBaseTabLayout.mode == 2) {
                 this.parent.updateTabViews(true);
             }
 
@@ -1411,13 +1491,11 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
 
             return this;
         }
+        // endregion
+
 
         public int getPosition() {
             return this.position;
-        }
-
-        public void setPosition(int var1) {
-            this.position = var1;
         }
 
         public int getTabLabelVisibility() {
@@ -1426,16 +1504,6 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
 
         public CharSequence getText() {
             return this.text;
-        }
-
-        public Tab setText(CharSequence var1) {
-            if (TextUtils.isEmpty(this.contentDesc) && !TextUtils.isEmpty(var1)) {
-                this.view.setContentDescription(var1);
-            }
-
-            this.text = var1;
-            this.updateView();
-            return this;
         }
 
         public boolean isSelected() {
@@ -1465,14 +1533,9 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
             this.customView = null;
         }
 
-        public void select() {
-            SamsungBaseTabLayout var1 = this.parent;
-            if (var1 != null) {
-                var1.selectTab(this);
-            } else {
-                throw new IllegalArgumentException("Tab not attached to a TabLayout");
-            }
-        }
+
+
+
 
         public TextView seslGetTextView() {
             TextView var2;
@@ -1488,30 +1551,82 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
             return var2;
         }
 
-        public Tab setContentDescription(CharSequence var1) {
-            this.contentDesc = var1;
+        // region AREA: select
+        public void select() {
+            SamsungBaseTabLayout var1 = this.parent;
+            if (var1 != null) {
+                var1.selectTab(this);
+            } else {
+                throw new IllegalArgumentException("Tab not attached to a TabLayout");
+            }
+        }
+        // endregion
+
+
+        // region AREA: setContentDescription
+        public Tab setContentDescription(CharSequence charSequence) {
+            this.contentDesc = charSequence;
             this.updateView();
             return this;
         }
+        // endregion
 
+
+        // region AREA: setIsCustomButtonView
+        public Tab setIsCustomButtonView(boolean isCustomButtonView) {
+            isCustomButton = isCustomButtonView;
+            return this;
+        }
+        // endregion
+
+
+        // region AREA: setPosition
+        public void setPosition(int position) {
+            this.position = position;
+        }
+        // endregion
+
+
+        // region AREA: setText
+        public Tab setText(CharSequence charSequence) {
+
+            if (TextUtils.isEmpty(this.contentDesc) && !TextUtils.isEmpty(charSequence)) {
+                // MEMO: World8848. change
+                // this.view.setContentDescription(charSequence);
+                this.setContentDescription(charSequence);
+            }
+
+            this.text = charSequence;
+            this.updateView();
+            return this;
+        }
+        // endregion
+
+
+        // region AREA: updateView
         public void updateView() {
             TabView var1 = this.view;
             if (var1 != null) {
                 var1.update();
             }
-
         }
+        // endregion
+
 
         public boolean getIsCustomButtonView() {
             return isCustomButton;
         }
 
-        public Tab setIsCustomButtonView(boolean z) {
-            isCustomButton = z;
-            return this;
-        }
-    }
 
+
+    }
+    // endregion
+    //**********************************************************************************************
+
+
+    //**********************************************************************************************
+    // region AREA: TabLayoutOnPageChangeListener
+    //**********************************************************************************************
     public static class TabLayoutOnPageChangeListener implements SeslViewPager.OnPageChangeListener {
         public final WeakReference<SamsungBaseTabLayout> tabLayoutRef;
         public int previousScrollState;
@@ -1568,7 +1683,13 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
             this.previousScrollState = 0;
         }
     }
+    // endregion
+    //**********************************************************************************************
 
+
+    //**********************************************************************************************
+    // region AREA: ViewPagerOnTabSelectedListener
+    //**********************************************************************************************
     public static class ViewPagerOnTabSelectedListener implements OnTabSelectedListener {
         public final SeslViewPager viewPager;
 
@@ -1586,7 +1707,13 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
         public void onTabUnselected(Tab var1) {
         }
     }
+    // endregion
+    //**********************************************************************************************
 
+
+    //**********************************************************************************************
+    // region AREA: AdapterChangeListener
+    //**********************************************************************************************
     private class AdapterChangeListener implements SeslViewPager.OnAdapterChangeListener {
         public boolean autoRefresh;
 
@@ -1605,7 +1732,13 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
             this.autoRefresh = var1;
         }
     }
+    // endregion
+    //**********************************************************************************************
 
+
+    //**********************************************************************************************
+    // region AREA: PagerAdapterObserver
+    //**********************************************************************************************
     private class PagerAdapterObserver extends DataSetObserver {
         public PagerAdapterObserver() {
         }
@@ -1618,7 +1751,13 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
             SamsungBaseTabLayout.this.populateFromPagerAdapter();
         }
     }
+    // endregion
+    //**********************************************************************************************
 
+
+    //**********************************************************************************************
+    // region AREA: SlidingTabIndicator
+    //**********************************************************************************************
     private class SlidingTabIndicator extends LinearLayout {
         public final GradientDrawable defaultSelectionIndicator;
         public final Paint selectedIndicatorPaint;
@@ -1770,7 +1909,13 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
         public final void updateIndicatorPosition() {
         }
     }
+    // endregion
+    //**********************************************************************************************
 
+
+    //**********************************************************************************************
+    // region AREA: TabView
+    //**********************************************************************************************
     public final class TabView extends LinearLayout {
         public View badgeAnchorView;
         public BadgeDrawable badgeDrawable;
@@ -2192,8 +2337,11 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
 
         }
 
+        // region AREA: setSelected
         public void setSelected(boolean var1) {
+
             if (this.isEnabled()) {
+
                 boolean var2;
                 if (this.isSelected() != var1) {
                     var2 = true;
@@ -2225,6 +2373,8 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
 
             }
         }
+        // endregion
+
 
         public final void showMainTabTouchBackground(int var1) {
             if (this.mMainTabTouchBackground != null && SamsungBaseTabLayout.this.mDepthStyle == 1 && SamsungBaseTabLayout.this.tabBackgroundResId == 0) {
@@ -2463,6 +2613,7 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
 
         }
 
+        // region AREA: update
         @SuppressLint("WrongConstant")
         public final void update() {
             RelativeLayout relativeLayout;
@@ -2578,6 +2729,7 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
             }
             setSelected(z);
         }
+        // endregion
 
         public final void updateBackgroundDrawable(Context var1) {
             SamsungBaseTabLayout var2 = SamsungBaseTabLayout.this;
@@ -2694,4 +2846,18 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
             TooltipCompat.setTooltipText(this, var8);
         }
     }
+    // endregion
+    //**********************************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
 }

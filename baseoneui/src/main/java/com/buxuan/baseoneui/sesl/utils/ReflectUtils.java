@@ -72,6 +72,8 @@ public class ReflectUtils {
         }
     }
 
+
+    // region OK: genericInvokeMethod
     public static Object genericInvokeMethod(String className, String methodName, Object... params) {
         int paramCount = params.length;
         Method method;
@@ -112,11 +114,14 @@ public class ReflectUtils {
     }
 
     public static Object genericInvokeMethod(Object obj, String methodName, Object... params) {
+
         int paramCount = params.length;
         Method method;
         Object requiredObj = null;
         Class<?>[] classArray = new Class<?>[paramCount];
+
         for (int i = 0; i < paramCount; i++) {
+
             // FIX
             if (params[i].getClass() == Boolean.class)
                 classArray[i] = boolean.class;
@@ -129,6 +134,8 @@ public class ReflectUtils {
             method = obj.getClass().getDeclaredMethod(methodName, classArray);
             method.setAccessible(true);
             requiredObj = method.invoke(obj, params);
+
+
         } catch (NoSuchMethodException | IllegalArgumentException | IllegalAccessException | InvocationTargetException e) {
             Log.e("ReflectUtils.genericInvokeMethod", e.toString());
         }
@@ -219,6 +226,9 @@ public class ReflectUtils {
 
         return requiredObj;
     }
+    // endregion
+
+
 
     public static Object genericNewInstance(String className, Class<?> conCl, Object obj) {
         Object requiredObj = null;

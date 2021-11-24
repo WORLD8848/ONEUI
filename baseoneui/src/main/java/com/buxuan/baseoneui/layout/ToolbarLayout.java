@@ -243,6 +243,7 @@ public class ToolbarLayout extends LinearLayout {
         this.drawerLayout = drawerLayout;
     }
 
+    // region AREA: lockDrawerIfAvailable
     private void lockDrawerIfAvailable(boolean lock) {
         if (drawerLayout != null) {
             if (lock) {
@@ -252,6 +253,8 @@ public class ToolbarLayout extends LinearLayout {
             }
         }
     }
+    // endregion
+
 
     @Override
     public void addView(View child, int index, ViewGroup.LayoutParams params) {
@@ -360,17 +363,24 @@ public class ToolbarLayout extends LinearLayout {
             Log.w(TAG + ".resetAppBarHeight", "appBarLayout is null.");
     }
 
-    //
-    // AppBar methods
-    //
+
+    //**********************************************************************************************
+    // region AREA: AppBar methods
+    //**********************************************************************************************
+
+    // region AREA: getAppBarLayout
     public SamsungAppBarLayout getAppBarLayout() {
         return appBarLayout;
     }
+    // endregion
+
 
     public MaterialToolbar getToolbar() {
         return toolbar;
     }
 
+
+    // region AREA: setTitle
     public void setTitle(CharSequence title) {
         setTitle(title, title);
     }
@@ -383,7 +393,10 @@ public class ToolbarLayout extends LinearLayout {
         }
         collapsedTitleView.setText(collapsedTitle);
     }
+    // endregion
 
+
+    // region AREA: setSubtitle
     public void setSubtitle(CharSequence subtitle) {
         mSubtitle = subtitle;
         if (mExpandable) {
@@ -393,7 +406,10 @@ public class ToolbarLayout extends LinearLayout {
 
         updateCollapsedSubtitleVisibility();
     }
+    // endregion
 
+
+    // region AREA: updateCollapsedSubtitleVisibility
     private void updateCollapsedSubtitleVisibility() {
         TypedValue outValue = new TypedValue();
         getResources().getValue(R.dimen.sesl_appbar_height_proportion, outValue, true);
@@ -403,14 +419,19 @@ public class ToolbarLayout extends LinearLayout {
             collapsedSubTitleView.setVisibility(GONE);
         }
     }
+    // endregion
 
-    public void setExpanded(boolean expanded, boolean animate) {
+
+    // region AREA: setExpanded
+    public void setExpanded(boolean var1, boolean var2) {
         if (mExpandable) {
-            mExpanded = expanded;
-            appBarLayout.setExpanded(expanded, animate);
+            mExpanded = var1;
+            appBarLayout.setExpanded(var1, var2);
         } else
             Log.d(TAG + ".setExpanded", "mExpandable is " + mExpandable);
     }
+    // endregion
+
 
     public boolean isExpanded() {
         return mExpandable ? !appBarLayout.isCollapsed() : false;
@@ -427,6 +448,10 @@ public class ToolbarLayout extends LinearLayout {
         params.seslSetIsTitleCustom(true);
         collapsingToolbarLayout.seslSetCustomTitleView(view, params);
     }
+    // endregion
+    //**********************************************************************************************
+
+
 
     //
     // Select Mode methods
@@ -504,10 +529,12 @@ public class ToolbarLayout extends LinearLayout {
         return selectModeBottomMenu;
     }
 
+    // region AREA: dismissSelectMode
     public void dismissSelectMode() {
         mSelectMode = false;
         lockDrawerIfAvailable(false);
         setNavigationButtonVisible(navigationButtonVisible);
+
         selectModeCheckboxContainer.setVisibility(View.GONE);
         setTitle(mTitleExpanded, mTitleCollapsed);
         actionButtonContainer.setVisibility(VISIBLE);
@@ -515,6 +542,8 @@ public class ToolbarLayout extends LinearLayout {
         bottomContainer.setVisibility(VISIBLE);
         findViewById(R.id.toolbar_layout_footer_action_mode).setVisibility(GONE);
     }
+    // endregion
+
 
     public void setSelectModeCount(int count) {
         String title = count > 0 ? getResources().getString(R.string.selected_check_info, count) : getResources().getString(R.string.settings_import_select_items);
@@ -534,17 +563,19 @@ public class ToolbarLayout extends LinearLayout {
     }
 
 
-    //
-    // Search Mode methods
-    //
+
+
+    // region AREA: Search Mode methods
+
+
+    // region AREA: showSearchMode
     public void showSearchMode() {
         mSearchMode = true;
         lockDrawerIfAvailable(true);
         setNavigationButtonVisible(false);
         onBackPressedCallback.setEnabled(true);
         if (mSelectMode) dismissSelectMode();
-        if (mExpandable)
-            collapsingToolbarLayout.setTitle(getResources().getString(R.string.action_search));
+        if (mExpandable) collapsingToolbarLayout.setTitle(getResources().getString(R.string.action_search));
         main_toolbar.setVisibility(GONE);
         search_toolbar.setVisibility(VISIBLE);
         bottomContainer.setVisibility(GONE);
@@ -552,7 +583,6 @@ public class ToolbarLayout extends LinearLayout {
         search_navButton.setTooltipText(getResources().getString(R.string.sesl_navigate_up));
         search_navButton.setOnClickListener(v -> dismissSearchMode());
         setExpanded(false, true);
-
         search_edittext.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -580,11 +610,14 @@ public class ToolbarLayout extends LinearLayout {
         });
         setEditTextFocus(true);
     }
+    // endregion
+
 
     public void setSearchModeListener(SearchModeListener listener) {
         searchModeListener = listener;
     }
 
+    // region AREA: dismissSearchMode
     public void dismissSearchMode() {
         mSearchMode = false;
         lockDrawerIfAvailable(false);
@@ -597,6 +630,8 @@ public class ToolbarLayout extends LinearLayout {
 
         setTitle(mTitleExpanded, mTitleCollapsed);
     }
+    // endregion
+
 
     public boolean isSearchMode() {
         return mSearchMode;
@@ -625,6 +660,8 @@ public class ToolbarLayout extends LinearLayout {
         }
     }
 
+
+    // region AREA: setSearchModeActionButton
     private void setSearchModeActionButton(boolean microphone) {
         if (microphone) {
             search_action_button.setImageResource(R.drawable.ic_samsung_voice_2);
@@ -642,8 +679,12 @@ public class ToolbarLayout extends LinearLayout {
             search_action_button.setOnClickListener(v -> search_edittext.setText(""));
         }
     }
+    // endregion
 
+
+    // region AREA: onSearchModeVoiceInputResult
     public void onSearchModeVoiceInputResult(ActivityResult result) {
+
         if (result.getResultCode() == Activity.RESULT_OK) {
             final ArrayList<String> matches = result.getData().getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
             if (!matches.isEmpty()) {
@@ -653,23 +694,35 @@ public class ToolbarLayout extends LinearLayout {
             }
         }
     }
+    // endregion
+
+    // endregion
 
 
-    //
-    // Navigation Button methods
-    //
+
+
+
+
+
+
+    // region AREA:  Navigation Button methods  ////////////////////////////////////////////////////
+
+
     public void setNavigationButtonIcon(Drawable navigationIcon) {
         mNavigationIcon = navigationIcon;
         navigationButton.setImageDrawable(mNavigationIcon);
         setNavigationButtonVisible(navigationIcon != null);
     }
 
+    // region AREA: setNavigationButtonVisible
     public void setNavigationButtonVisible(boolean visible) {
         navigationButtonContainer.setVisibility(visible ? View.VISIBLE : View.GONE);
         if (!(mSelectMode || mSearchMode)) navigationButtonVisible = visible;
         toolbar.setPaddingRelative(mSelectMode || mSearchMode || visible ? 0 : getResources().getDimensionPixelSize(R.dimen.sesl_action_bar_content_inset), 0, 0, 0);
     }
+    // endregion
 
+    // region AREA: setNavigationButtonBadge
     public void setNavigationButtonBadge(int count) {
         if (navigationBadgeBackground == null) {
             navigationBadgeBackground = (ViewGroup) ((LayoutInflater) mActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.navigation_button_badge_layout, navigationButtonContainer, false);
@@ -683,8 +736,10 @@ public class ToolbarLayout extends LinearLayout {
                     count = 99;
                 }
                 String countString = numberFormat.format((long) count);
+
                 navigationBadgeText.setText(countString);
                 int width = (int) (getResources().getDimension(R.dimen.sesl_badge_default_width) + (float) countString.length() * getResources().getDimension(R.dimen.sesl_badge_additional_width));
+
                 MarginLayoutParams lp = (MarginLayoutParams) navigationBadgeBackground.getLayoutParams();
                 lp.width = width;
                 lp.height = (int) getResources().getDimension(R.dimen.sesl_menu_item_badge_size);
@@ -698,6 +753,8 @@ public class ToolbarLayout extends LinearLayout {
             }
         }
     }
+    // endregion
+
 
     public void setNavigationButtonTooltip(CharSequence tooltipText) {
         navigationButton.setTooltipText(tooltipText);
@@ -707,17 +764,26 @@ public class ToolbarLayout extends LinearLayout {
         navigationButton.setOnClickListener(listener);
     }
 
-    //
-    // Toolbar Menu methods
-    //
+
+
+
+    // Toolbar Menu methods                     ////////////////////////////////////////////////////
+
+    // region AREA: setOnToolbarMenuItemClickListener
     public void setOnToolbarMenuItemClickListener(OnMenuItemClickListener listener) {
         onToolbarMenuItemClickListener = listener;
     }
+    // endregion
 
+
+    // region AREA: getToolbarMenu
     public Menu getToolbarMenu() {
         return toolbarMenu;
     }
+    // endregion
 
+
+    // region AREA: inflateToolbarMenu
     @SuppressLint("RestrictedApi")
     public void inflateToolbarMenu(@MenuRes int resId) {
         actionButtonContainer.removeAllViews();
@@ -741,6 +807,8 @@ public class ToolbarLayout extends LinearLayout {
 
         if (!overflowItems.isEmpty()) setOverflowMenu(overflowItems);
     }
+    // endregion
+
 
     private void addActionButton(MenuItem item) {
         if (actionButtonContainer.getChildCount() != 0) {
@@ -882,11 +950,14 @@ public class ToolbarLayout extends LinearLayout {
         }
     }
 
+    // region AREA: setToolbarMenuItemVisibility
     public void setToolbarMenuItemVisibility(MenuItem item, boolean visible) {
         if (toolbarMenuButtons.containsKey(item)) {
             ((ToolbarImageButton) toolbarMenuButtons.get(item)).setVisibility(visible ? VISIBLE : GONE);
         }
     }
+    // endregion
+
 
     public void setToolbarMenuItemEnabled(MenuItem item, boolean enabled) {
         if (toolbarMenuButtons.containsKey(item)) {

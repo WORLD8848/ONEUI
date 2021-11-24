@@ -1,26 +1,26 @@
 com/buxuan/baseoneuiapp/tabs/NothingTab.java
  com.buxuan.baseoneuiapp.tabs.NothingTab
-com/buxuan/baseoneuiapp/SwitchBarActivity.java
- com.buxuan.baseoneuiapp.SwitchBarActivity
-com/buxuan/baseoneuiapp/AboutActivity.java
- com.buxuan.baseoneuiapp.AboutActivity
+com/buxuan/baseoneuiapp/tabs/ViewPagerAdapter.java
+ com.buxuan.baseoneuiapp.tabs.ViewPagerAdapter
+com/buxuan/baseoneui/BuildConfig.java
+ com.buxuan.baseoneui.BuildConfig
 com/buxuan/baseoneuiapp/tabs/ViewsTab.java
  com.buxuan.baseoneuiapp.tabs.ViewsTab
  com.buxuan.baseoneuiapp.tabs.ViewsTab$1
 com/buxuan/baseoneuiapp/fragments/MainActivityFirstFragment.java
  com.buxuan.baseoneuiapp.fragments.MainActivityFirstFragment
+com/buxuan/baseoneuiapp/utils/TabsManager.java
+ com.buxuan.baseoneuiapp.utils.TabsManager
+com/buxuan/baseoneuiapp/SwitchBarActivity.java
+ com.buxuan.baseoneuiapp.SwitchBarActivity
+com/buxuan/baseoneuiapp/AboutActivity.java
+ com.buxuan.baseoneuiapp.AboutActivity
 com/buxuan/baseoneuiapp/fragments/MainActivitySecondFragment.java
  com.buxuan.baseoneuiapp.fragments.MainActivitySecondFragment
  com.buxuan.baseoneuiapp.fragments.MainActivitySecondFragment$1
-com/buxuan/baseoneuiapp/utils/TabsManager.java
- com.buxuan.baseoneuiapp.utils.TabsManager
 com/buxuan/baseoneuiapp/SplashActivity.java
  com.buxuan.baseoneuiapp.SplashActivity
  com.buxuan.baseoneuiapp.SplashActivity$1
-com/buxuan/baseoneui/BuildConfig.java
- com.buxuan.baseoneui.BuildConfig
-com/buxuan/baseoneuiapp/tabs/ViewPagerAdapter.java
- com.buxuan.baseoneuiapp.tabs.ViewPagerAdapter
 com/buxuan/baseoneuiapp/MainActivity.java
  com.buxuan.baseoneuiapp.MainActivity
  com.buxuan.baseoneuiapp.MainActivity$1

@@ -92,11 +92,14 @@ public class ToolbarImageButton extends AppCompatImageButton {
         return frame;
     }
 
+    // region AREA: setImageResource
     @Override
     public void setImageResource(@DrawableRes int resId) {
         super.setImageResource(resId);
         mIcon = true;
     }
+    // endregion
+
 
     @Override
     public void setImageDrawable(@Nullable Drawable drawable) {
@@ -109,11 +112,15 @@ public class ToolbarImageButton extends AppCompatImageButton {
         super.setImageTintList(tint);
     }
 
+
+    // region AREA: setTooltipText
     @Override
     public void setTooltipText(CharSequence text) {
         Tooltip.setTooltipText(this, text);
         mToolTipText = text;
     }
+    // endregion
+
 
     @Override
     @RequiresApi(api = Build.VERSION_CODES.N)

@@ -26,11 +26,14 @@ public class TabsManager {
         setTabPosition(getTabFromSharedPreference());
     }
 
+    // region AREA: setTabPosition
     public void setTabPosition(int position) {
         setTabPositionToSharedPreference(position);
         sPrevTab = sSelectedTab;
         sSelectedTab = position;
     }
+    // endregion
+
 
     private int getTabFromSharedPreference() {
         int position = sp.getInt(KEY, -1);

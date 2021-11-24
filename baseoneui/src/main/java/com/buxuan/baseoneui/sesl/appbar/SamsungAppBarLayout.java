@@ -160,6 +160,10 @@ public class SamsungAppBarLayout extends LinearLayout implements ABLBehavior {
         return this.getResources().getDisplayMetrics().heightPixels;
     }
 
+
+
+
+    // region AREA: addOnOffsetChangedListener
     public void addOnOffsetChangedListener(BaseOnOffsetChangedListener var1) {
         if (this.mListeners == null) {
             this.mListeners = new ArrayList();
@@ -168,12 +172,14 @@ public class SamsungAppBarLayout extends LinearLayout implements ABLBehavior {
         if (var1 != null && !this.mListeners.contains(var1)) {
             this.mListeners.add(var1);
         }
-
     }
+
 
     public void addOnOffsetChangedListener(OnOffsetChangedListener var1) {
         this.addOnOffsetChangedListener((BaseOnOffsetChangedListener) var1);
     }
+    // endregion
+
 
     public boolean checkLayoutParams(ViewGroup.LayoutParams var1) {
         return var1 instanceof LayoutParams;
@@ -435,33 +441,47 @@ public class SamsungAppBarLayout extends LinearLayout implements ABLBehavior {
         return var2;
     }
 
+    // region AREA: getTotalScrollRange
     public final int getTotalScrollRange() {
+
         int var1 = this.mTotalScrollRange;
+
         if (var1 != -1) {
             return var1;
         } else {
             int var2 = this.getChildCount();
+
+            // MEMO: World8848. mTotalScrollRange 값을 -1에서 0으로 변환
             int var3 = 0;
             var1 = var3;
 
             int var4;
             while (true) {
                 var4 = var1;
+
+                // MEMO: World8848. while 반복 구문 Exit 조건
+                // MEMO: World8848. var3가 childCount()와 같거나 큰 경우
                 if (var3 >= var2) {
                     break;
                 }
 
                 View var5 = this.getChildAt(var3);
                 LayoutParams var6 = (LayoutParams) var5.getLayoutParams();
+
                 int var7 = var5.getMeasuredHeight();
                 int var8 = var6.scrollFlags;
-                var4 = var1;
+
+                // MEMO: World8848. delete. redundant
+                // var4 = var1;
+
                 if ((var8 & 1) == 0) {
                     break;
                 }
 
                 var1 += var7 + var6.topMargin + var6.bottomMargin;
+
                 if ((var8 & 2) != 0) {
+
                     var4 = var1 - ViewCompat.getMinimumHeight(var5);
                     break;
                 }
@@ -471,9 +491,13 @@ public class SamsungAppBarLayout extends LinearLayout implements ABLBehavior {
 
             var1 = Math.max(0, var4 - this.getTopInset());
             this.mTotalScrollRange = var1;
+
             return var1;
         }
     }
+    // endregion
+
+
 
     public int getUpNestedPreScrollRange() {
         return this.getTotalScrollRange();
@@ -703,12 +727,14 @@ public class SamsungAppBarLayout extends LinearLayout implements ABLBehavior {
         this.setExpanded(var1);
     }
 
+
+    // region AREA: setExpanded
     public void setExpanded(boolean var1) {
         this.setExpanded(var1, ViewCompat.isLaidOut(this));
     }
 
-    public void setExpanded(boolean var1, boolean var2) {
-        this.setExpanded(var1, var2, true);
+    public void setExpanded(boolean expanded, boolean animate) {
+        this.setExpanded(expanded, animate, true);
     }
 
     public final void setExpanded(boolean var1, boolean var2, boolean var3) {
@@ -735,6 +761,11 @@ public class SamsungAppBarLayout extends LinearLayout implements ABLBehavior {
         this.mPendingAction = var4 | var6 | var5;
         this.requestLayout();
     }
+    // endregion
+
+
+
+
 
     public final boolean setLiftableState(boolean var1) {
         if (this.mLiftable != var1) {
@@ -830,9 +861,12 @@ public class SamsungAppBarLayout extends LinearLayout implements ABLBehavior {
 
     }
 
+    // region AREA: interface BaseOnOffsetChangedListener
     public interface BaseOnOffsetChangedListener<T extends SamsungAppBarLayout> {
         void onOffsetChanged(T var1, int var2);
     }
+    // endregion
+
 
     public interface OnOffsetChangedListener extends BaseOnOffsetChangedListener<SamsungAppBarLayout> {
     }

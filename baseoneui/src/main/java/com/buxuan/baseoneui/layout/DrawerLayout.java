@@ -186,48 +186,28 @@ public class DrawerLayout extends LinearLayout {
         layoutParams.width = (int) ((double) displayWidth * widthRate);
     }
 
-    //
-    // Drawer methods
-    //
+
+
+    //**********************************************************************************************
+    // region AREA: Drawer methods
+    //**********************************************************************************************
+
+    // region AREA: getToolbarLayout
     public ToolbarLayout getToolbarLayout() {
         return toolbarLayout;
     }
+    // endregion
 
-    public void setDrawerButtonOnClickListener(OnClickListener listener) {
-        drawerButton.setOnClickListener(listener);
-    }
 
-    public void setDrawerButtonTooltip(CharSequence tooltipText) {
-        drawerButton.setTooltipText(tooltipText);
-    }
-
-    public void setToolbarTitle(CharSequence title) {
-        toolbarLayout.setTitle(title);
-    }
-
-    public void setToolbarTitle(CharSequence expandedTitle, CharSequence collapsedTitle) {
-        toolbarLayout.setTitle(expandedTitle, collapsedTitle);
-    }
-
-    public void setToolbarSubtitle(String subtitle) {
-        toolbarLayout.setSubtitle(subtitle);
-    }
-
-    public void setToolbarExpanded(boolean expanded, boolean animate) {
-        toolbarLayout.setExpanded(expanded, animate);
-    }
-
+    // region AREA: setButtonBadges
     public void setButtonBadges(int navigationIcon, int drawerIcon) {
         toolbarLayout.setNavigationButtonBadge(navigationIcon);
         setDrawerButtonBadge(drawerIcon);
     }
+    // endregion
 
-    public void setDrawerButtonIcon(Drawable drawerIcon) {
-        mDrawerIcon = drawerIcon;
-        drawerButton.setImageDrawable(mDrawerIcon);
-        drawerButtonContainer.setVisibility(drawerIcon != null ? View.VISIBLE : View.GONE);
-    }
 
+    // region AREA: setDrawerButtonBadge
     public void setDrawerButtonBadge(int count) {
         if (drawerIconBadgeBackground == null) {
             drawerIconBadgeBackground = (ViewGroup) ((LayoutInflater) mActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.navigation_button_badge_layout, drawerButtonContainer, false);
@@ -256,6 +236,46 @@ public class DrawerLayout extends LinearLayout {
             }
         }
     }
+    // endregion
+
+
+    // region AREA: setDrawerButtonOnClickListener
+    public void setDrawerButtonOnClickListener(OnClickListener listener) {
+        drawerButton.setOnClickListener(listener);
+    }
+    // endregion
+
+
+    // region AREA: setDrawerButtonTooltip
+    public void setDrawerButtonTooltip(CharSequence tooltipText) {
+        drawerButton.setTooltipText(tooltipText);
+    }
+    // endregion
+
+
+    public void setToolbarTitle(CharSequence title) {
+        toolbarLayout.setTitle(title);
+    }
+
+    public void setToolbarTitle(CharSequence expandedTitle, CharSequence collapsedTitle) {
+        toolbarLayout.setTitle(expandedTitle, collapsedTitle);
+    }
+
+    public void setToolbarSubtitle(String subtitle) {
+        toolbarLayout.setSubtitle(subtitle);
+    }
+
+    public void setToolbarExpanded(boolean expanded, boolean animate) {
+        toolbarLayout.setExpanded(expanded, animate);
+    }
+
+
+    public void setDrawerButtonIcon(Drawable drawerIcon) {
+        mDrawerIcon = drawerIcon;
+        drawerButton.setImageDrawable(mDrawerIcon);
+        drawerButtonContainer.setVisibility(drawerIcon != null ? View.VISIBLE : View.GONE);
+    }
+
 
     public void setDrawerOpen(Boolean open, Boolean animate) {
         if (open) {
@@ -265,6 +285,12 @@ public class DrawerLayout extends LinearLayout {
         }
 
     }
+
+    // endregion
+    //**********************************************************************************************
+
+
+
 
     //
     // others

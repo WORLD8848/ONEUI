@@ -38,6 +38,51 @@ public class BottomNavigationView extends SamsungBaseTabLayout implements View.O
         mDepthStyle = 1;
     }
 
+
+    // region AREA: addTabCustomButton
+    public void addTabCustomButton(Drawable icon, CustomButtonClickListener listener) {
+        Tab tab = newTab().setIcon(icon).setIsCustomButtonView(true);
+        addTab(tab);
+        ((ViewGroup) getTabView(tab.getPosition())).setOnTouchListener(listener);
+    }
+    // endregion
+
+
+    // region AREA: invalidateTabLayout
+    private void invalidateTabLayout() {
+
+        ArrayList<Float> tabTextWidthList = new ArrayList<>();
+        float tabTextWidthSum = 0.0f;
+
+        for (int tabPosition = 0; tabPosition < getTabCount(); tabPosition++) {
+            Tab tab = getTabAt(tabPosition);
+            ViewGroup tabView = (ViewGroup) getTabView(tabPosition);
+            float width = 0.0f;
+
+            if (tab.getIsCustomButtonView()) {
+                width = tab.getIcon().getIntrinsicWidth();
+                tabView.setBackground(getContext().getDrawable(R.drawable.bottomnavview_button_background));
+            } else
+                width = getTabTextWidth(tab.seslGetTextView());
+
+            tabTextWidthList.add(width);
+            tabTextWidthSum += width;
+            ViewSupport.setPointerIcon(tabView, 1000 /* PointerIcon.TYPE_ARROW */);
+        }
+        if (tabTextWidthSum >= getContext().getResources().getDisplayMetrics().widthPixels) {
+            setTabMode(0);
+        }
+        addTabPaddingValue(tabTextWidthList, tabTextWidthSum);
+    }
+    // endregion
+
+
+    // region AREA: setResumeStatus
+    public void setResumeStatus(boolean isResumed) {
+        mIsResumed = isResumed;
+    }
+    // endregion
+
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
@@ -64,44 +109,17 @@ public class BottomNavigationView extends SamsungBaseTabLayout implements View.O
         }
     }
 
-    public void addTabCustomButton(Drawable icon, CustomButtonClickListener listener) {
-        Tab tab = newTab().setIcon(icon).setIsCustomButtonView(true);
-        addTab(tab);
-        ((ViewGroup) getTabView(tab.getPosition())).setOnTouchListener(listener);
-    }
 
-    public void setResumeStatus(boolean isResumed) {
-        mIsResumed = isResumed;
-    }
 
-    public void updateWidget(Activity activity) {
-        mActivity = activity;
-        invalidateTabLayout();
-    }
 
-    private void invalidateTabLayout() {
-        ArrayList<Float> tabTextWidthList = new ArrayList<>();
-        float tabTextWidthSum = 0.0f;
-        for (int tabPosition = 0; tabPosition < getTabCount(); tabPosition++) {
-            Tab tab = getTabAt(tabPosition);
-            ViewGroup tabView = (ViewGroup) getTabView(tabPosition);
-            float width = 0.0f;
 
-            if (tab.getIsCustomButtonView()) {
-                width = tab.getIcon().getIntrinsicWidth();
-                tabView.setBackground(getContext().getDrawable(R.drawable.bottomnavview_button_background));
-            } else
-                width = getTabTextWidth(tab.seslGetTextView());
 
-            tabTextWidthList.add(width);
-            tabTextWidthSum += width;
-            ViewSupport.setPointerIcon(tabView, 1000 /* PointerIcon.TYPE_ARROW */);
-        }
-        if (tabTextWidthSum >= getContext().getResources().getDisplayMetrics().widthPixels) {
-            setTabMode(0);
-        }
-        addTabPaddingValue(tabTextWidthList, tabTextWidthSum);
-    }
+
+
+
+
+
+
 
     private float getTabTextWidth(TextView textView) {
         return textView.getPaint().measureText(textView.getText().toString());
@@ -197,5 +215,13 @@ public class BottomNavigationView extends SamsungBaseTabLayout implements View.O
     private boolean isVisibleNaviBar(Context context) {
         return Settings.Global.getInt(context.getContentResolver(), "navigationbar_hide_bar_enabled", 0) == 0;
     }
+
+
+    // region AREA: updateWidget
+    public void updateWidget(Activity activity) {
+        mActivity = activity;
+        invalidateTabLayout();
+    }
+    // endregion
 
 }

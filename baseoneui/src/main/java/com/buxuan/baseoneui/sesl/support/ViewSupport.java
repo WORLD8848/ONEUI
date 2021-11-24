@@ -12,9 +12,13 @@ import com.buxuan.baseoneui.layout.CoordinatorLayout;
 import com.buxuan.baseoneui.sesl.utils.ReflectUtils;
 
 public class ViewSupport {
+
+    // region OK: semSetRoundedCorners
     public static void semSetRoundedCorners(View view, int roundMode) {
         ReflectUtils.genericInvokeMethod(view, "semSetRoundedCorners", roundMode);
     }
+    // endregion
+
 
     public static void setHorizontalMargin(ViewGroup viewGroup, int margin) {
         ViewGroup.LayoutParams layoutParams = viewGroup.getLayoutParams();

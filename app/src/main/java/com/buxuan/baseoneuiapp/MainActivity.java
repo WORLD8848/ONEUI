@@ -18,10 +18,12 @@ import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.util.SeslMisc;
 import androidx.fragment.app.Fragment;
@@ -64,6 +66,11 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityResultLauncher<Intent> activityResultLauncher;
 
+    //**********************************************************************************************
+    // region AREA: LifeCycle
+    //**********************************************************************************************
+
+    // region AREA: onCreate
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         new ThemeUtil(this);
@@ -75,26 +82,10 @@ public class MainActivity extends AppCompatActivity {
 
         init();
     }
+    // endregion
 
-    @Override
-    public void attachBaseContext(Context context) {
-        // pre-OneUI
-        if (Build.VERSION.SDK_INT <= 28) {
-            super.attachBaseContext(ThemeUtil.createDarkModeContextWrapper(context));
-        } else
-            super.attachBaseContext(context);
-    }
 
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        // pre-OneUI
-        if (Build.VERSION.SDK_INT <= 28) {
-            Resources res = getResources();
-            res.getConfiguration().setTo(ThemeUtil.createDarkModeConfig(mContext, newConfig));
-        }
-    }
-
+    // region AREA: onPause
     @Override
     public void onPause() {
         super.onPause();
@@ -103,7 +94,10 @@ public class MainActivity extends AppCompatActivity {
             bnvLayout.setResumeStatus(false);
         }
     }
+    // endregion
 
+
+    // region AREA: onResume
     @Override
     protected void onResume() {
         super.onResume();
@@ -112,37 +106,76 @@ public class MainActivity extends AppCompatActivity {
             bnvLayout.setResumeStatus(true);
         }
     }
+    // endregion
 
+
+
+    // endregion
+    //**********************************************************************************************
+
+
+    //**********************************************************************************************
+    // region AREA: Init
+    //**********************************************************************************************
     private void init() {
+
+        // region AREA: ViewSupport.semSetRoundedCorners
+        // TODO: Additional learning required  "[파일] MainActivity,  init(). ViewSupport.semSetRoundedCorners"
+        // MEMO: World8848. 사용하는 이유 추가 확인 필요
         ViewSupport.semSetRoundedCorners(getWindow().getDecorView(), 0);
+        // endregion
 
-        mIsLightTheme = SeslMisc.isLightTheme(mContext);
+        // region AREA: mIsLightTheme
+        mIsLightTheme   = SeslMisc.isLightTheme(mContext);
+        // endregion
 
-        // World8848. Log.d("88888888", "1111111111111" + mIsLightTheme);
+        // region AREA: Layout
+        drawerLayout    = findViewById(R.id.drawer_view);
+        toolbarLayout   = drawerLayout.getToolbarLayout();
+        bnvLayout       = findViewById(R.id.main_samsung_tabs);
+        // endregion
 
-        drawerLayout = findViewById(R.id.drawer_view);
-        toolbarLayout = drawerLayout.getToolbarLayout();
-        bnvLayout = findViewById(R.id.main_samsung_tabs);
+        // region AREA: Tabs
+        sharedPrefName  = "mainactivity_tabs";
+        mTabsTagName    = getResources().getStringArray(R.array.mainactivity_tab_tag);
+        mTabsTitleName  = getResources().getStringArray(R.array.mainactivity_tab_title);
+        mTabsClassName  = getResources().getStringArray(R.array.mainactivity_tab_class);
+        // endregion
 
-        sharedPrefName = "mainactivity_tabs";
-        mTabsTagName = getResources().getStringArray(R.array.mainactivity_tab_tag);
-        mTabsTitleName = getResources().getStringArray(R.array.mainactivity_tab_title);
-        mTabsClassName = getResources().getStringArray(R.array.mainactivity_tab_class);
-
-        mTabsManager = new TabsManager(mContext, sharedPrefName);
+        // region AREA: TabsManager
+        mTabsManager    = new TabsManager(mContext, sharedPrefName);
         mTabsManager.initTabPosition();
+        // endregion
 
+        // region AREA: mFragmentManager
         mFragmentManager = getSupportFragmentManager();
+        // endregion
 
-        //DrawerLayout
+
+        // DrawerLayout                 ////////////////////////////////////////////////////////////
+
+        // region AREA: DrawerButton
         drawerLayout.setDrawerButtonOnClickListener(v -> startActivity(new Intent().setClass(mContext, com.buxuan.baseoneuiapp.AboutActivity.class)));
         drawerLayout.setDrawerButtonTooltip(getText(R.string.app_info));
-        drawerLayout.setButtonBadges(ToolbarLayout.N_BADGE, DrawerLayout.N_BADGE);
+        // endregion
 
+
+        // region AREA: DrawerButton badge
+        drawerLayout.setButtonBadges(ToolbarLayout.N_BADGE, DrawerLayout.N_BADGE);
+        // endregion
+
+
+        // region AREA: ToolbarLayout.getAppBarLayout().addOnOffsetChangedListener
         toolbarLayout.getAppBarLayout().addOnOffsetChangedListener((layout, verticalOffset) -> {
+
+
             int totalScrollRange = layout.getTotalScrollRange();
+
+            // MEMO: World8848. Keyboard height
             int inputMethodWindowVisibleHeight = (int) ReflectUtils.genericInvokeMethod(InputMethodManager.class, mContext.getSystemService(INPUT_METHOD_SERVICE), "getInputMethodWindowVisibleHeight");
+
             LinearLayout nothingLayout = findViewById(R.id.nothing_layout);
+            // MEMO: World8848. Nothing tab이 선택되지 않으면 null, 선택되면 not null
             if (nothingLayout != null) {
                 if (totalScrollRange != 0) {
                     nothingLayout.setTranslationY(((float) (Math.abs(verticalOffset) - totalScrollRange)) / 2.0f);
@@ -151,8 +184,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        // endregion
 
+
+        // region AREA: ToolbarLayout.inflateToolbarMenu
         toolbarLayout.inflateToolbarMenu(R.menu.main);
+        // endregion
+
+
+        // region AREA: toolbarLayout.setOnToolbarMenuItemClickListener
         toolbarLayout.setOnToolbarMenuItemClickListener(item -> {
             switch (item.getItemId()) {
                 case R.id.search:
@@ -191,20 +231,36 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
         });
+        // endregion
 
-        //BottomNavigationLayout
+
+
+        // BottomNavigation             ////////////////////////////////////////////////////////////
+
+        // region AREA: BottomNavigation. Navigation button (Hamburger button)
         Drawable icon = getDrawable(R.drawable.ic_samsung_drawer);
         icon.setColorFilter(getResources().getColor(R.color.sesl_tablayout_text_color), PorterDuff.Mode.SRC_IN);
+        // endregion
+
+
+        // region AREA: BottomNavigationView. Tab
         for (String s : mTabsTitleName) {
             bnvLayout.addTab(bnvLayout.newTab().setText(s));
         }
+        // endregion
+
+
+        // region AREA: BottomNavigationView. click
         bnvLayout.addTabCustomButton(icon, new CustomButtonClickListener(bnvLayout) {
             @Override
             public void onClick(View v) {
                 popupView(v);
             }
         });
+        // endregion
 
+
+        // region AREA: BottomNavigationView. addOnTabSelectedListener
         bnvLayout.addOnTabSelectedListener(new BottomNavigationView.OnTabSelectedListener() {
             public void onTabSelected(BottomNavigationView.Tab tab) {
                 int tabPosition = tab.getPosition();
@@ -218,10 +274,59 @@ public class MainActivity extends AppCompatActivity {
             public void onTabReselected(BottomNavigationView.Tab tab) {
             }
         });
-        bnvLayout.updateWidget(this);
-        setCurrentItem();
-    }
+        // endregion
 
+
+        // region AREA: BottomNavigationView. updateWidget
+        bnvLayout.updateWidget(this);
+        // endregion
+
+
+        setCurrentItem();
+
+    }
+    // endregion
+    //**********************************************************************************************
+    
+
+    // region AREA: attachBaseContext
+    @Override
+    public void attachBaseContext(Context context) {
+        // pre-OneUI
+        if (Build.VERSION.SDK_INT <= 28) {
+            super.attachBaseContext(ThemeUtil.createDarkModeContextWrapper(context));
+        } else
+            super.attachBaseContext(context);
+    }
+    // endregion
+
+
+    // region AREA: onConfigurationChanged
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // pre-OneUI
+        if (Build.VERSION.SDK_INT <= 28) {
+            Resources res = getResources();
+            res.getConfiguration().setTo(ThemeUtil.createDarkModeConfig(mContext, newConfig));
+        }
+    }
+    // endregion
+
+
+    // region AREA: popupView
+    private void popupView(View view) {
+        if (bnvPopupMenu == null) {
+            bnvPopupMenu = new PopupMenu(view);
+            bnvPopupMenu.inflate(R.menu.bnv_menu);
+            bnvPopupMenu.setOnMenuItemClickListener(item -> bnvPopupMenu.setMenuItemBadge(item, bnvPopupMenu.getMenuItemBadge(item) + 1));
+        }
+        bnvPopupMenu.show();
+    }
+    // endregion
+
+
+    // region AREA: setCurrentItem
     private void setCurrentItem() {
         if (bnvLayout.isEnabled()) {
             int tabPosition = mTabsManager.getCurrentTab();
@@ -244,12 +349,15 @@ public class MainActivity extends AppCompatActivity {
                     toolbarLayout.setToolbarMenuItemVisibility(toolbarLayout.getToolbarMenu().findItem(R.id.search), false);
                     ((androidx.drawerlayout.widget.DrawerLayout) drawerLayout.getView(DRAWER_LAYOUT)).setDrawerLockMode(androidx.drawerlayout.widget.DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
                 }
-
             }
         }
     }
+    // endregion
 
+
+    // region AREA: setFragment
     private void setFragment(int tabPosition) {
+
         FragmentTransaction transaction = mFragmentManager.beginTransaction();
         String tabName = mTabsTagName[tabPosition];
         Fragment fragment = mFragmentManager.findFragmentByTag(tabName);
@@ -271,6 +379,8 @@ public class MainActivity extends AppCompatActivity {
         }
         transaction.commit();
     }
+    // endregion
+
 
     // onClick
     public void classicColorPickerDialog(View view) {
@@ -379,12 +489,4 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    private void popupView(View view) {
-        if (bnvPopupMenu == null) {
-            bnvPopupMenu = new PopupMenu(view);
-            bnvPopupMenu.inflate(R.menu.bnv_menu);
-            bnvPopupMenu.setOnMenuItemClickListener(item -> bnvPopupMenu.setMenuItemBadge(item, bnvPopupMenu.getMenuItemBadge(item) + 1));
-        }
-        bnvPopupMenu.show();
-    }
 }

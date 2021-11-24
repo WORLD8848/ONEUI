@@ -32,6 +32,7 @@ public class ThemeUtil {
         activity.setTheme(activity.getResources().getIdentifier("Color_" + stringColor, "style", activity.getPackageName()));
     }
 
+    // region AREA: createDarkModeConfig
     public static Configuration createDarkModeConfig(Context context, Configuration config) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(NAME, Context.MODE_PRIVATE);
         int darkMode = sharedPreferences.getInt(KEY_DARK_MODE, DARK_MODE_AUTO);
@@ -50,7 +51,10 @@ public class ThemeUtil {
         newConfig.uiMode = newUiMode | uiModeNight;
         return newConfig;
     }
+    // endregion
 
+
+    // region AREA: createDarkModeContextWrapper
     public static ContextWrapper createDarkModeContextWrapper(Context context) {
         Configuration newConfig = createDarkModeConfig(context, context.getResources().getConfiguration());
 
@@ -59,32 +63,26 @@ public class ThemeUtil {
         else
             return new ContextWrapper(context);
     }
+    // endregion
 
+
+    // region AREA: getDarkMode
     public static int getDarkMode(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getInt(KEY_DARK_MODE, DARK_MODE_AUTO);
     }
+    // endregion
 
-    public static void setDarkMode(AppCompatActivity activity, int mode) {
-        if (getDarkMode(activity) != mode) {
-            SharedPreferences sharedPreferences = activity.getSharedPreferences(NAME, Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putInt(KEY_DARK_MODE, mode).apply();
-        }
 
-        if (mode != DARK_MODE_AUTO)
-            AppCompatDelegate.setDefaultNightMode(mode == DARK_MODE_ENABLED ? AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);
-        else
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-
-        activity.getDelegate().applyDayNight();
-    }
-
+    // region AREA: getThemeColor
     public static int getThemeColor(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(NAME, Context.MODE_PRIVATE);
         return Color.parseColor(sharedPreferences.getString(KEY_COLOR, "0381fe"));
     }
+    // endregion
 
+
+    // region AREA: setColor
     public static void setColor(AppCompatActivity activity, int red, int green, int blue) {
         red = Math.round(red / 15.0f) * 15;
         green = Math.round(green / 15.0f) * 15;
@@ -104,5 +102,24 @@ public class ThemeUtil {
         int c = Color.HSVToColor(hsv);
         setColor(activity, Color.red(c), Color.green(c), Color.blue(c));
     }
+    // endregion
+
+
+    // region AREA: setDarkMode
+    public static void setDarkMode(AppCompatActivity activity, int mode) {
+        if (getDarkMode(activity) != mode) {
+            SharedPreferences sharedPreferences = activity.getSharedPreferences(NAME, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putInt(KEY_DARK_MODE, mode).apply();
+        }
+
+        if (mode != DARK_MODE_AUTO)
+            AppCompatDelegate.setDefaultNightMode(mode == DARK_MODE_ENABLED ? AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);
+        else
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+
+        activity.getDelegate().applyDayNight();
+    }
+    // endregion
 
 }
