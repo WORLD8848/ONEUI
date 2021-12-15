@@ -7,7 +7,7 @@ import android.view.View;
 
 import androidx.appcompat.util.SeslMisc;
 
-import com.buxuan.baseoneui.R;
+import com.buxuan.baseoneuiapp.R;
 import com.buxuan.baseoneui.layout.PreferenceFragment;
 import com.buxuan.baseoneui.preference.HorizontalRadioPreference;
 import com.buxuan.baseoneui.preference.Preference;

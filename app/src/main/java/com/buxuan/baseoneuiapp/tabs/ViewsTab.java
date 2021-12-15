@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SeslSpinner;
 import androidx.fragment.app.Fragment;
 
-import com.buxuan.baseoneui.R;
+import com.buxuan.baseoneuiapp.R;
 import com.buxuan.baseoneui.view.SeekBar;
 import com.buxuan.baseoneui.view.SwitchBar;
 

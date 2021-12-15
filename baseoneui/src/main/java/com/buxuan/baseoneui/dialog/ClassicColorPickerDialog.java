@@ -1,31 +1,50 @@
 package com.buxuan.baseoneui.dialog;
 
+import static android.view.WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE;
+import static android.view.WindowManager.LayoutParams.TYPE_BASE_APPLICATION;
+
 import android.content.Context;
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import com.buxuan.baseoneui.R;
 import com.buxuan.baseoneui.sesl.colorpicker.SeslColorPicker;
 
 
 public class ClassicColorPickerDialog extends AlertDialog implements DialogInterface.OnClickListener {
-    private static final String TAG = "SeslColorPickerDialog";
+
+    //**********************************************************************************************
+    // region AREA: Variables
+    //**********************************************************************************************
+    private static final String TAG                 = "SeslColorPickerDialog";
     private final SeslColorPicker mColorPicker;
     private final ColorPickerChangedListener mColorPickerChangedListener;
     private Integer mCurrentColor;
+    // endregion
+    //**********************************************************************************************
 
+
+
+    //**********************************************************************************************
+    // region AREA: Constructor
+    //**********************************************************************************************
     public ClassicColorPickerDialog(Context context, ColorPickerChangedListener listener) {
         super(context);
-        this.mCurrentColor = null;
-        Context var3 = this.getContext();
-        View var4 = LayoutInflater.from(var3).inflate(R.layout.sesl_color_picker_dialog, (ViewGroup) null);
+        this.mCurrentColor      = null;
+        Context var3            = this.getContext();
+        View var4               = LayoutInflater.from(var3).inflate(R.layout.sesl_color_picker_dialog, (ViewGroup) null);
         this.setView(var4);
         this.setButton(-1, var3.getString(R.string.sesl_done), this);
-        this.setButton(-2, var3.getString(android.R.string.cancel), this);
-        this.requestWindowFeature(1);
-        this.getWindow().setSoftInputMode(16);
+        // MEMO: World8848. change
+        // MeMO: Origin. this.setButton(-2, var3.getString(android.R.string.cancel), this);
+        this.setButton(-2, var3.getString(R.string.sesl_cancel), this);
+        // MEMO: World8848. change. from '1' to 'TYPE_BASE_APPLICATION'
+        this.requestWindowFeature(TYPE_BASE_APPLICATION);
+        // MEMO: World8848. change. from '16' to 'SOFT_INPUT_ADJUST_RESIZE'
+        this.getWindow().setSoftInputMode(SOFT_INPUT_ADJUST_RESIZE);
         this.mColorPickerChangedListener = listener;
         this.mColorPicker = (SeslColorPicker) var4.findViewById(R.id.sesl_color_picker_content_view);
     }
@@ -50,10 +69,24 @@ public class ClassicColorPickerDialog extends AlertDialog implements DialogInter
         this.mColorPicker.getRecentColorInfo().initRecentColorInfo(recentColors);
         this.mColorPicker.updateRecentColorLayout();
     }
+    // endregion
+    //**********************************************************************************************
 
+
+
+    //**********************************************************************************************
+    // region AREA: Functions
+    //**********************************************************************************************
     public SeslColorPicker getColorPicker() {
         return this.mColorPicker;
     }
+    // endregion
+    //**********************************************************************************************
+
+
+
+
+
 
     public void onAttachedToWindow() {
         super.onAttachedToWindow();

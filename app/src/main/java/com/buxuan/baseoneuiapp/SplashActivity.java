@@ -8,7 +8,7 @@ import android.view.animation.Animation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.buxuan.baseoneui.R;
+import com.buxuan.baseoneuiapp.R;
 import com.buxuan.baseoneui.layout.SplashView;
 import com.buxuan.baseoneui.utils.ThemeUtil;
 

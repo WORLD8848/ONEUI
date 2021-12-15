@@ -1,4 +1,4 @@
-com.buxuan.baseoneui
+com.buxuan.baseoneuiapp
 anim abc_fade_in
 anim abc_fade_out
 anim abc_grow_fade_in_from_bottom
@@ -3043,6 +3043,7 @@ id button2
 id button3
 id buttonPanel
 id cache_measures
+id callMeasure
 id cancel_action
 id cancel_button
 id carryVelocity
@@ -3316,6 +3317,7 @@ id ob3
 id ob_help
 id off
 id on
+id onInterceptTouchReturnSwipe
 id optionbutton
 id optionbutton_counter
 id optionbutton_icon

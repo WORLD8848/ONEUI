@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.buxuan.baseoneui.R;
+import com.buxuan.baseoneuiapp.R;
 import com.buxuan.baseoneui.layout.AboutPage;
 import com.buxuan.baseoneui.utils.ThemeUtil;
 import com.google.android.material.button.MaterialButton;

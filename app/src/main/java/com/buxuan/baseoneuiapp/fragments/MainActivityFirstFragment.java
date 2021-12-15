@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.buxuan.baseoneui.R;
+import com.buxuan.baseoneuiapp.R;
 import com.buxuan.baseoneui.view.TabLayout;
 import com.buxuan.baseoneui.view.ViewPager;
 import com.buxuan.baseoneuiapp.tabs.ViewPagerAdapter;

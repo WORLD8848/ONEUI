@@ -14,23 +14,20 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.util.SeslMisc;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.buxuan.baseoneui.R;
+
 import com.buxuan.baseoneui.dialog.AlertDialog;
 import com.buxuan.baseoneui.dialog.ClassicColorPickerDialog;
 import com.buxuan.baseoneui.dialog.DetailedColorPickerDialog;
@@ -43,16 +40,13 @@ import com.buxuan.baseoneui.utils.CustomButtonClickListener;
 import com.buxuan.baseoneui.utils.ThemeUtil;
 import com.buxuan.baseoneui.view.BottomNavigationView;
 import com.buxuan.baseoneui.view.PopupMenu;
+import com.buxuan.baseoneui.view.Snackbar;
 import com.buxuan.baseoneuiapp.utils.TabsManager;
-import com.google.android.material.snackbar.Snackbar;
+
 
 public class MainActivity extends AppCompatActivity {
     private String[] mTabsTagName;
-    private String[] mTabsTitleName;
     private String[] mTabsClassName;
-
-    private boolean mIsLightTheme;
-    private String sharedPrefName;
 
     private Context mContext;
     private FragmentManager mFragmentManager;
@@ -108,8 +102,6 @@ public class MainActivity extends AppCompatActivity {
     }
     // endregion
 
-
-
     // endregion
     //**********************************************************************************************
 
@@ -126,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
         // endregion
 
         // region AREA: mIsLightTheme
-        mIsLightTheme   = SeslMisc.isLightTheme(mContext);
+        boolean mIsLightTheme = SeslMisc.isLightTheme(mContext);
         // endregion
 
         // region AREA: Layout
@@ -136,9 +128,9 @@ public class MainActivity extends AppCompatActivity {
         // endregion
 
         // region AREA: Tabs
-        sharedPrefName  = "mainactivity_tabs";
+        String sharedPrefName = "mainactivity_tabs";
         mTabsTagName    = getResources().getStringArray(R.array.mainactivity_tab_tag);
-        mTabsTitleName  = getResources().getStringArray(R.array.mainactivity_tab_title);
+        String[] mTabsTitleName = getResources().getStringArray(R.array.mainactivity_tab_title);
         mTabsClassName  = getResources().getStringArray(R.array.mainactivity_tab_class);
         // endregion
 
@@ -383,6 +375,21 @@ public class MainActivity extends AppCompatActivity {
 
 
     // onClick
+
+    // region AREA: standardDialog
+    public void standardDialog(View view) {
+        new AlertDialog.Builder(this)
+                .setTitle("Title")
+                .setMessage("Message")
+                .setNeutralButton(  "Maybe",    null)
+                .setNegativeButton( "No",       null)
+                .setPositiveButton( "Yes",      null)
+                .show();
+    }
+    // endregion
+
+
+
     public void classicColorPickerDialog(View view) {
         ClassicColorPickerDialog mClassicColorPickerDialog;
         SharedPreferences sharedPreferences = getSharedPreferences("ThemeColor", Context.MODE_PRIVATE);
@@ -430,15 +437,7 @@ public class MainActivity extends AppCompatActivity {
         mDetailedColorPickerDialog.show();
     }
 
-    public void standardDialog(View view) {
-        new AlertDialog.Builder(this)
-                .setTitle("Title")
-                .setMessage("Message")
-                .setNeutralButton("Maybe", null)
-                .setNegativeButton("No", null)
-                .setPositiveButton("Yes", null)
-                .show();
-    }
+
 
     public void singleChoiceDialog(View view) {
         CharSequence[] charSequences = {"Choice1", "Choice2", "Choice3"};

@@ -36,6 +36,7 @@
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden" />
         <activity
             android:name="com.buxuan.baseoneuiapp.SplashActivity"
+            android:exported="true"
             android:theme="@style/OneUI4SplashTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -45,4 +46,4 @@
         </activity>
     </application>
 
-</manifest>
+</manifest> <!-- com.buxuan.baseoneuiapp -->

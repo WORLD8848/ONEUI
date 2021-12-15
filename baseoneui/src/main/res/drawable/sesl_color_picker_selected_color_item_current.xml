@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
+    <!-- MEMO: World8848. '현재 색' Text 옆의 색상 이미지 부분    -->
     <corners
         android:bottomLeftRadius="@dimen/sesl_color_picker_selected_color_item_radius"
         android:topLeftRadius="@dimen/sesl_color_picker_selected_color_item_radius" />
@@ -8,3 +9,4 @@
         android:width="@dimen/sesl_color_picker_selected_color_item_width"
         android:height="@dimen/sesl_color_picker_selected_color_item_height" />
 </shape>
+

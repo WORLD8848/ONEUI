@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../layout/custom_preview.xml" value="0.5651041666666666" />
         <entry key="app/src/main/res/layout/activity_about.xml" value="0.37817028985507245" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.35643115942028986" />
         <entry key="app/src/main/res/layout/content_drawer.xml" value="0.3401268115942029" />
@@ -11,6 +12,7 @@
         <entry key="app/src/main/res/layout/fragment_nothing_tab.xml" value="0.365036231884058" />
         <entry key="app/src/main/res/menu/bnv_menu.xml" value="0.5385416666666667" />
         <entry key="app/src/main/res/menu/main.xml" value="0.29583333333333334" />
+        <entry key="app/src/main/res/menu/select_mode_menu.xml" value="0.29583333333333334" />
         <entry key="baseoneui/src/main/res/drawable/ic_samsung_accessibility.xml" value="0.2675" />
         <entry key="baseoneui/src/main/res/drawable/ic_samsung_close.xml" value="0.273" />
         <entry key="baseoneui/src/main/res/drawable/ic_samsung_drawer.xml" value="0.273" />
@@ -18,11 +20,26 @@
         <entry key="baseoneui/src/main/res/drawable/ic_samsung_voice_2.xml" value="0.22" />
         <entry key="baseoneui/src/main/res/drawable/sesl4_tablayout_subtab_indicator_background.xml" value="0.273" />
         <entry key="baseoneui/src/main/res/drawable/sesl4_tablayout_subtab_indicator_shape.xml" value="0.273" />
+        <entry key="baseoneui/src/main/res/drawable/sesl_color_picker_opacity_seekbar.xml" value="0.2915" />
+        <entry key="baseoneui/src/main/res/drawable/sesl_color_picker_seekbar_cursor.xml" value="0.2915" />
+        <entry key="baseoneui/src/main/res/drawable/sesl_color_picker_selected_color_item_current.xml" value="0.2915" />
+        <entry key="baseoneui/src/main/res/drawable/sesl_color_picker_selected_color_item_new.xml" value="0.2915" />
+        <entry key="baseoneui/src/main/res/drawable/sesl_color_picker_used_color_item_slot.xml" value="0.2915" />
+        <entry key="baseoneui/src/main/res/drawable/sesl_color_swatch_view_cursor.xml" value="0.3685" />
+        <entry key="baseoneui/src/main/res/drawable/sesl_dialog_btn_show_button_shapes_background.xml" value="0.2915" />
+        <entry key="baseoneui/src/main/res/drawable/sesl_dialog_btn_show_button_shapes_borderless.xml" value="0.2915" />
+        <entry key="baseoneui/src/main/res/drawable/sesl_dialog_btn_show_button_shapes_shape_mask.xml" value="0.2915" />
+        <entry key="baseoneui/src/main/res/layout/color_picker_preference_widget.xml" value="0.411231884057971" />
         <entry key="baseoneui/src/main/res/layout/navigation_button_badge_layout.xml" value="0.9" />
         <entry key="baseoneui/src/main/res/layout/samsung_appbar_toolbarlayout.xml" value="0.29583333333333334" />
         <entry key="baseoneui/src/main/res/layout/samsung_toolbarlayout_footer.xml" value="0.37817028985507245" />
         <entry key="baseoneui/src/main/res/layout/samsung_toolbarlayout_main_toolbar.xml" value="0.29583333333333334" />
         <entry key="baseoneui/src/main/res/layout/samsung_toolbarlayout_search_toolbar.xml" value="0.37817028985507245" />
+        <entry key="baseoneui/src/main/res/layout/sesl_alert_dialog.xml" value="0.5385416666666667" />
+        <entry key="baseoneui/src/main/res/layout/sesl_color_picker_dialog.xml" value="0.3365036231884058" />
+        <entry key="baseoneui/src/main/res/layout/sesl_color_picker_layout.xml" value="0.2619047619047619" />
+        <entry key="baseoneui/src/main/res/layout/sesl_color_picker_selected_color_group.xml" value="0.5385416666666667" />
+        <entry key="baseoneui/src/main/res/layout/sesl_color_picker_used_color_group.xml" value="0.5385416666666667" />
       </map>
     </option>
   </component>

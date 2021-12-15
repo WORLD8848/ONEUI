@@ -56,14 +56,18 @@ import java.util.ArrayList;
 
 @RemoteViews.RemoteView
 public class ProgressBar extends View {
-    public static final int MODE_DUAL_COLOR = 2;
-    public static final int MODE_EXPAND = 5;
-    public static final int MODE_EXPAND_VERTICAL = 6;
-    public static final int MODE_SPLIT = 4;
-    public static final int MODE_VERTICAL = 3;
-    public static final int MODE_WARNING = 1;
+
+    // region AREA: ProgressBar Mode
+    public static final int MODE_DUAL_COLOR         = 2;
+    public static final int MODE_EXPAND             = 5;
+    public static final int MODE_EXPAND_VERTICAL    = 6;
+    public static final int MODE_SPLIT              = 4;
+    public static final int MODE_VERTICAL           = 3;
+    public static final int MODE_WARNING            = 1;
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
-    protected static final int MODE_STANDARD = 0;
+    protected static final int MODE_STANDARD        = 0;
+    // endregion
+
     private static final int MAX_LEVEL = 10000;
     private static final int PROGRESS_ANIM_DURATION = 80;
     private static final DecelerateInterpolator PROGRESS_ANIM_INTERPOLATOR = new DecelerateInterpolator();
@@ -881,9 +885,12 @@ public class ProgressBar extends View {
         return this.mIndeterminate ? 0 : this.mProgress;
     }
 
-    public synchronized void setProgress(int i) {
-        setProgressInternal(i, false, false);
+    // region AREA: setProgress
+    public synchronized void setProgress(int progress) {
+        setProgressInternal(progress, false, false);
     }
+    // endregion
+
 
     @Nullable
     public ColorStateList getProgressBackgroundTintList() {
@@ -1321,9 +1328,12 @@ public class ProgressBar extends View {
         }
     }
 
+    // region AREA:
     public void setProgress(int i, boolean z) {
         setProgressInternal(i, false, z);
     }
+    // endregion
+
 
     public void setProgressDrawableTiled(Drawable drawable) {
         if (drawable != null) {
@@ -1331,6 +1341,7 @@ public class ProgressBar extends View {
         }
         setProgressDrawable(drawable);
     }
+
 
     /* access modifiers changed from: package-private */
     public synchronized boolean setProgressInternal(int i, boolean z, boolean z2) {

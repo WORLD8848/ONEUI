@@ -20,7 +20,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.util.SeslRoundedCorner;
 import androidx.fragment.app.Fragment;
 
-import com.buxuan.baseoneui.R;
 import com.buxuan.baseoneui.layout.DrawerLayout;
 import com.buxuan.baseoneui.layout.ToolbarLayout;
 import com.buxuan.baseoneui.sesl.recyclerview.SeslLinearLayoutManager;
@@ -28,6 +27,7 @@ import com.buxuan.baseoneui.view.BottomNavigationView;
 import com.buxuan.baseoneui.view.RecyclerView;
 import com.buxuan.baseoneui.view.TabLayout;
 import com.buxuan.baseoneui.view.ViewPager;
+import com.buxuan.baseoneuiapp.R;
 
 import java.util.HashMap;
 

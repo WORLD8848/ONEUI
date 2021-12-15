@@ -28,10 +28,21 @@ import com.buxuan.baseoneui.R;
 import com.buxuan.baseoneui.sesl.dialog.SamsungAlertController;
 
 public class AlertDialog extends AppCompatDialog implements DialogInterface {
+
+    //**********************************************************************************************
+    // region AREA: Variables
+    //**********************************************************************************************
     static final int LAYOUT_HINT_NONE = 0;
     static final int LAYOUT_HINT_SIDE = 1;
     final SamsungAlertController mAlert;
+    // endregion
+    //**********************************************************************************************
 
+
+
+    //**********************************************************************************************
+    // region AREA: Constructor
+    //**********************************************************************************************
     protected AlertDialog(@NonNull Context context) {
         this(context, 0);
     }
@@ -46,7 +57,23 @@ public class AlertDialog extends AppCompatDialog implements DialogInterface {
         setCancelable(cancelable);
         setOnCancelListener(cancelListener);
     }
+    // endregion
+    //**********************************************************************************************
 
+
+
+    //**********************************************************************************************
+    // region AREA: Functions
+    //**********************************************************************************************
+
+    // region AREA: getButton
+    public Button getButton(int whichButton) {
+        return mAlert.getButton(whichButton);
+    }
+    // endregion
+
+
+    // region AREA: resolveDialogTheme
     static int resolveDialogTheme(@NonNull Context context, @StyleRes int resid) {
         // Check to see if this resourceId has a valid package ID.
         if (((resid >>> 24) & 0x000000ff) >= 0x00000001) {   // start of real resource IDs.
@@ -57,10 +84,35 @@ public class AlertDialog extends AppCompatDialog implements DialogInterface {
             return outValue.resourceId;
         }
     }
+    // endregion
 
-    public Button getButton(int whichButton) {
-        return mAlert.getButton(whichButton);
+
+    // region AREA: setButton
+    public void setButton(int whichButton, CharSequence text, Message msg) {
+        mAlert.setButton(whichButton, text, null, msg, null);
     }
+
+    public void setButton(int whichButton, CharSequence text, OnClickListener listener) {
+        mAlert.setButton(whichButton, text, listener, null, null);
+    }
+
+    public void setButton(int whichButton, CharSequence text, Drawable icon, OnClickListener listener) {
+        mAlert.setButton(whichButton, text, listener, null, icon);
+    }
+    // endregion
+
+
+    // region AREA: setView
+    public void setView(View view) {
+        mAlert.setView(view);
+    }
+    // endregion
+
+    // endregion
+    //**********************************************************************************************
+
+
+
 
     public ListView getListView() {
         return mAlert.getListView();
@@ -80,9 +132,8 @@ public class AlertDialog extends AppCompatDialog implements DialogInterface {
         mAlert.setMessage(message);
     }
 
-    public void setView(View view) {
-        mAlert.setView(view);
-    }
+
+
 
     public void setView(View view, int viewSpacingLeft, int viewSpacingTop, int viewSpacingRight, int viewSpacingBottom) {
         mAlert.setView(view, viewSpacingLeft, viewSpacingTop, viewSpacingRight, viewSpacingBottom);
@@ -92,17 +143,8 @@ public class AlertDialog extends AppCompatDialog implements DialogInterface {
         mAlert.setButtonPanelLayoutHint(layoutHint);
     }
 
-    public void setButton(int whichButton, CharSequence text, Message msg) {
-        mAlert.setButton(whichButton, text, null, msg, null);
-    }
 
-    public void setButton(int whichButton, CharSequence text, OnClickListener listener) {
-        mAlert.setButton(whichButton, text, listener, null, null);
-    }
 
-    public void setButton(int whichButton, CharSequence text, Drawable icon, OnClickListener listener) {
-        mAlert.setButton(whichButton, text, listener, null, icon);
-    }
 
     public void setIcon(int resId) {
         mAlert.setIcon(resId);
@@ -140,10 +182,15 @@ public class AlertDialog extends AppCompatDialog implements DialogInterface {
         return super.onKeyUp(keyCode, event);
     }
 
+
+    //**********************************************************************************************
+    // region AREA: Class Builder
+    //**********************************************************************************************
     public static class Builder {
         private final SamsungAlertController.AlertParams P;
         private final int mTheme;
 
+        // region AREA: Builder
         public Builder(@NonNull Context context) {
             this(context, resolveDialogTheme(context, 0));
         }
@@ -152,27 +199,15 @@ public class AlertDialog extends AppCompatDialog implements DialogInterface {
             P = new SamsungAlertController.AlertParams(new ContextThemeWrapper(context, resolveDialogTheme(context, themeResId)));
             mTheme = themeResId;
         }
+        // endregion
 
         @NonNull
         public Context getContext() {
             return P.mContext;
         }
 
-        public Builder setTitle(@StringRes int titleId) {
-            P.mTitle = P.mContext.getText(titleId);
-            return this;
-        }
 
-        public Builder setTitle(@Nullable CharSequence title) {
-            P.mTitle = title;
-            return this;
-        }
-
-        public Builder setCustomTitle(@Nullable View customTitleView) {
-            P.mCustomTitleView = customTitleView;
-            return this;
-        }
-
+        // region AREA: setMessage
         public Builder setMessage(@StringRes int messageId) {
             P.mMessage = P.mContext.getText(messageId);
             return this;
@@ -182,6 +217,76 @@ public class AlertDialog extends AppCompatDialog implements DialogInterface {
             P.mMessage = message;
             return this;
         }
+        // endregion
+
+
+        // region AREA: setNegativeButton
+        public Builder setNegativeButton(@StringRes int textId, final OnClickListener listener) {
+            P.mNegativeButtonText = P.mContext.getText(textId);
+            P.mNegativeButtonListener = listener;
+            return this;
+        }
+
+        public Builder setNegativeButton(CharSequence text, final OnClickListener listener) {
+            P.mNegativeButtonText = text;
+            P.mNegativeButtonListener = listener;
+            return this;
+        }
+        // endregion
+
+
+        // region AREA: setNeutralButton
+        public Builder setNeutralButton(@StringRes int textId, final OnClickListener listener) {
+            P.mNeutralButtonText = P.mContext.getText(textId);
+            P.mNeutralButtonListener = listener;
+            return this;
+        }
+
+        public Builder setNeutralButton(CharSequence text, final OnClickListener listener) {
+            P.mNeutralButtonText = text;
+            P.mNeutralButtonListener = listener;
+            return this;
+        }
+        // endregion
+
+
+        // region AREA: setPositiveButton
+        public Builder setPositiveButton(@StringRes int textId, final OnClickListener listener) {
+            P.mPositiveButtonText = P.mContext.getText(textId);
+            P.mPositiveButtonListener = listener;
+            return this;
+        }
+
+
+        public Builder setPositiveButton(CharSequence text, final OnClickListener listener) {
+            P.mPositiveButtonText = text;
+            P.mPositiveButtonListener = listener;
+            return this;
+        }
+        // endregion
+
+
+        // region AREA: setTitle
+        public Builder setTitle(@StringRes int titleId) {
+            P.mTitle = P.mContext.getText(titleId);
+            return this;
+        }
+
+        public Builder setTitle(@Nullable CharSequence title) {
+            P.mTitle = title;
+            return this;
+        }
+        // endregion
+
+
+        public Builder setCustomTitle(@Nullable View customTitleView) {
+            P.mCustomTitleView = customTitleView;
+            return this;
+        }
+
+
+
+
 
         public Builder setIcon(@DrawableRes int iconId) {
             P.mIconId = iconId;
@@ -200,51 +305,26 @@ public class AlertDialog extends AppCompatDialog implements DialogInterface {
             return this;
         }
 
-        public Builder setPositiveButton(@StringRes int textId, final OnClickListener listener) {
-            P.mPositiveButtonText = P.mContext.getText(textId);
-            P.mPositiveButtonListener = listener;
-            return this;
-        }
 
-        public Builder setPositiveButton(CharSequence text, final OnClickListener listener) {
-            P.mPositiveButtonText = text;
-            P.mPositiveButtonListener = listener;
-            return this;
-        }
+
+
 
         public Builder setPositiveButtonIcon(Drawable icon) {
             P.mPositiveButtonIcon = icon;
             return this;
         }
 
-        public Builder setNegativeButton(@StringRes int textId, final OnClickListener listener) {
-            P.mNegativeButtonText = P.mContext.getText(textId);
-            P.mNegativeButtonListener = listener;
-            return this;
-        }
 
-        public Builder setNegativeButton(CharSequence text, final OnClickListener listener) {
-            P.mNegativeButtonText = text;
-            P.mNegativeButtonListener = listener;
-            return this;
-        }
+
 
         public Builder setNegativeButtonIcon(Drawable icon) {
             P.mNegativeButtonIcon = icon;
             return this;
         }
 
-        public Builder setNeutralButton(@StringRes int textId, final OnClickListener listener) {
-            P.mNeutralButtonText = P.mContext.getText(textId);
-            P.mNeutralButtonListener = listener;
-            return this;
-        }
 
-        public Builder setNeutralButton(CharSequence text, final OnClickListener listener) {
-            P.mNeutralButtonText = text;
-            P.mNeutralButtonListener = listener;
-            return this;
-        }
+
+
 
         public Builder setNeutralButtonIcon(Drawable icon) {
             P.mNeutralButtonIcon = icon;
@@ -421,5 +501,9 @@ public class AlertDialog extends AppCompatDialog implements DialogInterface {
             return dialog;
         }
     }
+    // endregion
+    //**********************************************************************************************
+
+
 
 }

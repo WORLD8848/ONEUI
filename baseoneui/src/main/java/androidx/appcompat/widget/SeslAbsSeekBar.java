@@ -28,6 +28,7 @@ import android.view.ViewConfiguration;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.view.animation.LinearInterpolator;
 import android.widget.AbsSeekBar;
+import android.widget.TextView;
 
 import androidx.appcompat.animation.SeslAnimationUtils;
 import androidx.appcompat.graphics.drawable.DrawableWrapper;
@@ -313,9 +314,13 @@ public abstract class SeslAbsSeekBar extends ProgressBar {
         this.applyThumbTint();
     }
 
+    // region AREA: applyThumbTint
     public final void applyThumbTint() {
+
         if (this.mThumb != null && (this.mHasThumbTint || this.mHasThumbTintMode)) {
+
             this.mThumb = this.mThumb.mutate();
+
             if (this.mHasThumbTint) {
                 DrawableCompat.setTintList(this.mThumb, this.mThumbTintList);
             }
@@ -330,6 +335,8 @@ public abstract class SeslAbsSeekBar extends ProgressBar {
         }
 
     }
+    // endregion
+
 
     public final void applyTickMarkTint() {
         if (this.mTickMark != null && (this.mHasTickMarkTint || this.mHasTickMarkTintMode)) {
@@ -665,22 +672,32 @@ public abstract class SeslAbsSeekBar extends ProgressBar {
         return var1;
     }
 
-    public void setProgress(int var1) {
-        synchronized (this) {
-        }
-        int var2 = var1;
+    // region AREA: setProgress
+    /**
+     * Progress를 할당한다.
+     * @param progress int
+     */
+    public void setProgress(int progress) {
+
+        synchronized (this) {}
+
+        int var2 = progress;
 
         try {
+
             if (this.mIsSeamless) {
-                var2 = Math.round((float) var1 * 1000.0F);
+                var2 = Math.round((float) progress * 1000.0F);
             }
 
             super.setProgress(var2);
+
         } finally {
             ;
         }
 
     }
+    // endregion
+
 
     public boolean getSplitTrack() {
         return this.mSplitTrack;
@@ -695,45 +712,103 @@ public abstract class SeslAbsSeekBar extends ProgressBar {
         return this.mThumb;
     }
 
-    public void setThumb(Drawable var1) {
-        Drawable var2 = this.mThumb;
-        boolean var3;
-        if (var2 != null && var1 != var2) {
-            var2.setCallback((Drawable.Callback) null);
-            var3 = true;
+
+    // region AREA: setThumb
+    /**
+     * drawableThumb을 새로운 Thumb로 할당한다.
+     * Thumb을 Progress meter의 맨 끝에 위치시킨다.
+     * @param drawableThumb Drawable
+     */
+    public void setThumb(Drawable drawableThumb) {
+
+        Drawable drawableThumbBasic = this.mThumb;
+
+        // region AREA: 새로운 Thumb drawable을 적용할 것인지 checking
+        boolean newDrawableThumbUse;
+
+        if (drawableThumbBasic != null && drawableThumb != drawableThumbBasic) {
+            drawableThumbBasic.setCallback((Drawable.Callback) null);
+            newDrawableThumbUse = true;
         } else {
-            var3 = false;
+            newDrawableThumbUse = false;
         }
+        // endregion
 
-        if (var1 != null) {
-            var1.setCallback(this);
+        // region AREA: 새로운 Thumb drawable이 존재한다면 Callback과 LayoutDirection을 할당하고 requestLayout을 실행한다.
+        if (drawableThumb != null) {
+
+            // region AREA: Callback 할당
+            drawableThumb.setCallback(this);
+            // endregion
+
+            // region AREA: LayoutDirection 할당
             if (this.canResolveLayoutDirection()) {
-                DrawableCompat.setLayoutDirection(var1, ViewCompat.getLayoutDirection(this));
+                DrawableCompat.setLayoutDirection(drawableThumb, ViewCompat.getLayoutDirection(this));
             }
+            // endregion
 
-            int var4 = super.mCurrentMode;
-            if (var4 != 3 && var4 != 6) {
-                this.mThumbOffset = var1.getIntrinsicWidth() / 2;
+            // region AREA: View. requestLayout() 샐행, 관련 변수 할당
+            /*
+             * MEMO: World8848. ProgressBar. mode
+             * 0 : MODE_STANDARD
+             * 1 : MODE_WARNING
+             * 2 : MODE_DUAL_COLOR
+             * 3 : MODE_VERTICAL
+             * 4 : MODE_SPLIT
+             * 5 : MODE_EXPAND
+             * 6 : MODE_EXPAND_VERTICAL
+             */
+            int superCurrentMode = super.mCurrentMode;
+
+            if (superCurrentMode != 3 && superCurrentMode != 6) {
+                this.mThumbOffset = drawableThumb.getIntrinsicWidth() / 2;
             } else {
-                this.mThumbOffset = var1.getIntrinsicHeight() / 2;
+                this.mThumbOffset = drawableThumb.getIntrinsicHeight() / 2;
             }
 
-            if (var3 && (var1.getIntrinsicWidth() != this.mThumb.getIntrinsicWidth() || var1.getIntrinsicHeight() != this.mThumb.getIntrinsicHeight())) {
-                this.requestLayout();
+            /*
+             *  MEMO: World8848. Origin
+             *  if (newDrawableThumbUse && (drawableThumb.getIntrinsicWidth() != this.mThumb.getIntrinsicWidth() || drawableThumb.getIntrinsicHeight() != this.mThumb.getIntrinsicHeight())) {
+             *      this.requestLayout();
+             *  }
+             */
+            if (this.mThumb != null){
+                if (newDrawableThumbUse && (drawableThumb.getIntrinsicWidth() != this.mThumb.getIntrinsicWidth() || drawableThumb.getIntrinsicHeight() != this.mThumb.getIntrinsicHeight())) {
+                    this.requestLayout();
+                }
+            } else {
+                if (newDrawableThumbUse){
+                    this.requestLayout();
+                }
             }
+            // endregion
         }
+        // endregion
 
-        this.mThumb = var1;
+        // region AREA: 새로운 Thumb drawable을 mThumb에 할당
+        this.mThumb             = drawableThumb;
+        // endregion
+
+        // region AREA: Thumb에 Tint 적용
         this.applyThumbTint();
+        // endregion
+
+        // region AREA: invalidate
         this.invalidate();
-        if (var3) {
+        // endregion
+
+        // region AREA: 새로운 Thumb 위치 추적, state 업데이트
+        if (newDrawableThumbUse) {
             this.updateThumbAndTrackPos(this.getWidth(), this.getHeight());
-            if (var1 != null && var1.isStateful()) {
-                var1.setState(this.getDrawableState());
+            if (drawableThumb != null && drawableThumb.isStateful()) {
+                drawableThumb.setState(this.getDrawableState());
             }
         }
+        // endregion
 
     }
+    // endregion
+
 
     public Rect getThumbBounds() {
         Drawable var1 = this.mThumb;
@@ -1538,9 +1613,17 @@ public abstract class SeslAbsSeekBar extends ProgressBar {
         }
     }
 
-    public void setProgressDrawable(Drawable var1) {
-        super.setProgressDrawable(var1);
+
+    // region AREA: setProgressDrawable
+    /**
+     * Progress Mode에서 진행 표시줄을 그리는 데 사용되는 Drawable Resource를 할당한다.
+     * @param progressDrawable Drawable
+     */
+    public void setProgressDrawable(Drawable progressDrawable) {
+        super.setProgressDrawable(progressDrawable);
     }
+    // endregion
+
 
     public boolean setProgressInternal(int var1, boolean var2, boolean var3) {
         var2 = super.setProgressInternal(var1, var2, var3);
@@ -1923,8 +2006,12 @@ public abstract class SeslAbsSeekBar extends ProgressBar {
         }
     }
 
+    // region AREA: updateThumbAndTrackPos
     public final void updateThumbAndTrackPos(int var1, int var2) {
+
         int var3 = super.mCurrentMode;
+
+        // MEMO: World8848. 가로 모드인 경우
         if (var3 != 3 && var3 != 6) {
             var3 = var2 - this.getPaddingTop() - this.getPaddingBottom();
             Drawable var4 = this.getCurrentDrawable();
@@ -1962,6 +2049,8 @@ public abstract class SeslAbsSeekBar extends ProgressBar {
             this.updateThumbAndTrackPosInVertical(var1, var2);
         }
     }
+    // endregion
+
 
     public final void updateThumbAndTrackPosInVertical(int var1, int var2) {
         int var3 = var1 - this.getPaddingLeft() - this.getPaddingRight();

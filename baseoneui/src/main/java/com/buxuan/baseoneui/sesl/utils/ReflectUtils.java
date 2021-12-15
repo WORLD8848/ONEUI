@@ -1,5 +1,6 @@
 package com.buxuan.baseoneui.sesl.utils;
 
+import android.annotation.SuppressLint;
 import android.util.Log;
 
 import java.lang.reflect.Constructor;
@@ -73,7 +74,7 @@ public class ReflectUtils {
     }
 
 
-    // region OK: genericInvokeMethod
+    // region Area: genericInvokeMethod
     public static Object genericInvokeMethod(String className, String methodName, Object... params) {
         int paramCount = params.length;
         Method method;
@@ -113,9 +114,11 @@ public class ReflectUtils {
         return requiredObj;
     }
 
+    @SuppressLint("LongLogTag")
     public static Object genericInvokeMethod(Object obj, String methodName, Object... params) {
 
         int paramCount = params.length;
+
         Method method;
         Object requiredObj = null;
         Class<?>[] classArray = new Class<?>[paramCount];
@@ -132,6 +135,7 @@ public class ReflectUtils {
         }
         try {
             method = obj.getClass().getDeclaredMethod(methodName, classArray);
+
             method.setAccessible(true);
             requiredObj = method.invoke(obj, params);
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.buxuan.baseoneui">
+    package="com.buxuan.baseoneuiapp">
 
     <application
         android:allowBackup="true"
@@ -19,16 +19,17 @@
             android:name="com.samsung.android.icon_container.feature_appicon"
             android:value="ADAPTIVEICON_SHADOW" />
 
-        <activity android:name="com.buxuan.baseoneuiapp.SwitchBarActivity" />
+        <activity android:name=".SwitchBarActivity" />
         <activity
-            android:name="com.buxuan.baseoneuiapp.AboutActivity"
+            android:name=".AboutActivity"
             android:theme="@style/OneUI4AboutTheme" />
         <activity
-            android:name="com.buxuan.baseoneuiapp.MainActivity"
+            android:name=".MainActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden" />
         <activity
-            android:name="com.buxuan.baseoneuiapp.SplashActivity"
-            android:theme="@style/OneUI4SplashTheme">
+            android:name=".SplashActivity"
+            android:theme="@style/OneUI4SplashTheme"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -38,3 +39,5 @@
     </application>
 
 </manifest>
+
+<!--    com.buxuan.baseoneuiapp-->
