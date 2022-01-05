@@ -13,6 +13,8 @@ import com.buxuan.baseoneui.sesl.tabs.SamsungBaseTabLayout;
 
 public class TabLayout extends SamsungBaseTabLayout {
 
+
+    // region AREA: Constructor                                     ////////////////////////////////
     public TabLayout(Context context, AttributeSet attrs) {
         this(context, attrs, R.attr.tabLayoutStyle);
     }
@@ -21,17 +23,34 @@ public class TabLayout extends SamsungBaseTabLayout {
         super(context, attrs, defStyleAttr);
         mDepthStyle = 2;
     }
+    // endregion                                                    ////////////////////////////////
 
+
+
+    // region AREA: Public Methods                                  ////////////////////////////////
+
+    // region AREA: onConfigurationChanged
+    /**
+     * SamsungBaseTabLayout의 onConfigurationChanged() 호출, updateWidget()을 호출한다.
+     * @param newConfig Configuration
+     */
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         updateWidget();
     }
+    // endregion
 
+
+    // region AREA: setEnabled
+    /**
+     * setEnabled
+     * TabView 활성화를 설정한다. false이면 투명도가 60%로 낮아진다.
+     * @param enabled boolean
+     */
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
-
         for (int tabPosition = 0; tabPosition < getTabCount(); tabPosition++) {
             ViewGroup tabView = (ViewGroup) getTabView(tabPosition);
             if (tabView != null) {
@@ -40,10 +59,22 @@ public class TabLayout extends SamsungBaseTabLayout {
             }
         }
     }
+    // endregion
 
+
+    // region AREA: updateWidget
+    /**
+     * updateWidget
+     * Tab별 TextView의 길이를 구하고 TabLayout의 Padding을 할당하여 setViewDimens()를 호출한다.
+     * 또한 setSelectedTabScrollPosition을 호출하여 ScrollPosition을 설정한다.
+     */
     public void updateWidget() {
+
+        // region AREA: Tab별 text 길이 구함
         Float[] tabCount = new Float[getTabCount()];
+
         float f = 0.0f;
+
         for (int i = 0; i < getTabCount(); i++) {
             Tab tab = getTabAt(i);
             if (tab != null) {
@@ -51,16 +82,66 @@ public class TabLayout extends SamsungBaseTabLayout {
                 f += tabCount[i];
             }
         }
+        // endregion
+
+        // region AREA: TabLayout padding 할당
         float tabLayoutPadding = (float) getResources().getDimensionPixelSize(R.dimen.tab_layout_padding);
         ((MarginLayoutParams) getLayoutParams()).setMargins((int) tabLayoutPadding, 0, (int) tabLayoutPadding, 0);
+        // endregion
+
+        // region AREA: View Dimens
         setViewDimens(tabCount, f);
+        // endregion
+
+
+        // region AREA: Selected Tab scroll position을 설정한다. LTL vs. RTL
         post(new Runnable() {
             public final void run() {
                 setSelectedTabScrollPosition();
             }
         });
+        // endregion
     }
+    // endregion
 
+    // endregion                                                    ////////////////////////////////
+
+
+
+    // region AREA: Private Methods                                 ////////////////////////////////
+
+    // region AREA: getDisplayWidth
+    /**
+     * getDisplayWidth
+     * 디스플레이에서 사용 가능한 크기의 절대 넓이(픽셀)를 반환한다.
+     * @param context Context
+     * @return int
+     */
+    private int getDisplayWidth(Context context) {
+        return context.getResources().getDisplayMetrics().widthPixels;
+    }
+    // endregion
+
+
+    // region AREA: getTabTextWidth
+    /**
+     * TextView의 text를 문자열로 변환한 후 전체 문자열 길이(float 자료)를 반환한다.
+     * @param textView TextView
+     * @return float
+     */
+    private float getTabTextWidth(TextView textView) {
+        return textView.getPaint().measureText(textView.getText().toString());
+    }
+    // endregion
+
+
+    // region AREA: getTabView
+    /**
+     * getTabView
+     * Position에 있는 TabView를 반환한다.
+     * @param position int
+     * @return TabView
+     */
     private View getTabView(int position) {
         ViewGroup viewGroup = getTabViewGroup();
         if (viewGroup == null || viewGroup.getChildCount() <= position) {
@@ -68,26 +149,40 @@ public class TabLayout extends SamsungBaseTabLayout {
         }
         return viewGroup.getChildAt(position);
     }
+    // endregion
 
+
+    // region AREA: getTabViewGroup
+    /** getTabViewGroup
+     * TabViewGroup를 반환한다.
+     * @return ViewGroup
+     */
     private ViewGroup getTabViewGroup() {
         if (getChildCount() <= 0) {
             return null;
         }
         View view = getChildAt(0);
-        if (view == null || !(view instanceof ViewGroup)) {
+        if (!(view instanceof ViewGroup)) {
             return null;
         }
         return (ViewGroup) view;
     }
+    // endregion
 
+
+    // region AREA: setSelectedTabScrollPosition
+    /**
+     * setSelectedTabScrollPosition
+     * Selected Tab의 ScrollPosition을 설정한다.
+     * View.LAYOUT_DIRECTION_RTL인 경우는 Position을 변경 처리한다.
+     */
     private void setSelectedTabScrollPosition() {
         setScrollPosition(getSelectedTabPosition(), 0.0f, true);
     }
+    // endregion
 
-    private float getTabTextWidth(TextView textView) {
-        return textView.getPaint().measureText(textView.getText().toString());
-    }
 
+    // region AREA: setViewDimens
     // kang from com.samsung.android.messaging
     private void setViewDimens(Float[] fArr, float f) {
         int i;
@@ -161,8 +256,9 @@ public class TabLayout extends SamsungBaseTabLayout {
             requestLayout();
         }
     }
+    // endregion
 
-    private int getDisplayWidth(Context context) {
-        return context.getResources().getDisplayMetrics().widthPixels;
-    }
+    // endregion                                                    ////////////////////////////////
+
+
 }

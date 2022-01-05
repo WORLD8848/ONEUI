@@ -1,5 +1,7 @@
 package com.buxuan.baseoneui.dialog;
 
+import static android.view.WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
+
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Dialog;
@@ -31,8 +33,15 @@ import com.buxuan.baseoneui.sesl.colorpicker.util.SpenSettingUtilText;
 
 @TargetApi(17)
 public class DetailedColorPickerDialog extends Dialog {
-    public static final int VIEW_MODE_GRADIENT = 1;
-    public static final int VIEW_MODE_SWATCH = 2;
+
+    // region AREA: Variables                                       ////////////////////////////////
+
+    // region AREA: DetailedColorPicker
+    // MEMO: World8848. 1이면 사용자 지정, 1이 아니면 표준 지정, Default value 2
+    public static final int VIEW_MODE_GRADIENT  = 1;
+    public static final int VIEW_MODE_SWATCH    = 2;
+    // endregion
+
     private static final int TYPE_CUSTOMIZE = 0;
     private final boolean mIsSupportRGBCode;
     private SpenShowButtonShapeText cancelTextView;
@@ -95,11 +104,22 @@ public class DetailedColorPickerDialog extends Dialog {
             DetailedColorPickerDialog.this.doneAction();
         }
     };
+    // endregion                                                    ////////////////////////////////
 
+
+
+
+    // region AREA: Constructor                                     ////////////////////////////////
     public DetailedColorPickerDialog(Context context, int mode, float[] fArr) {
         super(context, R.style.ColorPickerPopupDialog);
+        /*
+         *  MEMO: World8848
+         *  SpenSettingUtil.initDialogWindow(this, 5376, -1)로 호출되는 경우
+         *  systemUiVisibility = 0, attributes.height = -1 초기화된다.
+         * i2값이 Dialog의 높이인데 -1이면 초기화 선언이다.
+         */
         SpenSettingUtil.initDialogWindow(this, 5376, -1);
-        getWindow().setFlags(256, 256);
+        getWindow().setFlags(FLAG_LAYOUT_IN_SCREEN, FLAG_LAYOUT_IN_SCREEN);
         getWindow().setSoftInputMode(33);
         this.mIsSupportRGBCode = true;
         construct(context, mode, fArr);
@@ -111,6 +131,17 @@ public class DetailedColorPickerDialog extends Dialog {
         this.mIsSupportRGBCode = false;
         construct(context, 2, fArr);
     }
+    // endregion                                                    ////////////////////////////////
+
+
+
+    // region AREA: Functions                                       ////////////////////////////////
+
+
+    // endregion                                                    ////////////////////////////////
+
+
+
 
     private void construct(Context context, int i, float[] fArr) {
         this.mContext = context;

@@ -1,4 +1,4 @@
-#Wed Dec 15 18:08:40 KST 2021
+#Wed Jan 05 10:45:29 KST 2022
 base.2=/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/build/intermediates/dex/debug/mergeLibDexDebug/11/classes.dex
 base.1=/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/build/intermediates/dex/debug/mergeLibDexDebug/10/classes.dex
 base.0=/Users/8848/Documents/8848_PJ_ANDROID/8848_LIBRARY_ONEUIAPP/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex

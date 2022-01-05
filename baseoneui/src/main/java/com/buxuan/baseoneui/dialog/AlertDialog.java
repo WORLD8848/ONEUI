@@ -29,20 +29,15 @@ import com.buxuan.baseoneui.sesl.dialog.SamsungAlertController;
 
 public class AlertDialog extends AppCompatDialog implements DialogInterface {
 
-    //**********************************************************************************************
-    // region AREA: Variables
-    //**********************************************************************************************
+    // region AREA: Variables                                       ////////////////////////////////
     static final int LAYOUT_HINT_NONE = 0;
     static final int LAYOUT_HINT_SIDE = 1;
     final SamsungAlertController mAlert;
-    // endregion
-    //**********************************************************************************************
+    // endregion                                                    ////////////////////////////////
 
 
 
-    //**********************************************************************************************
-    // region AREA: Constructor
-    //**********************************************************************************************
+    // region AREA: Constructor                                     ////////////////////////////////
     protected AlertDialog(@NonNull Context context) {
         this(context, 0);
     }
@@ -57,14 +52,12 @@ public class AlertDialog extends AppCompatDialog implements DialogInterface {
         setCancelable(cancelable);
         setOnCancelListener(cancelListener);
     }
-    // endregion
-    //**********************************************************************************************
+    // endregion                                                    ////////////////////////////////
 
 
 
-    //**********************************************************************************************
-    // region AREA: Functions
-    //**********************************************************************************************
+
+    // region AREA: Functions                                       ////////////////////////////////
 
     // region AREA: getButton
     public Button getButton(int whichButton) {
@@ -108,8 +101,7 @@ public class AlertDialog extends AppCompatDialog implements DialogInterface {
     }
     // endregion
 
-    // endregion
-    //**********************************************************************************************
+    // endregion                                                    ////////////////////////////////
 
 
 
@@ -183,9 +175,7 @@ public class AlertDialog extends AppCompatDialog implements DialogInterface {
     }
 
 
-    //**********************************************************************************************
-    // region AREA: Class Builder
-    //**********************************************************************************************
+    // region AREA: Class Builder                                   ////////////////////////////////
     public static class Builder {
         private final SamsungAlertController.AlertParams P;
         private final int mTheme;
@@ -376,6 +366,8 @@ public class AlertDialog extends AppCompatDialog implements DialogInterface {
             return this;
         }
 
+
+        // region AREA: setMultiChoiceItems
         public Builder setMultiChoiceItems(@ArrayRes int itemsId, boolean[] checkedItems, final OnMultiChoiceClickListener listener) {
             P.mItems = P.mContext.getResources().getTextArray(itemsId);
             P.mOnCheckboxClickListener = listener;
@@ -384,11 +376,20 @@ public class AlertDialog extends AppCompatDialog implements DialogInterface {
             return this;
         }
 
+        /**
+         * setMultiChoiceItems
+         * items는 choice 대상이다. checkedItems는 true/false로 이루어진 boolean[] 배열이다.
+         * 예를 들어 items가 '선택1', '선택2', '선택3'인 경우 checkedItem은 {true, false, true}와 같은 형태로 초기화한다.
+         * @param items CharSequence[]
+         * @param checkedItems boolean[]
+         * @param listener final OnMultiChoiceClickListener
+         * @return Builder
+         */
         public Builder setMultiChoiceItems(CharSequence[] items, boolean[] checkedItems, final OnMultiChoiceClickListener listener) {
-            P.mItems = items;
-            P.mOnCheckboxClickListener = listener;
-            P.mCheckedItems = checkedItems;
-            P.mIsMultiChoice = true;
+            P.mItems                    = items;
+            P.mOnCheckboxClickListener  = listener;
+            P.mCheckedItems             = checkedItems;
+            P.mIsMultiChoice            = true;
             return this;
         }
 
@@ -400,7 +401,10 @@ public class AlertDialog extends AppCompatDialog implements DialogInterface {
             P.mIsMultiChoice = true;
             return this;
         }
+        // endregion
 
+
+        // region AREA: setSingleChoiceItems
         public Builder setSingleChoiceItems(@ArrayRes int itemsId, int checkedItem, final OnClickListener listener) {
             P.mItems = P.mContext.getResources().getTextArray(itemsId);
             P.mOnClickListener = listener;
@@ -418,11 +422,21 @@ public class AlertDialog extends AppCompatDialog implements DialogInterface {
             return this;
         }
 
+        /**
+         * setSingleChoiceItems
+         * items는 choice 대상이다. checkedItem은 CharSequence 배열 index이다.
+         * 예를 들어 items가 '선택1', '선택2', '선택3'인 경우 checkedItem의 범위는 0 ~ 2까지이다.
+         * 범위를 벗어나면 선택된 것이 없는 상태로 표시된다.
+         * @param items CharSequence[]
+         * @param checkedItem int
+         * @param listener final OnClickListener
+         * @return Builder
+         */
         public Builder setSingleChoiceItems(CharSequence[] items, int checkedItem, final OnClickListener listener) {
-            P.mItems = items;
-            P.mOnClickListener = listener;
-            P.mCheckedItem = checkedItem;
-            P.mIsSingleChoice = true;
+            P.mItems            = items;
+            P.mOnClickListener  = listener;
+            P.mCheckedItem      = checkedItem;
+            P.mIsSingleChoice   = true;
             return this;
         }
 
@@ -433,6 +447,8 @@ public class AlertDialog extends AppCompatDialog implements DialogInterface {
             P.mIsSingleChoice = true;
             return this;
         }
+        // endregion
+
 
         public Builder setOnItemSelectedListener(final AdapterView.OnItemSelectedListener listener) {
             P.mOnItemSelectedListener = listener;
@@ -501,8 +517,7 @@ public class AlertDialog extends AppCompatDialog implements DialogInterface {
             return dialog;
         }
     }
-    // endregion
-    //**********************************************************************************************
+    // endregion                                                    ////////////////////////////////
 
 
 

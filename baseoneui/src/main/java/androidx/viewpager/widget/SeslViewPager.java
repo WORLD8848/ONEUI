@@ -48,6 +48,8 @@ import java.util.List;
 
 
 public class SeslViewPager extends ViewGroup {
+
+    // region AREA: Variables                                       ////////////////////////////////
     public static final Comparator<ItemInfo> COMPARATOR = new Comparator<ItemInfo>() {
         public int compare(ItemInfo var1, ItemInfo var2) {
             return var1.position - var2.position;
@@ -128,6 +130,25 @@ public class SeslViewPager extends ViewGroup {
     public float mTouchSlopRatio = 0.5F;
     public boolean mUsePagingTouchSlopForStylus = false;
     public VelocityTracker mVelocityTracker;
+    // endregion                                                    ////////////////////////////////
+
+
+
+    // region AREA: Public methods                                  ////////////////////////////////
+
+    // region AREA: addOnPageChangeListener
+    public void addOnPageChangeListener(OnPageChangeListener onPageChangeListener) {
+        if (this.mOnPageChangeListeners == null) {
+            this.mOnPageChangeListeners = new ArrayList();
+        }
+
+        this.mOnPageChangeListeners.add(onPageChangeListener);
+    }
+    // endregion
+
+    // endregion                                                    ////////////////////////////////
+
+
 
     public SeslViewPager(Context var1) {
         super(var1);
@@ -234,13 +255,9 @@ public class SeslViewPager extends ViewGroup {
         this.mAdapterChangeListeners.add(var1);
     }
 
-    public void addOnPageChangeListener(OnPageChangeListener var1) {
-        if (this.mOnPageChangeListeners == null) {
-            this.mOnPageChangeListeners = new ArrayList();
-        }
 
-        this.mOnPageChangeListeners.add(var1);
-    }
+
+
 
     @SuppressLint("WrongConstant")
     public void addTouchables(ArrayList<View> var1) {
@@ -3138,4 +3155,7 @@ public class SeslViewPager extends ViewGroup {
             SeslViewPager.this.dataSetChanged();
         }
     }
+
+
+
 }

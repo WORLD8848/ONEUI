@@ -173,6 +173,7 @@ public class SeslColorPicker extends LinearLayout {
         this.mPickedColor               = new PickedColor();
         // endregion
 
+
         // region AREA: init
         this.initDialogPadding();
         this.initCurrentColorView();
@@ -190,6 +191,13 @@ public class SeslColorPicker extends LinearLayout {
 
 
     // region AREA: Functions                                       ////////////////////////////////
+
+    // region AREA: getRecentColorInfo
+    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
+    public SeslRecentColorInfo getRecentColorInfo() {
+        return this.mRecentColorInfo;
+    }
+    // endregion
 
 
     // region AREA: initColorSwatchView
@@ -667,68 +675,26 @@ public class SeslColorPicker extends LinearLayout {
     // endregion
 
 
-    // endregion                                                    ////////////////////////////////
-
-
-
-    // region AREA: OnColorChangedListener                          ////////////////////////////////
-    public interface OnColorChangedListener {
-        void onColorChanged(int colorInt);
-    }
-    // endregion                                                    ////////////////////////////////
-
-
-
-
-
-
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
-    public SeslRecentColorInfo getRecentColorInfo() {
-        return this.mRecentColorInfo;
-    }
-
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
-    public boolean isUserInputValid() {
-        return this.mIsInputFromUser;
-    }
-
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
-    public void saveSelectedColor() {
-        Integer var1 = this.mPickedColor.getColor();
-        if (var1 != null) {
-            this.mRecentColorInfo.saveSelectedColor(var1);
-        }
-
-    }
-
-    public void setOnColorChangedListener(OnColorChangedListener var1) {
-        this.mOnColorChangedListener = var1;
-    }
-
-    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
-    public void setOpacityBarEnabled(boolean var1) {
-        this.mIsOpacityBarEnabled = var1;
-        if (this.mIsOpacityBarEnabled) {
-            this.mOpacitySeekBar.setVisibility(View.VISIBLE);
-            this.mOpacitySeekBarContainer.setVisibility(View.VISIBLE);
-        }
-
-    }
-
+    // region AREA: updateRecentColorLayout
     @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
     public void updateRecentColorLayout() {
-        ArrayList var1 = this.mRecentColorValues;
+
+        // region AREA: RecentColorValues 선언 및 size 정보 할당
+        ArrayList<Integer> recentColorValues = this.mRecentColorValues;
         int var2;
-        if (var1 != null) {
-            var2 = var1.size();
+        if (recentColorValues != null) {
+            var2 = recentColorValues.size();
         } else {
             var2 = 0;
         }
+        // endregion
+
 
         StringBuilder var8 = new StringBuilder();
         var8.append(", ");
         var8.append(this.mResources.getString(R.string.sesl_color_picker_option));
         String var3 = var8.toString();
+
 
         for (int var4 = 0; var4 < 6; ++var4) {
             View var5 = this.mRecentColorListLayout.getChildAt(var4);
@@ -770,6 +736,58 @@ public class SeslColorPicker extends LinearLayout {
         }
 
     }
+    // endregion
+
+
+    // endregion                                                    ////////////////////////////////
+
+
+
+    // region AREA: OnColorChangedListener                          ////////////////////////////////
+    public interface OnColorChangedListener {
+        void onColorChanged(int colorInt);
+    }
+    // endregion                                                    ////////////////////////////////
+
+
+
+
+
+
+
+
+    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
+    public boolean isUserInputValid() {
+        return this.mIsInputFromUser;
+    }
+
+    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
+    public void saveSelectedColor() {
+        Integer var1 = this.mPickedColor.getColor();
+        if (var1 != null) {
+            this.mRecentColorInfo.saveSelectedColor(var1);
+        }
+
+    }
+
+    public void setOnColorChangedListener(OnColorChangedListener var1) {
+        this.mOnColorChangedListener = var1;
+    }
+
+    @RestrictTo({RestrictTo.Scope.LIBRARY_GROUP})
+    public void setOpacityBarEnabled(boolean var1) {
+        this.mIsOpacityBarEnabled = var1;
+        if (this.mIsOpacityBarEnabled) {
+            this.mOpacitySeekBar.setVisibility(View.VISIBLE);
+            this.mOpacitySeekBarContainer.setVisibility(View.VISIBLE);
+        }
+
+    }
+
+
+
+
+
 
 
 

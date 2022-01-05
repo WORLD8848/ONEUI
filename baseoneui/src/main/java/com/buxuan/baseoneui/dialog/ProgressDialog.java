@@ -3,7 +3,6 @@ package com.buxuan.baseoneui.dialog;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.icu.text.NumberFormat;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -18,11 +17,23 @@ import android.widget.TextView;
 import com.buxuan.baseoneui.R;
 import com.buxuan.baseoneui.view.ProgressBar;
 
+import java.text.NumberFormat;
+/**
+ *  MEMO: World8848. change
+ *  from: import android.icu.text.NumberFormat;
+ *  to import java.text.NumberFormat;
+ **/
+
 
 public class ProgressDialog extends AlertDialog {
-    public static final int STYLE_SPINNER = 0;
-    public static final int STYLE_HORIZONTAL = 1;
-    public static final int STYLE_CIRCLE_ONLY = 2;
+
+    // region AREA: Variables                                       ////////////////////////////////
+    // region AREA: Progress dialog style
+    public static final int STYLE_SPINNER       = 0;
+    public static final int STYLE_HORIZONTAL    = 1;
+    public static final int STYLE_CIRCLE_ONLY   = 2;
+    // endregion
+
 
     private Context mContext;
 
@@ -47,18 +58,75 @@ public class ProgressDialog extends AlertDialog {
 
     private boolean mHasStarted;
     private Handler mViewUpdateHandler;
+    // endregion                                                    ////////////////////////////////
 
+
+
+
+
+    // region AREA: Constructors                                    ////////////////////////////////
+
+    /**
+     * ProgressDialog
+     * super(context)과 initFormats()를 호출한다.
+     * @param context Context
+     */
     public ProgressDialog(Context context) {
         super(context);
-        mContext = context;
+        mContext            = context;
         initFormats();
     }
 
+    /**
+     * ProgressDialog
+     * super(context)과 initFormats()를 호출한다.
+     * @param context Context
+     * @param theme int
+     */
     public ProgressDialog(Context context, int theme) {
         super(context, theme);
-        mContext = context;
+        mContext            = context;
         initFormats();
     }
+    // endregion                                                    ////////////////////////////////
+
+
+
+
+    // region AREA: Functions                                       ////////////////////////////////
+
+    // region AREA: initFormats
+    private void initFormats() {
+        mProgressNumberFormat  =  "%1d/%2d";
+
+        mProgressPercentFormat = NumberFormat.getPercentInstance();
+
+        mProgressPercentFormat.setMaximumFractionDigits(0);
+    }
+    // endregion
+
+
+    // region AREA: setIndeterminate
+    /**
+     * Indeterminate를 true/false로 할당한다.
+     * @param indeterminate boolean
+     */
+    public void setIndeterminate(boolean indeterminate) {
+        if (mProgress != null) {
+            try {
+                mProgress.setIndeterminate(indeterminate);
+            } catch (Throwable throwable) {
+                throwable.printStackTrace();
+            }
+        } else {
+            mIndeterminate = indeterminate;
+        }
+    }
+    // endregion
+
+    // endregion                                                    ////////////////////////////////
+
+
 
     public static ProgressDialog show(Context context, CharSequence title, CharSequence message) {
         return show(context, title, message, false);
@@ -86,11 +154,14 @@ public class ProgressDialog extends AlertDialog {
         return dialog;
     }
 
-    private void initFormats() {
-        mProgressNumberFormat = "%1d/%2d";
-        mProgressPercentFormat = NumberFormat.getPercentInstance();
-        mProgressPercentFormat.setMaximumFractionDigits(0);
-    }
+
+
+
+
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -295,17 +366,8 @@ public class ProgressDialog extends AlertDialog {
         return mIndeterminate;
     }
 
-    public void setIndeterminate(boolean indeterminate) {
-        if (mProgress != null) {
-            try {
-                mProgress.setIndeterminate(indeterminate);
-            } catch (Throwable throwable) {
-                throwable.printStackTrace();
-            }
-        } else {
-            mIndeterminate = indeterminate;
-        }
-    }
+
+
 
     @Override
     public void setMessage(CharSequence message) {

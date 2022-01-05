@@ -12,23 +12,45 @@ import com.buxuan.baseoneui.sesl.colorpicker.util.color.SpenColorUtil;
 
 public class SpenSettingUtil {
 
-    public static boolean isNightMode(Context context) {
-        return ((UiModeManager) context.getSystemService(Context.UI_MODE_SERVICE)).getNightMode() == UiModeManager.MODE_NIGHT_YES;
-    }
+    // region AREA: Functions                                       ////////////////////////////////
 
-    public static void initDialogWindow(Dialog dialog, int i, int i2) {
-        Window window = dialog.getWindow();
-        View decorView = window.getDecorView();
-        int systemUiVisibility = decorView.getSystemUiVisibility();
-        int i3 = i | systemUiVisibility;
+    // region AREA: initDialogWindow
+    /**
+     * initDialogWindow
+     * SpenSettingUtil.initDialogWindow(this, 5376, -1); 호출되는 경우
+     * systemUiVisibility = 0, attributes.height = -1 초기화된다.
+     * @param dialog Dialog
+     * @param i1 int
+     * @param i2 int
+     */
+    public static void initDialogWindow(Dialog dialog, int i1, int i2) {
+
+        Window window            = dialog.getWindow();
+        View decorView          = window.getDecorView();
+        int systemUiVisibility  = decorView.getSystemUiVisibility();
+
+        int i3 = i1 | systemUiVisibility;
+
         if (i3 == systemUiVisibility) {
             i3 = systemUiVisibility;
         }
+
         decorView.setSystemUiVisibility(i3);
         WindowManager.LayoutParams attributes = window.getAttributes();
         attributes.height = i2;
         window.setAttributes(attributes);
     }
+    // endregion
+
+    // endregion                                                    ////////////////////////////////
+
+
+    public static boolean isNightMode(Context context) {
+        return ((UiModeManager) context.getSystemService(Context.UI_MODE_SERVICE)).getNightMode() == UiModeManager.MODE_NIGHT_YES;
+    }
+
+
+
 
     public static int getStatusBarHeight(Context context) {
         int identifier;
@@ -60,4 +82,5 @@ public class SpenSettingUtil {
     public static int HSVToColor(int i, float[] fArr) {
         return SpenColorUtil.HSVToColor(i, fArr);
     }
+
 }

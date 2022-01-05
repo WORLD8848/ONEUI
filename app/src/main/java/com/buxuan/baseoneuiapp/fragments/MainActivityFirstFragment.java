@@ -6,39 +6,61 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.buxuan.baseoneuiapp.R;
 import com.buxuan.baseoneui.view.TabLayout;
 import com.buxuan.baseoneui.view.ViewPager;
+import com.buxuan.baseoneuiapp.R;
 import com.buxuan.baseoneuiapp.tabs.ViewPagerAdapter;
 
 
 public class MainActivityFirstFragment extends Fragment {
 
-    private AppCompatActivity mActivity;
-    private Context mContext;
-    private View mRootView;
 
+    // region AREA: Variables                                       ////////////////////////////////
+    /**
+     *  MEMO: World8848. change. local variables
+     *  private AppCompatActivity   mActivity;
+     *  private Context             mContext;
+     **/
+    private View                mRootView;
+    // endregion                                                    ////////////////////////////////
+
+
+
+    // region AREA: LifeCycle                                       ////////////////////////////////
+
+    // region AREA: onAttach
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        mActivity = (AppCompatActivity) getActivity();
-        mContext = mActivity.getApplicationContext();
+        AppCompatActivity mActivity = (AppCompatActivity) getActivity();
+        Context mContext            = mActivity != null ? mActivity.getApplicationContext() : null;
     }
+    // endregion
 
+
+    // region AREA: onCreateView
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.fragment_first, container, false);
         return mRootView;
     }
+    // endregion
 
+
+    // region AREA: onViewCreated
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        getView().setBackgroundColor(getResources().getColor(R.color.background_color));
+        /*
+         *  MEMO: World8848. change
+         *  Origin: getView().setBackgroundColor(getResources().getColor(R.color.background_color));
+         */
+        view.setBackgroundColor(getResources().getColor(R.color.background_color));
 
         // TabLayout and ViewPager
         TabLayout tabLayout = mRootView.findViewById(R.id.tabLayout);
@@ -47,5 +69,13 @@ public class MainActivityFirstFragment extends Fragment {
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.updateWidget();
     }
+    // endregion
+
+    // endregion                                                    ////////////////////////////////
+
+
+
+
+
 
 }

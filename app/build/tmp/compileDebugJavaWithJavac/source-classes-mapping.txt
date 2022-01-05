@@ -9,25 +9,18 @@ com/buxuan/baseoneuiapp/tabs/ViewsTab.java
  com.buxuan.baseoneuiapp.tabs.ViewsTab$1
 com/buxuan/baseoneuiapp/fragments/MainActivityFirstFragment.java
  com.buxuan.baseoneuiapp.fragments.MainActivityFirstFragment
-com/buxuan/baseoneuiapp/tabs/IconsTab.java
- com.buxuan.baseoneuiapp.tabs.IconsTab
- com.buxuan.baseoneuiapp.tabs.IconsTab$1
- com.buxuan.baseoneuiapp.tabs.IconsTab$ImageAdapter
- com.buxuan.baseoneuiapp.tabs.IconsTab$ImageAdapter$1
- com.buxuan.baseoneuiapp.tabs.IconsTab$ImageAdapter$ViewHolder
- com.buxuan.baseoneuiapp.tabs.IconsTab$ItemDecoration
-com/buxuan/baseoneuiapp/utils/TabsManager.java
- com.buxuan.baseoneuiapp.utils.TabsManager
-com/buxuan/baseoneuiapp/BuildConfig.java
- com.buxuan.baseoneuiapp.BuildConfig
-com/buxuan/baseoneuiapp/tabs/ViewPagerAdapter.java
- com.buxuan.baseoneuiapp.tabs.ViewPagerAdapter
 com/buxuan/baseoneuiapp/fragments/MainActivitySecondFragment.java
  com.buxuan.baseoneuiapp.fragments.MainActivitySecondFragment
  com.buxuan.baseoneuiapp.fragments.MainActivitySecondFragment$1
+com/buxuan/baseoneuiapp/utils/TabsManager.java
+ com.buxuan.baseoneuiapp.utils.TabsManager
 com/buxuan/baseoneuiapp/SplashActivity.java
  com.buxuan.baseoneuiapp.SplashActivity
  com.buxuan.baseoneuiapp.SplashActivity$1
+com/buxuan/baseoneuiapp/tabs/ViewPagerAdapter.java
+ com.buxuan.baseoneuiapp.tabs.ViewPagerAdapter
+com/buxuan/baseoneuiapp/BuildConfig.java
+ com.buxuan.baseoneuiapp.BuildConfig
 com/buxuan/baseoneuiapp/MainActivity.java
  com.buxuan.baseoneuiapp.MainActivity
  com.buxuan.baseoneuiapp.MainActivity$1
@@ -36,3 +29,10 @@ com/buxuan/baseoneuiapp/MainActivity.java
  com.buxuan.baseoneuiapp.MainActivity$4
  com.buxuan.baseoneuiapp.MainActivity$5
  com.buxuan.baseoneuiapp.MainActivity$6
+com/buxuan/baseoneuiapp/tabs/IconsTab.java
+ com.buxuan.baseoneuiapp.tabs.IconsTab
+ com.buxuan.baseoneuiapp.tabs.IconsTab$1
+ com.buxuan.baseoneuiapp.tabs.IconsTab$ImageAdapter
+ com.buxuan.baseoneuiapp.tabs.IconsTab$ImageAdapter$1
+ com.buxuan.baseoneuiapp.tabs.IconsTab$ImageAdapter$ViewHolder
+ com.buxuan.baseoneuiapp.tabs.IconsTab$ItemDecoration

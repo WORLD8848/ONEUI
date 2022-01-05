@@ -22,7 +22,6 @@ import android.os.Build;
 import android.text.Layout;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -223,6 +222,211 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
         this.scrollableTabMinWidth = var12.getDimensionPixelSize(R.dimen.sesl_tab_scrollable_min_width);
         this.applyModeAndGravity();
     }
+
+
+
+    // region AREA: Private Methods                                 ////////////////////////////////
+
+
+    // endregion                                                    ////////////////////////////////
+
+
+
+    // region AREA: Public Methods                                  ////////////////////////////////
+
+    // region AREA: getSelectedTabPosition
+    /**
+     * 선택한 Tab의 position 정보를 반환한다.
+     * @return int Selected tab position
+     */
+    public int getSelectedTabPosition() {
+        Tab selectedTab = this.selectedTab;
+        int selectedTabPosition;
+        if (selectedTab != null) {
+            selectedTabPosition = selectedTab.getPosition();
+        } else {
+            selectedTabPosition = -1;
+        }
+
+        return selectedTabPosition;
+    }
+    // endregion
+
+
+    // region AREA: setPagerAdapter
+    public void setPagerAdapter(PagerAdapter pagerAdapter, boolean var2) {
+        PagerAdapter thisPagerAdapter = this.pagerAdapter;
+        if (thisPagerAdapter != null) {
+            DataSetObserver var4 = this.pagerAdapterObserver;
+            if (var4 != null) {
+                thisPagerAdapter.unregisterDataSetObserver(var4);
+            }
+        }
+
+        this.pagerAdapter = pagerAdapter;
+        if (var2 && pagerAdapter != null) {
+            if (this.pagerAdapterObserver == null) {
+                this.pagerAdapterObserver = new PagerAdapterObserver();
+            }
+
+            pagerAdapter.registerDataSetObserver(this.pagerAdapterObserver);
+        }
+
+        this.populateFromPagerAdapter();
+    }
+    // endregion
+
+
+    // region AREA: setScrollPosition
+    public void setScrollPosition(int var1, float var2, boolean var3) {
+        this.setScrollPosition(var1, var2, var3, true);
+    }
+
+    public void setScrollPosition(int var1, float var2, boolean var3, boolean var4) {
+
+        if (getResources().getConfiguration().getLayoutDirection() == View.LAYOUT_DIRECTION_RTL)
+            var1 -= 1;
+        int var5 = Math.round((float) var1 + var2);
+        if (var5 >= 0 && var5 < this.slidingTabIndicator.getChildCount()) {
+            if (var4) {
+                this.slidingTabIndicator.setIndicatorPositionFromTabPosition(var1, var2);
+            }
+
+            ValueAnimator var6 = this.scrollAnimator;
+            if (var6 != null && var6.isRunning()) {
+                this.scrollAnimator.cancel();
+            }
+
+            this.scrollTo(this.calculateScrollXForTab(var1, var2), 0);
+            if (var3) {
+                this.setSelectedTabView(var5, true);
+            }
+        }
+    }
+    // endregion
+
+
+    // region AREA: setupWithViewPager
+
+    /**
+     * setupWithViewPager
+     * setupWithViewPager(seslViewPager, true)를 호출한다.
+     * @param seslViewPager SeslViewPager
+     */
+    public void setupWithViewPager(SeslViewPager seslViewPager) {
+        this.setupWithViewPager(seslViewPager, true);
+    }
+
+
+    public void setupWithViewPager(SeslViewPager seslViewPager, boolean var2) {
+        this.setupWithViewPager(seslViewPager, var2, false);
+    }
+
+    /**
+     * setupWithViewPager
+     *
+     * SeslViewPager의 PageChangeListener와 adapterChangeListener는 remove하고
+     * currentVpSelectedListener는 null로 초기화한다.
+     *
+     * seslViewPager가 null이 아니면,
+     * viewPager로 설정한 후 pageChangedListener를 생성, 초기화, 추가한다.
+     * currentVpSelectedListener는 seslViewPager로 설정한다.
+     * seslViewPager의 adapter를 PagerAdapter로 설정 후 adapterChangeListener를 생성, 설정, 추가한다.
+     *
+     * seslViewPager가 null이면,
+     * viewPager는 null, PagerAdapter도 null로 설정한다.
+     *
+     * @param seslViewPager SeslViewPager
+     * @param var2 boolean
+     * @param var3 boolean
+     */
+    public final void setupWithViewPager(SeslViewPager seslViewPager, boolean var2, boolean var3) {
+
+        // region AREA: ViewPager의 PageChangeListener와 adapterChangeListener를 remove한다.
+        SeslViewPager thisViewPager = this.viewPager;
+
+        if (thisViewPager != null) {
+            TabLayoutOnPageChangeListener thisPageChangeListener = this.pageChangeListener;
+            if (thisPageChangeListener != null) {
+                thisViewPager.removeOnPageChangeListener(thisPageChangeListener);
+            }
+
+            AdapterChangeListener thisAdapterChangeListener = this.adapterChangeListener;
+            if (thisAdapterChangeListener != null) {
+                this.viewPager.removeOnAdapterChangeListener(thisAdapterChangeListener);
+            }
+        }
+        // endregion
+
+
+        // region AREA: currentVpSelectedListener remove
+        BaseOnTabSelectedListener thisCurrentVpSelectedListener = this.currentVpSelectedListener;
+        if (thisCurrentVpSelectedListener != null) {
+            this.removeOnTabSelectedListener(thisCurrentVpSelectedListener);
+            this.currentVpSelectedListener = null;
+        }
+        // endregion
+
+
+        if (seslViewPager != null) {
+
+            // region AREA: pageChangeListener
+            this.viewPager = seslViewPager;
+
+            // MEMO: World8848. pageChangeListener 생성
+            if (this.pageChangeListener == null) {
+                this.pageChangeListener = new TabLayoutOnPageChangeListener(this);
+            }
+
+            // MEMO: World8848. pageChangeListener 초기화
+            this.pageChangeListener.reset();
+
+            // MEMO: World8848. pageChangeListener 추가
+            seslViewPager.addOnPageChangeListener(this.pageChangeListener);
+            // endregion
+
+
+            // region AREA: currentVpSelectedListener 설정
+            this.currentVpSelectedListener = new ViewPagerOnTabSelectedListener(seslViewPager);
+            this.addOnTabSelectedListener(this.currentVpSelectedListener);
+            // endregion
+
+
+            // region AREA: PageAdapter 설정
+            PagerAdapter pagerAdapter = seslViewPager.getAdapter();
+
+            // MEMO: World8848. PageAdapter 생성
+            if (pagerAdapter != null) {
+                this.setPagerAdapter(pagerAdapter, var2);
+            }
+
+            // MEMO: World8848. adapterChangeListener 생성
+            if (this.adapterChangeListener == null) {
+                this.adapterChangeListener = new AdapterChangeListener();
+            }
+
+            // MEMO: World8848. adapterChangeListener autoRefresh 설정
+            this.adapterChangeListener.setAutoRefresh(var2);
+
+            // MEMO: World8848. adapterChangeListener 추가
+            seslViewPager.addOnAdapterChangeListener(this.adapterChangeListener);
+            // endregion
+
+            this.setScrollPosition(seslViewPager.getCurrentItem(), 0.0F, true);
+
+        } else {
+            this.viewPager = null;
+            this.setPagerAdapter((PagerAdapter) null, false);
+        }
+
+        this.setupViewPagerImplicitly = var3;
+    }
+
+    // endregion
+
+    // endregion                                                    ////////////////////////////////
+
+
 
 
     // region AREA: addOnTabSelectedListener
@@ -659,17 +863,7 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
         return this.generateDefaultLayoutParams();
     }
 
-    public int getSelectedTabPosition() {
-        Tab var1 = this.selectedTab;
-        int var2;
-        if (var1 != null) {
-            var2 = var1.getPosition();
-        } else {
-            var2 = -1;
-        }
 
-        return var2;
-    }
 
 
 
@@ -1019,57 +1213,16 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
         this.setOnTabSelectedListener((BaseOnTabSelectedListener) var1);
     }
 
-    public void setPagerAdapter(PagerAdapter var1, boolean var2) {
-        PagerAdapter var3 = this.pagerAdapter;
-        if (var3 != null) {
-            DataSetObserver var4 = this.pagerAdapterObserver;
-            if (var4 != null) {
-                var3.unregisterDataSetObserver(var4);
-            }
-        }
 
-        this.pagerAdapter = var1;
-        if (var2 && var1 != null) {
-            if (this.pagerAdapterObserver == null) {
-                this.pagerAdapterObserver = new PagerAdapterObserver();
-            }
 
-            var1.registerDataSetObserver(this.pagerAdapterObserver);
-        }
-
-        this.populateFromPagerAdapter();
-    }
 
     public void setScrollAnimatorListener(Animator.AnimatorListener var1) {
         this.ensureScrollAnimator();
         this.scrollAnimator.addListener(var1);
     }
 
-    public void setScrollPosition(int var1, float var2, boolean var3) {
-        this.setScrollPosition(var1, var2, var3, true);
-    }
 
-    public void setScrollPosition(int var1, float var2, boolean var3, boolean var4) {
-        if (getResources().getConfiguration().getLayoutDirection() == View.LAYOUT_DIRECTION_RTL)
-            var1 -= 1;
-        int var5 = Math.round((float) var1 + var2);
-        if (var5 >= 0 && var5 < this.slidingTabIndicator.getChildCount()) {
-            if (var4) {
-                this.slidingTabIndicator.setIndicatorPositionFromTabPosition(var1, var2);
-            }
 
-            ValueAnimator var6 = this.scrollAnimator;
-            if (var6 != null && var6.isRunning()) {
-                this.scrollAnimator.cancel();
-            }
-
-            this.scrollTo(this.calculateScrollXForTab(var1, var2), 0);
-            if (var3) {
-                this.setSelectedTabView(var5, true);
-            }
-        }
-
-    }
 
     public void setSelectedTabIndicator(int var1) {
         if (var1 != 0) {
@@ -1233,63 +1386,12 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
         this.setUnboundedRipple(this.getResources().getBoolean(var1));
     }
 
-    public void setupWithViewPager(SeslViewPager var1) {
-        this.setupWithViewPager(var1, true);
-    }
 
-    public void setupWithViewPager(SeslViewPager var1, boolean var2) {
-        this.setupWithViewPager(var1, var2, false);
-    }
 
-    public final void setupWithViewPager(SeslViewPager var1, boolean var2, boolean var3) {
-        SeslViewPager var4 = this.viewPager;
-        if (var4 != null) {
-            TabLayoutOnPageChangeListener var5 = this.pageChangeListener;
-            if (var5 != null) {
-                var4.removeOnPageChangeListener(var5);
-            }
 
-            AdapterChangeListener var7 = this.adapterChangeListener;
-            if (var7 != null) {
-                this.viewPager.removeOnAdapterChangeListener(var7);
-            }
-        }
 
-        BaseOnTabSelectedListener var8 = this.currentVpSelectedListener;
-        if (var8 != null) {
-            this.removeOnTabSelectedListener(var8);
-            this.currentVpSelectedListener = null;
-        }
 
-        if (var1 != null) {
-            this.viewPager = var1;
-            if (this.pageChangeListener == null) {
-                this.pageChangeListener = new TabLayoutOnPageChangeListener(this);
-            }
 
-            this.pageChangeListener.reset();
-            var1.addOnPageChangeListener(this.pageChangeListener);
-            this.currentVpSelectedListener = new ViewPagerOnTabSelectedListener(var1);
-            this.addOnTabSelectedListener(this.currentVpSelectedListener);
-            PagerAdapter var6 = var1.getAdapter();
-            if (var6 != null) {
-                this.setPagerAdapter(var6, var2);
-            }
-
-            if (this.adapterChangeListener == null) {
-                this.adapterChangeListener = new AdapterChangeListener();
-            }
-
-            this.adapterChangeListener.setAutoRefresh(var2);
-            var1.addOnAdapterChangeListener(this.adapterChangeListener);
-            this.setScrollPosition(var1.getCurrentItem(), 0.0F, true);
-        } else {
-            this.viewPager = null;
-            this.setPagerAdapter((PagerAdapter) null, false);
-        }
-
-        this.setupViewPagerImplicitly = var3;
-    }
 
     public boolean shouldDelayChildPressedState() {
         boolean var1;
@@ -1434,20 +1536,75 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
     }
 
 
-    //**********************************************************************************************
-    // region AREA: Class. Tab
-    //**********************************************************************************************
+    // region AREA: Class. Tab                                      ////////////////////////////////
+
     public static class Tab {
-        public boolean isCustomButton;
-        public CharSequence contentDesc;
-        public View customView;
-        public Drawable icon;
-        public int labelVisibilityMode = 1;
+
+        // region AREA: Class. Tab. Variables                       ////////////////////////////////
+        public boolean              isCustomButton;
+        public CharSequence         contentDesc;
+        public View                 customView;
+        public Drawable             icon;
+        public int                  labelVisibilityMode     = 1;
         public SamsungBaseTabLayout parent;
-        public int position = -1;
-        public Object tag;
-        public CharSequence text;
-        public TabView view;
+        public int                  position                = -1;
+        public Object               tag;
+        public CharSequence         text;
+        public TabView              view;
+        // endregion                                                ////////////////////////////////
+
+
+
+        // region AREA: Class Tab. Functions                        ////////////////////////////////
+
+        // region AREA: seslGetTextView
+        /**
+         *
+         * customView가 null이 아니면 TextView는 null을 반환한다.
+         * customView가 null이면 TextView는 TabView의 textView를 반환한다.
+         * @return TabView
+         */
+        public TextView seslGetTextView() {
+
+            TextView textView;
+
+            if (this.customView == null) {
+                TabView tabView = this.view;
+
+                if (tabView != null) {
+                    textView = tabView.textView;
+
+                    return textView;
+                }
+            }
+
+            /*
+             *  MEMO: World8848. change
+             *  Origin
+             *  var2 = null;
+             *  return var2;
+             */
+
+            return null;
+        }
+        // endregion
+
+
+        // region AREA: getPosition
+        /**
+         * Tab의 position 정보를 반환한다. 기본값은 '-1'이다.
+         * @return int Tab Position
+         */
+        public int getPosition() {
+            return this.position;
+        }
+        // endregion
+
+
+        // endregion                                                ////////////////////////////////
+
+
+
 
         public Tab() {
         }
@@ -1494,9 +1651,7 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
         // endregion
 
 
-        public int getPosition() {
-            return this.position;
-        }
+
 
         public int getTabLabelVisibility() {
             return this.labelVisibilityMode;
@@ -1537,19 +1692,9 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
 
 
 
-        public TextView seslGetTextView() {
-            TextView var2;
-            if (this.customView == null) {
-                TabView var1 = this.view;
-                if (var1 != null) {
-                    var2 = var1.textView;
-                    return var2;
-                }
-            }
 
-            var2 = null;
-            return var2;
-        }
+
+
 
         // region AREA: select
         public void select() {
@@ -1620,20 +1765,18 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
 
 
     }
-    // endregion
-    //**********************************************************************************************
+    // endregion                                                    ////////////////////////////////
 
 
-    //**********************************************************************************************
-    // region AREA: TabLayoutOnPageChangeListener
-    //**********************************************************************************************
+
+    // region AREA: TabLayoutOnPageChangeListener                   ////////////////////////////////
     public static class TabLayoutOnPageChangeListener implements SeslViewPager.OnPageChangeListener {
         public final WeakReference<SamsungBaseTabLayout> tabLayoutRef;
         public int previousScrollState;
         public int scrollState;
 
-        public TabLayoutOnPageChangeListener(SamsungBaseTabLayout var1) {
-            this.tabLayoutRef = new WeakReference(var1);
+        public TabLayoutOnPageChangeListener(SamsungBaseTabLayout samsungBaseTabLayout) {
+            this.tabLayoutRef = new WeakReference(samsungBaseTabLayout);
         }
 
         public void onPageScrollStateChanged(int var1) {
@@ -1683,8 +1826,9 @@ public class SamsungBaseTabLayout extends HorizontalScrollView {
             this.previousScrollState = 0;
         }
     }
-    // endregion
-    //**********************************************************************************************
+    // endregion                                                    ////////////////////////////////
+
+
 
 
     //**********************************************************************************************

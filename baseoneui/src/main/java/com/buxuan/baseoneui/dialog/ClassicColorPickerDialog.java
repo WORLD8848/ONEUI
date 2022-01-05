@@ -8,7 +8,6 @@ import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 
 import com.buxuan.baseoneui.R;
 import com.buxuan.baseoneui.sesl.colorpicker.SeslColorPicker;
@@ -16,21 +15,16 @@ import com.buxuan.baseoneui.sesl.colorpicker.SeslColorPicker;
 
 public class ClassicColorPickerDialog extends AlertDialog implements DialogInterface.OnClickListener {
 
-    //**********************************************************************************************
-    // region AREA: Variables
-    //**********************************************************************************************
+    // region AREA: Variables                                       ////////////////////////////////
     private static final String TAG                 = "SeslColorPickerDialog";
     private final SeslColorPicker mColorPicker;
     private final ColorPickerChangedListener mColorPickerChangedListener;
     private Integer mCurrentColor;
-    // endregion
-    //**********************************************************************************************
+    // endregion                                                    ////////////////////////////////
 
 
 
-    //**********************************************************************************************
-    // region AREA: Constructor
-    //**********************************************************************************************
+    // region AREA: Constructor                                     ////////////////////////////////
     public ClassicColorPickerDialog(Context context, ColorPickerChangedListener listener) {
         super(context);
         this.mCurrentColor      = null;
@@ -69,19 +63,16 @@ public class ClassicColorPickerDialog extends AlertDialog implements DialogInter
         this.mColorPicker.getRecentColorInfo().initRecentColorInfo(recentColors);
         this.mColorPicker.updateRecentColorLayout();
     }
-    // endregion
-    //**********************************************************************************************
+    // endregion                                                    ////////////////////////////////
 
 
 
-    //**********************************************************************************************
-    // region AREA: Functions
-    //**********************************************************************************************
+    // region AREA: Functions                                       ////////////////////////////////
     public SeslColorPicker getColorPicker() {
         return this.mColorPicker;
     }
-    // endregion
-    //**********************************************************************************************
+    // endregion                                                    ////////////////////////////////
+
 
 
 

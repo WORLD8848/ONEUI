@@ -62,16 +62,10 @@ com/buxuan/baseoneui/sesl/colorpicker/SeslColorPicker.java
  com.buxuan.baseoneui.sesl.colorpicker.SeslColorPicker$4
  com.buxuan.baseoneui.sesl.colorpicker.SeslColorPicker$OnColorChangedListener
  com.buxuan.baseoneui.sesl.colorpicker.SeslColorPicker$PickedColor
-com/buxuan/baseoneui/layout/ToolbarLayout.java
- com.buxuan.baseoneui.layout.ToolbarLayout
- com.buxuan.baseoneui.layout.ToolbarLayout$1
- com.buxuan.baseoneui.layout.ToolbarLayout$2
- com.buxuan.baseoneui.layout.ToolbarLayout$3
- com.buxuan.baseoneui.layout.ToolbarLayout$AppBarOffsetListener
- com.buxuan.baseoneui.layout.ToolbarLayout$Drawer_Toolbar_LayoutParams
- com.buxuan.baseoneui.layout.ToolbarLayout$OnMenuItemClickListener
- com.buxuan.baseoneui.layout.ToolbarLayout$SearchModeListener
- com.buxuan.baseoneui.layout.ToolbarLayout$ToolbarLayoutView
+com/buxuan/baseoneui/preference/ColorPickerPreference.java
+ com.buxuan.baseoneui.preference.ColorPickerPreference
+ com.buxuan.baseoneui.preference.ColorPickerPreference$SavedState
+ com.buxuan.baseoneui.preference.ColorPickerPreference$SavedState$1
 com/buxuan/baseoneui/sesl/widget/ToolbarImageButton.java
  com.buxuan.baseoneui.sesl.widget.ToolbarImageButton
 androidx/appcompat/animation/SeslAnimationUtils.java
@@ -188,23 +182,18 @@ com/buxuan/baseoneui/preference/Preference.java
  com.buxuan.baseoneui.preference.Preference$OnPreferenceChangeInternalListener
  com.buxuan.baseoneui.preference.Preference$OnPreferenceChangeListener
  com.buxuan.baseoneui.preference.Preference$OnPreferenceClickListener
-com/buxuan/baseoneui/utils/CustomButtonClickListener.java
- com.buxuan.baseoneui.utils.CustomButtonClickListener
-com/buxuan/baseoneui/sesl/tabs/SamsungBaseTabLayout.java
- com.buxuan.baseoneui.sesl.tabs.SamsungBaseTabLayout
- com.buxuan.baseoneui.sesl.tabs.SamsungBaseTabLayout$1
- com.buxuan.baseoneui.sesl.tabs.SamsungBaseTabLayout$AdapterChangeListener
- com.buxuan.baseoneui.sesl.tabs.SamsungBaseTabLayout$BaseOnTabSelectedListener
- com.buxuan.baseoneui.sesl.tabs.SamsungBaseTabLayout$OnTabSelectedListener
- com.buxuan.baseoneui.sesl.tabs.SamsungBaseTabLayout$PagerAdapterObserver
- com.buxuan.baseoneui.sesl.tabs.SamsungBaseTabLayout$SlidingTabIndicator
- com.buxuan.baseoneui.sesl.tabs.SamsungBaseTabLayout$Tab
- com.buxuan.baseoneui.sesl.tabs.SamsungBaseTabLayout$TabLayoutOnPageChangeListener
- com.buxuan.baseoneui.sesl.tabs.SamsungBaseTabLayout$TabView
- com.buxuan.baseoneui.sesl.tabs.SamsungBaseTabLayout$TabView$1
- com.buxuan.baseoneui.sesl.tabs.SamsungBaseTabLayout$TabView$2
- com.buxuan.baseoneui.sesl.tabs.SamsungBaseTabLayout$TabView$3
- com.buxuan.baseoneui.sesl.tabs.SamsungBaseTabLayout$ViewPagerOnTabSelectedListener
+com/buxuan/baseoneui/layout/ToolbarLayout.java
+ com.buxuan.baseoneui.layout.ToolbarLayout
+ com.buxuan.baseoneui.layout.ToolbarLayout$1
+ com.buxuan.baseoneui.layout.ToolbarLayout$2
+ com.buxuan.baseoneui.layout.ToolbarLayout$3
+ com.buxuan.baseoneui.layout.ToolbarLayout$AppBarOffsetListener
+ com.buxuan.baseoneui.layout.ToolbarLayout$Drawer_Toolbar_LayoutParams
+ com.buxuan.baseoneui.layout.ToolbarLayout$OnMenuItemClickListener
+ com.buxuan.baseoneui.layout.ToolbarLayout$SearchModeListener
+ com.buxuan.baseoneui.layout.ToolbarLayout$ToolbarLayoutView
+com/buxuan/baseoneui/utils/OnSingleClickListener.java
+ com.buxuan.baseoneui.utils.OnSingleClickListener
 com/buxuan/baseoneui/sesl/view/NestedScrollingChildHelper.java
  com.buxuan.baseoneui.sesl.view.NestedScrollingChildHelper
 com/buxuan/baseoneui/sesl/colorpicker/SpenColorViewInterface.java
@@ -425,9 +414,11 @@ com/buxuan/baseoneui/sesl/recyclerview/LinearSmoothScroller.java
  com.buxuan.baseoneui.sesl.recyclerview.LinearSmoothScroller
 com/buxuan/baseoneui/sesl/sdk/SsdkInterface.java
  com.buxuan.baseoneui.sesl.sdk.SsdkInterface
-com/buxuan/baseoneui/view/TabLayout.java
- com.buxuan.baseoneui.view.TabLayout
- com.buxuan.baseoneui.view.TabLayout$1
+com/buxuan/baseoneui/layout/AboutPage.java
+ com.buxuan.baseoneui.layout.AboutPage
+ com.buxuan.baseoneui.layout.AboutPage$1
+ com.buxuan.baseoneui.layout.AboutPage$AboutPageView
+ com.buxuan.baseoneui.layout.AboutPage$UpdateState
 androidx/appcompat/animation/SeslElasticInterpolator.java
  androidx.appcompat.animation.SeslElasticInterpolator
 com/buxuan/baseoneui/sesl/recyclerview/SeslViewBoundsCheck.java
@@ -485,8 +476,15 @@ com/buxuan/baseoneui/sesl/snackbar/SnackbarContentLayout.java
  com.buxuan.baseoneui.sesl.snackbar.SnackbarContentLayout
 com/buxuan/baseoneui/preference/EditTextPreferenceDialogFragmentCompat.java
  com.buxuan.baseoneui.preference.EditTextPreferenceDialogFragmentCompat
-com/buxuan/baseoneui/view/BottomNavigationView.java
- com.buxuan.baseoneui.view.BottomNavigationView
+com/buxuan/baseoneui/dialog/DetailedColorPickerDialog.java
+ com.buxuan.baseoneui.dialog.DetailedColorPickerDialog
+ com.buxuan.baseoneui.dialog.DetailedColorPickerDialog$1
+ com.buxuan.baseoneui.dialog.DetailedColorPickerDialog$2
+ com.buxuan.baseoneui.dialog.DetailedColorPickerDialog$3
+ com.buxuan.baseoneui.dialog.DetailedColorPickerDialog$4
+ com.buxuan.baseoneui.dialog.DetailedColorPickerDialog$5
+ com.buxuan.baseoneui.dialog.DetailedColorPickerDialog$ColorPickerChangedListener
+ com.buxuan.baseoneui.dialog.DetailedColorPickerDialog$ColorPickerListener
 com/buxuan/baseoneui/preference/internal/PreferencesRelatedCard.java
  com.buxuan.baseoneui.preference.internal.PreferencesRelatedCard
 com/buxuan/baseoneui/preference/MultiSelectListPreferenceDialogFragmentCompat.java
@@ -524,23 +522,8 @@ com/buxuan/baseoneui/sesl/colorpicker/SpenColorPickerViewInfo.java
 com/buxuan/baseoneui/sesl/recyclerview/SeslScroller.java
  com.buxuan.baseoneui.sesl.recyclerview.SeslScroller
  com.buxuan.baseoneui.sesl.recyclerview.SeslScroller$ViscousFluidInterpolator
-androidx/viewpager/widget/SeslViewPager.java
- androidx.viewpager.widget.SeslViewPager
- androidx.viewpager.widget.SeslViewPager$1
- androidx.viewpager.widget.SeslViewPager$2
- androidx.viewpager.widget.SeslViewPager$3
- androidx.viewpager.widget.SeslViewPager$4
- androidx.viewpager.widget.SeslViewPager$DecorView
- androidx.viewpager.widget.SeslViewPager$ItemInfo
- androidx.viewpager.widget.SeslViewPager$LayoutParams
- androidx.viewpager.widget.SeslViewPager$MyAccessibilityDelegate
- androidx.viewpager.widget.SeslViewPager$OnAdapterChangeListener
- androidx.viewpager.widget.SeslViewPager$OnPageChangeListener
- androidx.viewpager.widget.SeslViewPager$PageTransformer
- androidx.viewpager.widget.SeslViewPager$PagerObserver
- androidx.viewpager.widget.SeslViewPager$SavedState
- androidx.viewpager.widget.SeslViewPager$SavedState$1
- androidx.viewpager.widget.SeslViewPager$ViewPositionComparator
+com/buxuan/baseoneui/layout/RoundLinearLayout.java
+ com.buxuan.baseoneui.layout.RoundLinearLayout
 com/buxuan/baseoneui/sesl/swiperefreshlayout/CircularProgressDrawable.java
  com.buxuan.baseoneui.sesl.swiperefreshlayout.CircularProgressDrawable
  com.buxuan.baseoneui.sesl.swiperefreshlayout.CircularProgressDrawable$1
@@ -691,8 +674,10 @@ com/buxuan/baseoneui/preference/ListPreference.java
  com.buxuan.baseoneui.preference.ListPreference
  com.buxuan.baseoneui.preference.ListPreference$SavedState
  com.buxuan.baseoneui.preference.ListPreference$SavedState$1
-com/buxuan/baseoneui/layout/RoundLinearLayout.java
- com.buxuan.baseoneui.layout.RoundLinearLayout
+com/buxuan/baseoneui/sesl/colorpicker/SpenColorPickerControl.java
+ com.buxuan.baseoneui.sesl.colorpicker.SpenColorPickerControl
+ com.buxuan.baseoneui.sesl.colorpicker.SpenColorPickerControl$1
+ com.buxuan.baseoneui.sesl.colorpicker.SpenColorPickerControl$2
 androidx/appcompat/widget/SeslAppCompatBackgroundHelper.java
  androidx.appcompat.widget.SeslAppCompatBackgroundHelper
 androidx/appcompat/widget/SeslAbsSeekBar.java
@@ -766,8 +751,8 @@ com/buxuan/baseoneui/sesl/appbar/ViewUtilsLollipop.java
 com/buxuan/baseoneui/sesl/recyclerview/SeslOverScroller.java
  com.buxuan.baseoneui.sesl.recyclerview.SeslOverScroller
  com.buxuan.baseoneui.sesl.recyclerview.SeslOverScroller$SplineOverScroller
-com/buxuan/baseoneui/view/ViewPager.java
- com.buxuan.baseoneui.view.ViewPager
+com/buxuan/baseoneui/sesl/colorpicker/SpenColorSwatchItemView.java
+ com.buxuan.baseoneui.sesl.colorpicker.SpenColorSwatchItemView
 com/buxuan/baseoneui/sesl/colorpicker/SpenPickerColorEventListener.java
  com.buxuan.baseoneui.sesl.colorpicker.SpenPickerColorEventListener
 com/buxuan/baseoneui/view/OptionGroup.java
@@ -781,29 +766,44 @@ com/buxuan/baseoneui/sesl/recyclerview/GridLayoutManager.java
  com.buxuan.baseoneui.sesl.recyclerview.GridLayoutManager$DefaultSpanSizeLookup
  com.buxuan.baseoneui.sesl.recyclerview.GridLayoutManager$LayoutParams
  com.buxuan.baseoneui.sesl.recyclerview.GridLayoutManager$SpanSizeLookup
-com/buxuan/baseoneui/layout/AboutPage.java
- com.buxuan.baseoneui.layout.AboutPage
- com.buxuan.baseoneui.layout.AboutPage$1
- com.buxuan.baseoneui.layout.AboutPage$AboutPageView
- com.buxuan.baseoneui.layout.AboutPage$UpdateState
-com/buxuan/baseoneui/dialog/DetailedColorPickerDialog.java
- com.buxuan.baseoneui.dialog.DetailedColorPickerDialog
- com.buxuan.baseoneui.dialog.DetailedColorPickerDialog$1
- com.buxuan.baseoneui.dialog.DetailedColorPickerDialog$2
- com.buxuan.baseoneui.dialog.DetailedColorPickerDialog$3
- com.buxuan.baseoneui.dialog.DetailedColorPickerDialog$4
- com.buxuan.baseoneui.dialog.DetailedColorPickerDialog$5
- com.buxuan.baseoneui.dialog.DetailedColorPickerDialog$ColorPickerChangedListener
- com.buxuan.baseoneui.dialog.DetailedColorPickerDialog$ColorPickerListener
-com/buxuan/baseoneui/sesl/colorpicker/SpenColorSwatchItemView.java
- com.buxuan.baseoneui.sesl.colorpicker.SpenColorSwatchItemView
-com/buxuan/baseoneui/utils/OnSingleClickListener.java
- com.buxuan.baseoneui.utils.OnSingleClickListener
-com/buxuan/baseoneui/sesl/colorpicker/SpenColorPickerControl.java
- com.buxuan.baseoneui.sesl.colorpicker.SpenColorPickerControl
- com.buxuan.baseoneui.sesl.colorpicker.SpenColorPickerControl$1
- com.buxuan.baseoneui.sesl.colorpicker.SpenColorPickerControl$2
-com/buxuan/baseoneui/preference/ColorPickerPreference.java
- com.buxuan.baseoneui.preference.ColorPickerPreference
- com.buxuan.baseoneui.preference.ColorPickerPreference$SavedState
- com.buxuan.baseoneui.preference.ColorPickerPreference$SavedState$1
+androidx/viewpager/widget/SeslViewPager.java
+ androidx.viewpager.widget.SeslViewPager
+ androidx.viewpager.widget.SeslViewPager$1
+ androidx.viewpager.widget.SeslViewPager$2
+ androidx.viewpager.widget.SeslViewPager$3
+ androidx.viewpager.widget.SeslViewPager$4
+ androidx.viewpager.widget.SeslViewPager$DecorView
+ androidx.viewpager.widget.SeslViewPager$ItemInfo
+ androidx.viewpager.widget.SeslViewPager$LayoutParams
+ androidx.viewpager.widget.SeslViewPager$MyAccessibilityDelegate
+ androidx.viewpager.widget.SeslViewPager$OnAdapterChangeListener
+ androidx.viewpager.widget.SeslViewPager$OnPageChangeListener
+ androidx.viewpager.widget.SeslViewPager$PageTransformer
+ androidx.viewpager.widget.SeslViewPager$PagerObserver
+ androidx.viewpager.widget.SeslViewPager$SavedState
+ androidx.viewpager.widget.SeslViewPager$SavedState$1
+ androidx.viewpager.widget.SeslViewPager$ViewPositionComparator
+com/buxuan/baseoneui/view/ViewPager.java
+ com.buxuan.baseoneui.view.ViewPager
+com/buxuan/baseoneui/utils/CustomButtonClickListener.java
+ com.buxuan.baseoneui.utils.CustomButtonClickListener
+com/buxuan/baseoneui/sesl/tabs/SamsungBaseTabLayout.java
+ com.buxuan.baseoneui.sesl.tabs.SamsungBaseTabLayout
+ com.buxuan.baseoneui.sesl.tabs.SamsungBaseTabLayout$1
+ com.buxuan.baseoneui.sesl.tabs.SamsungBaseTabLayout$AdapterChangeListener
+ com.buxuan.baseoneui.sesl.tabs.SamsungBaseTabLayout$BaseOnTabSelectedListener
+ com.buxuan.baseoneui.sesl.tabs.SamsungBaseTabLayout$OnTabSelectedListener
+ com.buxuan.baseoneui.sesl.tabs.SamsungBaseTabLayout$PagerAdapterObserver
+ com.buxuan.baseoneui.sesl.tabs.SamsungBaseTabLayout$SlidingTabIndicator
+ com.buxuan.baseoneui.sesl.tabs.SamsungBaseTabLayout$Tab
+ com.buxuan.baseoneui.sesl.tabs.SamsungBaseTabLayout$TabLayoutOnPageChangeListener
+ com.buxuan.baseoneui.sesl.tabs.SamsungBaseTabLayout$TabView
+ com.buxuan.baseoneui.sesl.tabs.SamsungBaseTabLayout$TabView$1
+ com.buxuan.baseoneui.sesl.tabs.SamsungBaseTabLayout$TabView$2
+ com.buxuan.baseoneui.sesl.tabs.SamsungBaseTabLayout$TabView$3
+ com.buxuan.baseoneui.sesl.tabs.SamsungBaseTabLayout$ViewPagerOnTabSelectedListener
+com/buxuan/baseoneui/view/BottomNavigationView.java
+ com.buxuan.baseoneui.view.BottomNavigationView
+com/buxuan/baseoneui/view/TabLayout.java
+ com.buxuan.baseoneui.view.TabLayout
+ com.buxuan.baseoneui.view.TabLayout$1

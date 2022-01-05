@@ -27,7 +27,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-
 import com.buxuan.baseoneui.dialog.AlertDialog;
 import com.buxuan.baseoneui.dialog.ClassicColorPickerDialog;
 import com.buxuan.baseoneui.dialog.DetailedColorPickerDialog;
@@ -45,24 +44,28 @@ import com.buxuan.baseoneuiapp.utils.TabsManager;
 
 
 public class MainActivity extends AppCompatActivity {
-    private String[] mTabsTagName;
-    private String[] mTabsClassName;
 
-    private Context mContext;
-    private FragmentManager mFragmentManager;
-    private Fragment mFragment;
-    private TabsManager mTabsManager;
 
-    private DrawerLayout drawerLayout;
-    private ToolbarLayout toolbarLayout;
-    private BottomNavigationView bnvLayout;
-    private PopupMenu bnvPopupMenu;
+    // region AREA: Variables                                       ////////////////////////////////
+    private String[]                        mTabsTagName;
+    private String[]                        mTabsClassName;
+
+    private Context                         mContext;
+    private FragmentManager                 mFragmentManager;
+    private Fragment                        mFragment;
+    private TabsManager                     mTabsManager;
+
+    private DrawerLayout                    drawerLayout;
+    private ToolbarLayout                   toolbarLayout;
+    private BottomNavigationView            bnvLayout;
+    private PopupMenu                       bnvPopupMenu;
 
     private ActivityResultLauncher<Intent> activityResultLauncher;
+    // endregion                                                    ////////////////////////////////
 
-    //**********************************************************************************************
-    // region AREA: LifeCycle
-    //**********************************************************************************************
+
+
+    // region AREA: LifeCycle                                       ////////////////////////////////
 
     // region AREA: onCreate
     @Override
@@ -75,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
         activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> toolbarLayout.onSearchModeVoiceInputResult(result));
 
         init();
+
     }
     // endregion
 
@@ -102,13 +106,12 @@ public class MainActivity extends AppCompatActivity {
     }
     // endregion
 
-    // endregion
-    //**********************************************************************************************
+    // endregion                                                    ////////////////////////////////
 
 
-    //**********************************************************************************************
-    // region AREA: Init
-    //**********************************************************************************************
+
+    // region AREA: Init                                            ////////////////////////////////
+
     private void init() {
 
         // region AREA: ViewSupport.semSetRoundedCorners
@@ -128,10 +131,11 @@ public class MainActivity extends AppCompatActivity {
         // endregion
 
         // region AREA: Tabs
-        String sharedPrefName = "mainactivity_tabs";
-        mTabsTagName    = getResources().getStringArray(R.array.mainactivity_tab_tag);
-        String[] mTabsTitleName = getResources().getStringArray(R.array.mainactivity_tab_title);
-        mTabsClassName  = getResources().getStringArray(R.array.mainactivity_tab_class);
+        String sharedPrefName       = "mainactivity_tabs";
+        mTabsTagName                = getResources().getStringArray(R.array.mainactivity_tab_tag);
+        String[] mTabsTitleName     = getResources().getStringArray(R.array.mainactivity_tab_title);
+        // MEMO: World8848. tab_class
+        mTabsClassName              = getResources().getStringArray(R.array.mainactivity_tab_class);
         // endregion
 
         // region AREA: TabsManager
@@ -277,9 +281,12 @@ public class MainActivity extends AppCompatActivity {
         setCurrentItem();
 
     }
-    // endregion
-    //**********************************************************************************************
-    
+
+    // endregion                                                    ////////////////////////////////
+
+
+
+    // region AREA: Functions                                       ////////////////////////////////
 
     // region AREA: attachBaseContext
     @Override
@@ -351,12 +358,13 @@ public class MainActivity extends AppCompatActivity {
     private void setFragment(int tabPosition) {
 
         FragmentTransaction transaction = mFragmentManager.beginTransaction();
-        String tabName = mTabsTagName[tabPosition];
-        Fragment fragment = mFragmentManager.findFragmentByTag(tabName);
+        String tabName                  = mTabsTagName[tabPosition];
+        Fragment fragment               = mFragmentManager.findFragmentByTag(tabName);
 
         if (mFragment != null) {
             transaction.hide(mFragment);
         }
+
 
         if (fragment != null) {
             mFragment = (Fragment) fragment;
@@ -364,6 +372,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             try {
                 mFragment = (Fragment) Class.forName(mTabsClassName[tabPosition]).newInstance();
+
             } catch (IllegalAccessException | InstantiationException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
@@ -373,8 +382,12 @@ public class MainActivity extends AppCompatActivity {
     }
     // endregion
 
+    // endregion                                                    ////////////////////////////////
 
-    // onClick
+
+
+    // region AREA: Dialogs                                         ////////////////////////////////
+
 
     // region AREA: standardDialog
     public void standardDialog(View view) {
@@ -389,13 +402,27 @@ public class MainActivity extends AppCompatActivity {
     // endregion
 
 
-
+    // region AREA: classicColorPickerDialog
+    /**
+     * classicColorPickerDialog
+     * 'ThemeColor' 라는 sharedPreferences를 가져온다.
+     * Theme 주요 색상 정보를 'ThemeColor'에서 가져온다. 기본값은 '0381fe'이다.
+     * Theme 주요 색상 정보를 색상 정수 (Color int)로 변경한다.
+     * 사용자가 선택한 색상과 색상 정보가 다른 경우 사용자가 선택한 색상으로 'Theme 주요 색상 정보'를 변경한다.
+     * 색상 선택의 대화상자를 보여준다.
+     * @param view View
+     */
     public void classicColorPickerDialog(View view) {
-        ClassicColorPickerDialog mClassicColorPickerDialog;
-        SharedPreferences sharedPreferences = getSharedPreferences("ThemeColor", Context.MODE_PRIVATE);
-        String stringColor = sharedPreferences.getString("color", "0381fe");
 
-        int currentColor = Color.parseColor("#" + stringColor);
+        ClassicColorPickerDialog mClassicColorPickerDialog;
+
+        // region AREA: 'ThemeColor' 라는 sharedPreferences를 가져온다.
+        SharedPreferences sharedPreferences = getSharedPreferences("ThemeColor", Context.MODE_PRIVATE);
+        String stringColor                  = sharedPreferences.getString("color", "0381fe");
+        // endregion
+
+        // MEMO: World8848. Color Int 생성
+        int currentColor                    = Color.parseColor("#" + stringColor);
 
         try {
             mClassicColorPickerDialog = new ClassicColorPickerDialog(this,
@@ -412,11 +439,17 @@ public class MainActivity extends AppCompatActivity {
             throwable.printStackTrace();
         }
     }
+    // endregion
 
+
+    // region AREA: detailedColorPickerDialog
     public void detailedColorPickerDialog(View view) {
         DetailedColorPickerDialog mDetailedColorPickerDialog;
-        SharedPreferences sharedPreferences = getSharedPreferences("ThemeColor", Context.MODE_PRIVATE);
-        String stringColor = sharedPreferences.getString("color", "0381fe");
+
+        // region AREA: 'ThemeColor' 라는 sharedPreferences를 가져온다.
+        SharedPreferences sharedPreferences     = getSharedPreferences("ThemeColor", Context.MODE_PRIVATE);
+        String stringColor                      = sharedPreferences.getString("color", "0381fe");
+        // endregion
 
         float[] currentColor = new float[3];
         Color.colorToHSV(Color.parseColor("#" + stringColor), currentColor);
@@ -436,9 +469,10 @@ public class MainActivity extends AppCompatActivity {
         });
         mDetailedColorPickerDialog.show();
     }
+    // endregion
 
 
-
+    // region AREA: singleChoiceDialog
     public void singleChoiceDialog(View view) {
         CharSequence[] charSequences = {"Choice1", "Choice2", "Choice3"};
         new AlertDialog.Builder(this)
@@ -449,7 +483,10 @@ public class MainActivity extends AppCompatActivity {
                 .setSingleChoiceItems(charSequences, 0, null)
                 .show();
     }
+    // endregion
 
+
+    // region AREA: multiChoiceDialog
     public void multiChoiceDialog(View view) {
         CharSequence[] charSequences = {"Choice1", "Choice2", "Choice3"};
         boolean[] booleans = {true, false, true};
@@ -461,16 +498,20 @@ public class MainActivity extends AppCompatActivity {
                 .setMultiChoiceItems(charSequences, booleans, null)
                 .show();
     }
+    // endregion
 
+
+    // region AREA: progressDialog
     public void progressDialog(View view) {
         ProgressDialog dialog = new ProgressDialog(mContext);
         dialog.setIndeterminate(true);
         dialog.setCancelable(true);
         dialog.setCanceledOnTouchOutside(true);
         dialog.setTitle("Title");
-        dialog.setMessage("ProgressDialog");
+        dialog.setMessage("ProgressDialog888");
         dialog.setButton(ProgressDialog.BUTTON_NEGATIVE, "Cancel", (dialog1, which) -> progressDialogCircleOnly(view));
-        dialog.setOnCancelListener(dialog12 -> progressDialogCircleOnly(view));
+        // MEMO: World8848. delete
+        // dialog.setOnCancelListener(dialog12 -> progressDialogCircleOnly(view));
         dialog.show();
     }
 
@@ -487,5 +528,11 @@ public class MainActivity extends AppCompatActivity {
         }).show());
         dialog.show();
     }
+    // endregion
+
+
+    // endregion                                                    ////////////////////////////////
+
+
 
 }
